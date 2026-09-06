@@ -1,0 +1,89 @@
+[
+  {
+    "name": "Engineering Lead",
+    "email": "eng.lead@example.com",
+    "org": "Quant Research Lab",
+    "gpuSetup": "8x H100 SXM5",
+    "workload": "Distributed LLaMA-70B FSDP pre-training with custom MoE layers",
+    "contactPreference": "email",
+    "id": "g61f89qa6dhj",
+    "submittedAt": "2026-09-06T17:07:52.025Z",
+    "status": "received"
+  },
+  {
+    "name": "ML Infrastructure Engineer",
+    "email": "infra@example.ai",
+    "org": "Frontier Foundation Lab",
+    "gpuSetup": "8x H100 SXM5",
+    "workload": "Multi-node FSDP training loop with PyTorch 2.4",
+    "contactPreference": "email",
+    "id": "q5cjkmhvfqpc",
+    "submittedAt": "2026-09-06T17:25:47.496Z",
+    "status": "delivered",
+    "findings": {
+      "summary": "Diagnosed 22.4% DataLoader starvation due to num_workers=0. Switching to bfloat16 mixed precision yielded 1.84x step throughput without loss divergence.",
+      "hardwareName": "NVIDIA H100 80GB SXM5",
+      "precisionSpeedupPct": 38,
+      "workersSpeedupPct": 22,
+      "gradCheckpointSavingPct": 41,
+      "recommendedBatchMultiplier": 2,
+      "isEmpiricallyMeasured": true,
+      "caveats": "Observed on synthetic calibration steps; verified safe against 0.10 loss delta threshold."
+    }
+  },
+  {
+    "name": "Test Runner",
+    "email": "test@example.com",
+    "org": "ML Infra Labs",
+    "gpuSetup": "8x RTX A2000",
+    "workload": "Llama 3 8B fine-tuning via PyTorch hook",
+    "contactPreference": "email",
+    "id": "kjvzqgxe45rg",
+    "submittedAt": "2026-09-06T22:13:54.320Z",
+    "status": "received"
+  },
+  {
+    "name": "Test Runner",
+    "email": "test@example.com",
+    "org": "ML Infra Labs",
+    "gpuSetup": "8x RTX A2000",
+    "workload": "Llama 3 8B fine-tuning via PyTorch hook",
+    "contactPreference": "email",
+    "id": "dntst5r4zvr3",
+    "submittedAt": "2026-09-06T22:14:02.408Z",
+    "status": "received"
+  },
+  {
+    "name": "Security Tester",
+    "email": "sec@example.com",
+    "org": "Security Labs",
+    "gpuSetup": "A100",
+    "workload": "Security test",
+    "contactPreference": "email",
+    "id": "zk7ny7905vey",
+    "submittedAt": "2026-09-06T22:26:30.974Z",
+    "status": "received"
+  },
+  {
+    "name": "Valid User",
+    "email": "valid@example.com",
+    "org": "ML Team",
+    "gpuSetup": "2x RTX 4090",
+    "workload": "Fine-tuning PyTorch hook",
+    "contactPreference": "email",
+    "id": "pnz6r8ehv6a5",
+    "submittedAt": "2026-09-06T22:26:31.441Z",
+    "status": "received"
+  },
+  {
+    "name": "Attacker",
+    "email": "att@example.com",
+    "org": "Evil Corp",
+    "gpuSetup": "None",
+    "workload": "Exploit attempt",
+    "contactPreference": "email",
+    "id": "wsm34xzq2ymp",
+    "submittedAt": "2026-09-06T22:26:31.458Z",
+    "status": "received"
+  }
+]

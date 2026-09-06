@@ -1,0 +1,109 @@
+{
+  "experiment_id": "EXP-2026-09-01-HF-WIKITEXT-001",
+  "title": "Empirical Training Run on Hugging Face Wikitext-2 Dataset",
+  "evidence_tier": "Tier 2 - Physical Hardware Observation",
+  "provenance": {
+    "huggingface_dataset": "Salesforce/wikitext/wikitext-2-raw-v1",
+    "huggingface_model": "EleutherAI/pythia-70m",
+    "training_samples_processed": 240,
+    "timestamp": "2026-09-01 14:35:14 UTC"
+  },
+  "hardware": {
+    "device": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "cuda_available": true,
+    "pytorch_version": "2.5.1+cu121"
+  },
+  "training_telemetry": {
+    "total_steps": 30,
+    "batch_size": 4,
+    "sequence_length": 128,
+    "initial_loss": 4.6972,
+    "final_loss": 4.4603,
+    "avg_step_latency_ms": 139.17,
+    "peak_vram_mb": 1196.89,
+    "raw_step_latencies_ms": [
+      1459.89,
+      98.97,
+      93.74,
+      93.89,
+      95.91,
+      98.09,
+      92.58,
+      93.72,
+      92.19,
+      94.54,
+      92.77,
+      92.35,
+      95.33,
+      92.37,
+      92.35,
+      94.99,
+      94.64,
+      94.68,
+      91.75,
+      93.22,
+      94.7,
+      92.73,
+      92.77,
+      92.84,
+      93.33,
+      91.8,
+      92.47,
+      93.17,
+      91.12,
+      92.28
+    ],
+    "raw_loss_trajectory": [
+      4.6972,
+      4.2428,
+      4.6388,
+      4.5586,
+      4.5886,
+      4.6023,
+      4.5874,
+      4.2535,
+      4.7921,
+      4.3208,
+      4.8165,
+      4.7029,
+      4.3108,
+      4.7607,
+      4.6848,
+      4.6973,
+      4.8759,
+      4.4561,
+      4.8739,
+      4.6554,
+      4.151,
+      4.6091,
+      4.6802,
+      4.6945,
+      4.1799,
+      4.6032,
+      4.931,
+      4.0833,
+      4.3454,
+      4.4603
+    ]
+  },
+  "ghost_layer_diagnosis": {
+    "rules_evaluated": 9,
+    "top_recommendations": [
+      {
+        "rule_id": "RULE_MIXED_PRECISION",
+        "title": "Enable BF16 / FP16 Mixed Precision Training",
+        "impact": "HIGH"
+      },
+      {
+        "rule_id": "RULE_DATALOADER_WORKERS",
+        "title": "Optimize PyTorch DataLoader Workers & Memory Pinning",
+        "impact": "HIGH"
+      },
+      {
+        "rule_id": "RULE_GRAPHIFY_TORCH_COMPILE",
+        "title": "Apply Graphify Operator Fusion (`torch.compile` Inductor Backend)",
+        "impact": "HIGH"
+      }
+    ]
+  }
+}

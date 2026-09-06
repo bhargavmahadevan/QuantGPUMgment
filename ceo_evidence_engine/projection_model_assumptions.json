@@ -1,0 +1,36 @@
+{
+  "model_metadata": {
+    "version": "1.0.0",
+    "model_name": "GhostLayer Analytical Kernel & Memory Projection Engine",
+    "last_updated": "2026-07-30T13:45:00Z",
+    "methodology": "Analytical tensor-core occupancy estimation combined with contiguous VRAM page defragmentation models."
+  },
+  "projection_methods": {
+    "analytical_kernel_estimator": {
+      "description": "Calculates FlashAttention-2 tile-level block fusion speedup by replacing un-fused PyTorch intermediate memory write-backs with L1/L2 SRAM cache accumulation.",
+      "mathematical_basis": "Speedup = (T_unfused_readwrite + T_compute) / (T_sram_fused_readwrite + T_compute)",
+      "default_confidence_score": 0.88,
+      "assumptions": [
+        "SRAM tile size 128x128 FP16 tensor-core execution",
+        "Zero intermediate VRAM DRAM bandwidth bottlenecking",
+        "PCIe Gen4 x16 or NVLink3 interconnect"
+      ],
+      "limitations": [
+        "Assumes batch size > 8 for tensor-core saturation",
+        "Model accuracy degrades under extreme sequence lengths (>32k tokens) without Chunked-Prefill"
+      ]
+    },
+    "paged_vram_model": {
+      "description": "Estimates VRAM memory footprint reduction by eliminating PyTorch allocator page fragmentation via contiguous 2MB huge-page pre-allocation.",
+      "mathematical_basis": "VRAM_Saved = Memory_Reserved_Unfused - (Memory_Active + Paged_Table_Header)",
+      "default_confidence_score": 0.92,
+      "assumptions": [
+        "PyTorch CUDACachingAllocator default configuration",
+        "Zero active OOM memory pressure prior to hook insertion"
+      ],
+      "limitations": [
+        "Actual reclaim varies depending on dynamic batching variance"
+      ]
+    }
+  }
+}

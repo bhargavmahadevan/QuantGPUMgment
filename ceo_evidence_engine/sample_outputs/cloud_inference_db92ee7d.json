@@ -1,0 +1,22 @@
+{
+  "benchmark_category": "HOSTED_INFERENCE_LATENCY",
+  "training_efficiency_benchmark": false,
+  "note": "Measures hosted inference token latency via Hugging Face API; distinct from training-step GPU telemetry.",
+  "mode": "SIMULATED_CLOUD_INFERENCE_RUN (Offline Simulation - requires HF_TOKEN)",
+  "provider": "hf-inference",
+  "cost_tier": "FREE_SIMULATION",
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "prompt": "Can you please let us know more details about your ",
+  "generated_text": "Can you please let us know more details about your autonomous AI infrastructure intelligence platform designed to optimize enterprise GPU fleets.",
+  "metrics": {
+    "ttft_ms": 50.0,
+    "end_to_end_latency_sec": 0.0519,
+    "generated_tokens": 27.3,
+    "throughput_tokens_per_sec": 525.95
+  },
+  "reproducibility": {
+    "timestamp": "2026-09-03T18:08:52.456362+00:00",
+    "experiment_id": "EXP-CLOUD-85D99404",
+    "sha256_audit_hash": "d851851a9b9ae482f856f0a52640795f20c29ce6319db08717a1380ee2e30518"
+  }
+}

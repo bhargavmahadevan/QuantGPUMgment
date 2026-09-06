@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP-2026-09-01-A2000-PYTHIA-001",
+  "title": "Closed-Loop Empirical Optimization & Interception on EleutherAI/pythia-70m",
+  "evidence_tier": "Tier 4 - Controlled Physical Intervention & Rollback",
+  "hardware": {
+    "device_name": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "vram_mb": 8192,
+    "driver_version": "528.79",
+    "cuda_version": "12.1",
+    "pytorch_version": "2.5.1+cu121"
+  },
+  "workload": {
+    "model_architecture": "EleutherAI/pythia-70m (GPT-NeoX)",
+    "parameter_count": 70000000,
+    "batch_size": 4,
+    "sequence_length": 64,
+    "training_steps": 20
+  },
+  "intervention": {
+    "applied_rule": "RULE_HYBRID_MUON_CURVATURE",
+    "optimization": "Hybrid 4-Regime Muon (Newton-Schulz Polar Iteration on 2D attention/MLP weights) + AdamW on embeddings & heads"
+  },
+  "measurements": {
+    "baseline_adamw_step_ms": 842.81,
+    "optimized_muon_step_ms": 234.13,
+    "raw_throughput_speedup_pct": 72.22,
+    "throughput_multiplier": 3.60,
+    "baseline_final_loss": 4.3320,
+    "optimized_final_loss": 621.9796,
+    "max_loss_shift_delta": 637.4863
+  },
+  "safety_verification": {
+    "loss_shift_threshold": 0.10,
+    "is_safe": false,
+    "action_taken": "ROLLBACK_TO_BASELINE",
+    "verdict": "Mathematical divergence detected. GhostLayer automatically aborted weight deployment and restored baseline state."
+  },
+  "causal_attribution": {
+    "ghost_layer_causal_contribution": "AUTONOMOUS_INTERCEPTION_AND_ROLLBACK",
+    "finding": "GhostLayer achieved 3.6x hardware throughput boost on RTX A2000 Tensor Cores, detected numerical divergence on un-calibrated polar curvature steps, and executed an immediate rollback to preserve client model weights."
+  }
+}

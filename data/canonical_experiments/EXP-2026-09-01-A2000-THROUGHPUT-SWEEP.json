@@ -1,0 +1,89 @@
+{
+  "experiment_id": "EXP-2026-09-01-A2000-THROUGHPUT-SWEEP",
+  "title": "Throughput Scaling & Batching Sweep on NVIDIA RTX A2000",
+  "evidence_tier": "Tier 2 - Physical Hardware Observation",
+  "hardware": {
+    "device": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "vram_total_mb": 8192,
+    "pytorch_version": "2.5.1+cu121"
+  },
+  "configurations_evaluated": [
+    {
+      "config_id": 1,
+      "precision": "FP32",
+      "batch_size": 4,
+      "sequence_length": 128,
+      "tokens_per_step": 512,
+      "avg_step_latency_ms": 94.43,
+      "tokens_per_second": 5422.15,
+      "peak_vram_mb": 1467.54,
+      "status": "SUCCESS"
+    },
+    {
+      "config_id": 2,
+      "precision": "FP32",
+      "batch_size": 8,
+      "sequence_length": 128,
+      "tokens_per_step": 1024,
+      "avg_step_latency_ms": 139.18,
+      "tokens_per_second": 7357.17,
+      "peak_vram_mb": 1826.3,
+      "status": "SUCCESS"
+    },
+    {
+      "config_id": 3,
+      "precision": "FP32",
+      "batch_size": 16,
+      "sequence_length": 128,
+      "tokens_per_step": 2048,
+      "avg_step_latency_ms": 249.83,
+      "tokens_per_second": 8197.57,
+      "peak_vram_mb": 2821.61,
+      "status": "SUCCESS"
+    },
+    {
+      "config_id": 4,
+      "precision": "FP32",
+      "batch_size": 32,
+      "sequence_length": 128,
+      "tokens_per_step": 4096,
+      "avg_step_latency_ms": 446.48,
+      "tokens_per_second": 9174.03,
+      "peak_vram_mb": 4806.24,
+      "status": "SUCCESS"
+    },
+    {
+      "config_id": 5,
+      "precision": "FP32",
+      "batch_size": 8,
+      "sequence_length": 256,
+      "tokens_per_step": 2048,
+      "avg_step_latency_ms": 254.94,
+      "tokens_per_second": 8033.37,
+      "peak_vram_mb": 4806.24,
+      "status": "SUCCESS"
+    },
+    {
+      "config_id": 6,
+      "precision": "FP32",
+      "batch_size": 16,
+      "sequence_length": 256,
+      "tokens_per_step": 4096,
+      "avg_step_latency_ms": 457.34,
+      "tokens_per_second": 8956.04,
+      "peak_vram_mb": 4810.25,
+      "status": "SUCCESS"
+    }
+  ],
+  "optimal_peak_throughput": {
+    "config_id": 4,
+    "precision": "FP32",
+    "batch_size": 32,
+    "sequence_length": 128,
+    "tokens_per_step": 4096,
+    "avg_step_latency_ms": 446.48,
+    "tokens_per_second": 9174.03,
+    "peak_vram_mb": 4806.24,
+    "status": "SUCCESS"
+  }
+}

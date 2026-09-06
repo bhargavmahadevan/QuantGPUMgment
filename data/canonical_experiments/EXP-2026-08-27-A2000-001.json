@@ -1,0 +1,42 @@
+{
+  "experiment_id": "EXP-2026-08-27-A2000-001",
+  "title": "RTX A2000 Single-Run FP32 vs AMP-FP16 Kernel Execution Benchmark",
+  "evidence_tier": "Tier 2 - Physical Hardware Observation",
+  "hardware": {
+    "device_name": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "vram_mb": 8192,
+    "driver_version": "528.79",
+    "cuda_version": "12.1",
+    "pytorch_version": "2.5.1+cu121"
+  },
+  "workload": {
+    "model_architecture": "Custom Transformer (Decoder-Only)",
+    "parameter_count": 52200000,
+    "batch_size": 4,
+    "sequence_length": 128,
+    "precision_baseline": "FP32",
+    "precision_optimized": "AMP-FP16",
+    "num_steps": 100
+  },
+  "measurements": {
+    "baseline_avg_step_ms": 31.27,
+    "optimized_avg_step_ms": 10.74,
+    "raw_latency_delta_pct": 65.65,
+    "throughput_multiplier": 2.91
+  },
+  "statistical_validation": {
+    "test_type": "Welch two-sample independent t-test",
+    "is_statistically_significant": true,
+    "p_value": 0.0001
+  },
+  "safety_verification": {
+    "verifier_status": "MONITORED_TELEMETRY",
+    "loss_shift_delta": 0.042,
+    "threshold_max_loss_delta": 0.10,
+    "action": "TELEMETRY_RECORDED"
+  },
+  "causal_attribution": {
+    "ghost_layer_causal_contribution": "TELEMETRY_OBSERVER_AND_AUDIT_RECORDER",
+    "finding": "GhostLayer observed the FP32 -> AMP-FP16 difference on physical RTX A2000 hardware, but the kernel speedup is attributed to PyTorch AMP execution on NVIDIA Tensor Cores."
+  }
+}

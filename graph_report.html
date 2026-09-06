@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quant Ghost Layer - Graphify DAG Topology - LLaMA-3-8B</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 24px;
+        }
+        .header {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 30px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .header h1 { margin: 0 0 8px 0; color: #38bdf8; font-size: 24px; }
+        .header p { margin: 0; color: #94a3b8; font-size: 14px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .stat-card .val { font-size: 26px; font-weight: bold; color: #38bdf8; }
+        .stat-card .lbl { font-size: 12px; color: #64748b; text-transform: uppercase; margin-top: 4px; }
+        .graph-box {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            overflow-x: auto;
+        }
+        pre.mermaid { background: transparent !important; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Graphify Execution DAG Topology: LLaMA-3-8B</h1>
+        <p>Quant Ghost Layer Automated Computational Bottleneck & Kernel Fusion Profiler</p>
+    </div>
+
+    <div class="card-grid">
+        <div class="stat-card">
+            <div class="val">38</div>
+            <div class="lbl">Total Execution Nodes</div>
+        </div>
+        <div class="stat-card">
+            <div class="val">37</div>
+            <div class="lbl">Tensor Transfer Edges</div>
+        </div>
+        <div class="stat-card">
+            <div class="val">391.5 ms</div>
+            <div class="lbl">Total Step Latency</div>
+        </div>
+        <div class="stat-card">
+            <div class="val">24</div>
+            <div class="lbl">Fusible Operators</div>
+        </div>
+    </div>
+
+    <div class="graph-box">
+        <pre class="mermaid">
+flowchart TD
+    %% Graphify DAG for LLaMA-3-8B
+    embedding["Token & Positional Embedding<br/>2.5ms | 256MB"]:::critical
+    layer_0_attention["Layer 0 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_0_mlp["Layer 0 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_0_norm["Layer 0 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_1_attention["Layer 1 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_1_mlp["Layer 1 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_1_norm["Layer 1 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_2_attention["Layer 2 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_2_mlp["Layer 2 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_2_norm["Layer 2 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_3_attention["Layer 3 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_3_mlp["Layer 3 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_3_norm["Layer 3 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_4_attention["Layer 4 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_4_mlp["Layer 4 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_4_norm["Layer 4 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_5_attention["Layer 5 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_5_mlp["Layer 5 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_5_norm["Layer 5 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_6_attention["Layer 6 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_6_mlp["Layer 6 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_6_norm["Layer 6 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_7_attention["Layer 7 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_7_mlp["Layer 7 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_7_norm["Layer 7 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_8_attention["Layer 8 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_8_mlp["Layer 8 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_8_norm["Layer 8 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_9_attention["Layer 9 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_9_mlp["Layer 9 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_9_norm["Layer 9 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_10_attention["Layer 10 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_10_mlp["Layer 10 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_10_norm["Layer 10 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    layer_11_attention["Layer 11 Multi-Head Self-Attention<br/>18.5ms | 1200MB"]:::critical
+    layer_11_mlp["Layer 11 MLP / SwiGLU FeedForward<br/>12.0ms | 800MB"]:::critical
+    layer_11_norm["Layer 11 RMSNorm & Residual<br/>1.5ms | 64MB"]:::critical
+    head["LM Head Logits Projection<br/>5.0ms | 512MB"]:::critical
+    embedding -->|"64MB"| layer_0_attention
+    layer_0_attention -->|"64MB"| layer_0_mlp
+    layer_0_mlp -->|"64MB"| layer_0_norm
+    layer_0_norm -->|"64MB"| layer_1_attention
+    layer_1_attention -->|"64MB"| layer_1_mlp
+    layer_1_mlp -->|"64MB"| layer_1_norm
+    layer_1_norm -->|"64MB"| layer_2_attention
+    layer_2_attention -->|"64MB"| layer_2_mlp
+    layer_2_mlp -->|"64MB"| layer_2_norm
+    layer_2_norm -->|"64MB"| layer_3_attention
+    layer_3_attention -->|"64MB"| layer_3_mlp
+    layer_3_mlp -->|"64MB"| layer_3_norm
+    layer_3_norm -->|"64MB"| layer_4_attention
+    layer_4_attention -->|"64MB"| layer_4_mlp
+    layer_4_mlp -->|"64MB"| layer_4_norm
+    layer_4_norm -->|"64MB"| layer_5_attention
+    layer_5_attention -->|"64MB"| layer_5_mlp
+    layer_5_mlp -->|"64MB"| layer_5_norm
+    layer_5_norm -->|"64MB"| layer_6_attention
+    layer_6_attention -->|"64MB"| layer_6_mlp
+    layer_6_mlp -->|"64MB"| layer_6_norm
+    layer_6_norm -->|"64MB"| layer_7_attention
+    layer_7_attention -->|"64MB"| layer_7_mlp
+    layer_7_mlp -->|"64MB"| layer_7_norm
+    layer_7_norm -->|"64MB"| layer_8_attention
+    layer_8_attention -->|"64MB"| layer_8_mlp
+    layer_8_mlp -->|"64MB"| layer_8_norm
+    layer_8_norm -->|"64MB"| layer_9_attention
+    layer_9_attention -->|"64MB"| layer_9_mlp
+    layer_9_mlp -->|"64MB"| layer_9_norm
+    layer_9_norm -->|"64MB"| layer_10_attention
+    layer_10_attention -->|"64MB"| layer_10_mlp
+    layer_10_mlp -->|"64MB"| layer_10_norm
+    layer_10_norm -->|"64MB"| layer_11_attention
+    layer_11_attention -->|"64MB"| layer_11_mlp
+    layer_11_mlp -->|"64MB"| layer_11_norm
+    layer_11_norm -->|"64MB"| head
+    classDef critical fill:#ff4d4d,stroke:#990000,stroke-width:2px,color:#fff;
+    classDef fusible fill:#2e7d32,stroke:#1b5e20,stroke-width:2px,color:#fff;
+        </pre>
+    </div>
+</body>
+</html>

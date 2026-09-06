@@ -1,0 +1,19 @@
+{
+  "mode": "SIMULATED_CLOUD_INFERENCE_RUN",
+  "provider": "hf-inference",
+  "cost_tier": "FREE_SIMULATION",
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "prompt": "Can you please let us know more details about your ",
+  "generated_text": "Can you please let us know more details about your autonomous AI infrastructure intelligence platform designed to optimize enterprise GPU fleets.",
+  "metrics": {
+    "ttft_ms": 50.0,
+    "end_to_end_latency_sec": 0.0504,
+    "generated_tokens": 27.3,
+    "throughput_tokens_per_sec": 541.99
+  },
+  "reproducibility": {
+    "timestamp": "2026-09-03T13:23:51.093096+00:00",
+    "experiment_id": "EXP-CLOUD-C74C6F53",
+    "sha256_audit_hash": "f9996edc4e0e5b1f436cc52c769831c0c4246dcedff7e9a47f3c0da2671daa97"
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "audit_version": "1.0.0",
+  "total_unique_charts": 18,
+  "pillars": {
+    "01_revenue_and_commercial": {
+      "pillar_name": "Pillar 1: Revenue & Commercial",
+      "focus": "Financial modeling, cloud cost scaling, ARR cashflow projections, and enterprise Gantt roadmaps.",
+      "chart_count": 5,
+      "charts": [
+        {
+          "filename": "commercial_18month_workstream_gantt.png",
+          "relative_path": "charts/01_revenue_and_commercial/commercial_18month_workstream_gantt.png",
+          "width_px": 4200,
+          "height_px": 2250,
+          "aspect_ratio": "1.87:1",
+          "size_kb": 630.3,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GANTT_ROADMAP_AND_TRAINING_TIMELINE.md"
+          ]
+        },
+        {
+          "filename": "commercial_cashflow_trajectory.png",
+          "relative_path": "charts/01_revenue_and_commercial/commercial_cashflow_trajectory.png",
+          "width_px": 3000,
+          "height_px": 1650,
+          "aspect_ratio": "1.82:1",
+          "size_kb": 209.7,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GRAPHICAL_ANALYSIS_AND_FINANCIAL_MODELS.md"
+          ]
+        },
+        {
+          "filename": "enterprise_65day_training_resource_allocation.png",
+          "relative_path": "charts/01_revenue_and_commercial/enterprise_65day_training_resource_allocation.png",
+          "width_px": 3900,
+          "height_px": 2850,
+          "aspect_ratio": "1.37:1",
+          "size_kb": 707.8,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GANTT_ROADMAP_AND_TRAINING_TIMELINE.md"
+          ]
+        },
+        {
+          "filename": "enterprise_cloud_cost_scaling.png",
+          "relative_path": "charts/01_revenue_and_commercial/enterprise_cloud_cost_scaling.png",
+          "width_px": 4500,
+          "height_px": 1800,
+          "aspect_ratio": "2.5:1",
+          "size_kb": 467.6,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GRAPHICAL_ANALYSIS_AND_FINANCIAL_MODELS.md"
+          ]
+        },
+        {
+          "filename": "financial_roi_breakdown.png",
+          "relative_path": "charts/01_revenue_and_commercial/financial_roi_breakdown.png",
+          "width_px": 2670,
+          "height_px": 1470,
+          "aspect_ratio": "1.82:1",
+          "size_kb": 146.4,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        }
+      ]
+    },
+    "02_prospects_and_pipeline": {
+      "pillar_name": "Pillar 2: Prospects & Pipeline",
+      "focus": "Client assurance, SLA incident containment boundaries, sub-run taxonomy, and cross-client network effects.",
+      "chart_count": 3,
+      "charts": [
+        {
+          "filename": "containment_and_rollback_sla_timeline.png",
+          "relative_path": "charts/02_prospects_and_pipeline/containment_and_rollback_sla_timeline.png",
+          "width_px": 3900,
+          "height_px": 2040,
+          "aspect_ratio": "1.91:1",
+          "size_kb": 332.1,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GANTT_ROADMAP_AND_TRAINING_TIMELINE.md"
+          ]
+        },
+        {
+          "filename": "hive_mind_throughput_flywheel.png",
+          "relative_path": "charts/02_prospects_and_pipeline/hive_mind_throughput_flywheel.png",
+          "width_px": 2670,
+          "height_px": 1409,
+          "aspect_ratio": "1.89:1",
+          "size_kb": 104.0,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "subrun_taxonomy_breakdown.png",
+          "relative_path": "charts/02_prospects_and_pipeline/subrun_taxonomy_breakdown.png",
+          "width_px": 3900,
+          "height_px": 1860,
+          "aspect_ratio": "2.1:1",
+          "size_kb": 301.3,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GANTT_ROADMAP_AND_TRAINING_TIMELINE.md"
+          ]
+        }
+      ]
+    },
+    "03_engineering_and_algorithms": {
+      "pillar_name": "Pillar 3: Engineering & Algorithms",
+      "focus": "Step-level PyTorch telemetry, VRAM allocation, loss-shift proxy validation, and curvature calculus.",
+      "chart_count": 10,
+      "charts": [
+        {
+          "filename": "dataloader_stall_rate.png",
+          "relative_path": "charts/03_engineering_and_algorithms/dataloader_stall_rate.png",
+          "width_px": 2341,
+          "height_px": 1319,
+          "aspect_ratio": "1.77:1",
+          "size_kb": 104.2,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "gpu_time_allocation_decomposition.png",
+          "relative_path": "charts/03_engineering_and_algorithms/gpu_time_allocation_decomposition.png",
+          "width_px": 3300,
+          "height_px": 1560,
+          "aspect_ratio": "2.12:1",
+          "size_kb": 287.0,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GRAPHICAL_ANALYSIS_AND_FINANCIAL_MODELS.md"
+          ]
+        },
+        {
+          "filename": "hbm_bandwidth_reduction.png",
+          "relative_path": "charts/03_engineering_and_algorithms/hbm_bandwidth_reduction.png",
+          "width_px": 2461,
+          "height_px": 1320,
+          "aspect_ratio": "1.86:1",
+          "size_kb": 106.8,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "loss_convergence_comparison.png",
+          "relative_path": "charts/03_engineering_and_algorithms/loss_convergence_comparison.png",
+          "width_px": 3000,
+          "height_px": 1650,
+          "aspect_ratio": "1.82:1",
+          "size_kb": 316.7,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GRAPHICAL_ANALYSIS_AND_FINANCIAL_MODELS.md"
+          ]
+        },
+        {
+          "filename": "loss_convergence_trajectory.png",
+          "relative_path": "charts/03_engineering_and_algorithms/loss_convergence_trajectory.png",
+          "width_px": 2970,
+          "height_px": 1470,
+          "aspect_ratio": "2.02:1",
+          "size_kb": 222.2,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "statistical_significance_distribution.png",
+          "relative_path": "charts/03_engineering_and_algorithms/statistical_significance_distribution.png",
+          "width_px": 3000,
+          "height_px": 1560,
+          "aspect_ratio": "1.92:1",
+          "size_kb": 243.7,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/01_revenue_and_commercial/GRAPHICAL_ANALYSIS_AND_FINANCIAL_MODELS.md"
+          ]
+        },
+        {
+          "filename": "step_latency_waterfall.png",
+          "relative_path": "charts/03_engineering_and_algorithms/step_latency_waterfall.png",
+          "width_px": 2970,
+          "height_px": 1470,
+          "aspect_ratio": "2.02:1",
+          "size_kb": 172.6,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "tensor_core_throughput.png",
+          "relative_path": "charts/03_engineering_and_algorithms/tensor_core_throughput.png",
+          "width_px": 2676,
+          "height_px": 1320,
+          "aspect_ratio": "2.03:1",
+          "size_kb": 120.5,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        },
+        {
+          "filename": "variance_sphere_telemetry.png",
+          "relative_path": "charts/03_engineering_and_algorithms/variance_sphere_telemetry.png",
+          "width_px": 2100,
+          "height_px": 1350,
+          "aspect_ratio": "1.56:1",
+          "size_kb": 149.0,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/ENGINEERING_CALCULUS_AND_TELEMETRY.md"
+          ]
+        },
+        {
+          "filename": "vram_allocation_breakdown.png",
+          "relative_path": "charts/03_engineering_and_algorithms/vram_allocation_breakdown.png",
+          "width_px": 2670,
+          "height_px": 1470,
+          "aspect_ratio": "1.82:1",
+          "size_kb": 114.4,
+          "citations_count": 1,
+          "cited_in": [
+            "technical_docs/03_engineering_and_algorithms/LLM_TRAINING_GAMEPLAN_AND_PLAYBOOK.md"
+          ]
+        }
+      ]
+    }
+  },
+  "root_flat_mirrors": 18,
+  "all_referenced": true
+}

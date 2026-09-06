@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Quant AI GPU Management (Ghost Layer)",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+      "tests"
+    ],
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/*.egg-info": true
+    }
+  }
+}

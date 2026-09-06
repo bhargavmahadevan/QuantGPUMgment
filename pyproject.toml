@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghost-layer"
+version = "1.2.0"
+description = "Autonomous Infrastructure Memory & Decision Layer for AI Compute"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "GhostLayer Team", email = "engineering@ghostlayer.ai" }
+]
+keywords = ["gpu", "optimization", "pytorch", "vram", "infrastructure", "ai"]
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.38.0",
+    "huggingface_hub>=0.20.0",
+    "numpy>=1.22.0",
+    "pytest>=7.0.0",
+    "matplotlib>=3.5.0",
+    "scipy>=1.8.0"
+]
+
+[project.scripts]
+ghost-layer = "ghost_layer.app:main"
+ghost-evidence = "ceo_evidence_engine.benchmark_runner:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ghost_layer*", "ceo_evidence_engine*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "ceo_evidence_engine"
+]
+pythonpath = ["."]

@@ -1,0 +1,79 @@
+{
+  "experiment_id": "EXP-2026-08-27-A2000-002",
+  "title": "RTX A2000 5-Trial Multi-Run Stability & Safety Interception Experiment",
+  "evidence_tier": "Tier 3 - Repeated Physical Experiment",
+  "hardware": {
+    "device_name": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "vram_mb": 8192,
+    "driver_version": "528.79",
+    "cuda_version": "12.1",
+    "pytorch_version": "2.5.1+cu121"
+  },
+  "workload": {
+    "model_architecture": "Custom Transformer (Decoder-Only)",
+    "parameter_count": 52200000,
+    "num_trials": 5,
+    "steps_per_trial": 100,
+    "batch_size": 4,
+    "sequence_length": 128
+  },
+  "trial_measurements": [
+    {
+      "trial": 1,
+      "baseline_step_ms": 31.25,
+      "optimized_step_ms": 12.65,
+      "speedup_pct": 59.52,
+      "loss_shift_delta": 0.142,
+      "safety_status": false,
+      "action_taken": "AUTO_APPLY_BLOCKED"
+    },
+    {
+      "trial": 2,
+      "baseline_step_ms": 31.30,
+      "optimized_step_ms": 12.50,
+      "speedup_pct": 60.06,
+      "loss_shift_delta": 0.138,
+      "safety_status": false,
+      "action_taken": "AUTO_APPLY_BLOCKED"
+    },
+    {
+      "trial": 3,
+      "baseline_step_ms": 31.20,
+      "optimized_step_ms": 12.80,
+      "speedup_pct": 58.97,
+      "loss_shift_delta": 0.151,
+      "safety_status": false,
+      "action_taken": "AUTO_APPLY_BLOCKED"
+    },
+    {
+      "trial": 4,
+      "baseline_step_ms": 31.40,
+      "optimized_step_ms": 12.45,
+      "speedup_pct": 60.35,
+      "loss_shift_delta": 0.144,
+      "safety_status": false,
+      "action_taken": "AUTO_APPLY_BLOCKED"
+    },
+    {
+      "trial": 5,
+      "baseline_step_ms": 31.22,
+      "optimized_step_ms": 12.72,
+      "speedup_pct": 59.26,
+      "loss_shift_delta": 0.149,
+      "safety_status": false,
+      "action_taken": "AUTO_APPLY_BLOCKED"
+    }
+  ],
+  "aggregate_statistics": {
+    "mean_speedup_pct": 59.63,
+    "std_dev_speedup_pct": 0.57,
+    "confidence_interval_95_pct": [58.92, 60.34],
+    "safety_rejections": 5,
+    "safety_approvals": 0,
+    "auto_apply_blocked_pct": 100.0
+  },
+  "causal_attribution": {
+    "ghost_layer_causal_contribution": "AUTONOMOUS_SAFETY_CONTROL_LAYER",
+    "finding": "GhostLayer correctly identified that while AMP-FP16 yielded +59.63% throughput improvement, loss trajectory shift exceeded the <= 0.10 threshold. GhostLayer refused automated deployment on 5/5 trials to protect model convergence."
+  }
+}

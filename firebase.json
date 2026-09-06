@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "README.md",
+      "ANTIGRAVITY_LAUNCH.md"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

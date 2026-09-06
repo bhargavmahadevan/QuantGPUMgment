@@ -1,0 +1,124 @@
+{
+  "cb86eb9d95dd9832": {
+    "entry_id": "cb86eb9d95dd9832",
+    "architecture_family": "PyTorchLLMModel-6L-512d (52.2M params, synthetic weights)",
+    "hardware_type": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "effective_config": {
+      "mixed_precision": "bf16",
+      "sdpa_flash_attention": true
+    },
+    "throughput_improvement_pct": 59.63,
+    "sample_count": 5,
+    "rejected_sample_count": 5,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 1.2231711840210402,
+    "provenance_note": "Updated 2026-08-17 to match 5-trial multi-run log (real_multi_run_llm_report.md). Previous value was 66.43% with sample_count=2, which did not match any documented run set. All 5 trials were rejected by the safety verifier (Safe Status: False on each). The throughput measurement is real; the auto-apply was blocked.",
+    "verifier_status": "ALL_TRIALS_BLOCKED"
+  },
+  "3713ccbf22a6b942": {
+    "entry_id": "3713ccbf22a6b942",
+    "architecture_family": "RealPyTorchModel-MLP",
+    "hardware_type": "cpu",
+    "effective_config": {
+      "mixed_precision": "fp16",
+      "num_workers": 2,
+      "pin_memory": true
+    },
+    "throughput_improvement_pct": 10.56,
+    "sample_count": 2,
+    "rejected_sample_count": 1,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 0.0,
+    "provenance_note": "CPU-only run (cuda_available: false). Not GPU evidence.",
+    "verifier_status": ""
+  },
+  "c1f642bda61901b2": {
+    "entry_id": "c1f642bda61901b2",
+    "architecture_family": "RealPyTorchModel-CNN",
+    "hardware_type": "cpu",
+    "effective_config": {
+      "mixed_precision": "fp16",
+      "num_workers": 2,
+      "pin_memory": true
+    },
+    "throughput_improvement_pct": 33.41,
+    "sample_count": 2,
+    "rejected_sample_count": 1,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 0.0,
+    "provenance_note": "CPU-only run (cuda_available: false). Model is SimpleCNN-2Layer, not ResNet-50. Not GPU evidence.",
+    "verifier_status": ""
+  },
+  "a6a6d38ef4da828f": {
+    "entry_id": "a6a6d38ef4da828f",
+    "architecture_family": "PyTorchLLMModel-6L-512d (52.2M params, synthetic weights)",
+    "hardware_type": "Host Device (CPU)",
+    "effective_config": {
+      "mixed_precision": "bf16",
+      "sdpa_flash_attention": true
+    },
+    "throughput_improvement_pct": -41.5,
+    "sample_count": 2,
+    "rejected_sample_count": 0,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 0.0,
+    "provenance_note": "CPU-only regression test. bf16/SDPA requires GPU Tensor Cores \u2014 expected regression on CPU.",
+    "verifier_status": ""
+  },
+  "3b0335ed5f650924": {
+    "entry_id": "3b0335ed5f650924",
+    "architecture_family": "HeavyHF-distilbert/distilgpt2",
+    "hardware_type": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "effective_config": {
+      "mixed_precision": "bf16",
+      "sdpa_flash_attention": true,
+      "gradient_checkpointing": true
+    },
+    "throughput_improvement_pct": 54.93,
+    "sample_count": 3,
+    "rejected_sample_count": 1,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 15.446561745488372,
+    "provenance_note": "",
+    "verifier_status": ""
+  },
+  "303846eb03366fd7": {
+    "entry_id": "303846eb03366fd7",
+    "architecture_family": "pythia-gpt-neox",
+    "hardware_type": "CPU",
+    "effective_config": {
+      "RULE_HYBRID_MUON_CURVATURE": true,
+      "PIN_MEMORY": true
+    },
+    "throughput_improvement_pct": 0.0,
+    "sample_count": 0,
+    "rejected_sample_count": 3,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 0.0,
+    "provenance_note": "",
+    "verifier_status": ""
+  },
+  "a75df0647fa79248": {
+    "entry_id": "a75df0647fa79248",
+    "architecture_family": "pythia-gpt-neox",
+    "hardware_type": "NVIDIA RTX A2000 8GB Laptop GPU",
+    "effective_config": {
+      "RULE_HYBRID_MUON_CURVATURE": true,
+      "PIN_MEMORY": true
+    },
+    "throughput_improvement_pct": 0.0,
+    "sample_count": 0,
+    "rejected_sample_count": 1,
+    "param_count_bucket": "",
+    "framework_version": "",
+    "_m2": 0.0,
+    "provenance_note": "",
+    "verifier_status": ""
+  }
+}
