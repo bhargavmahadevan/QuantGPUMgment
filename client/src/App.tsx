@@ -2,6 +2,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import { useEffect } from "react";
+import { apiUrl } from "@/lib/api";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -28,6 +30,11 @@ function Router() {
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
+  useEffect(() => {
+    // Silently pre-warm the Render backend in the background so it wakes up while visitors browse
+    fetch(apiUrl("/api/health")).catch(() => {});
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider

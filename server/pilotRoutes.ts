@@ -4,6 +4,11 @@ import { createPilotRequest, getPilotRequest, updatePilotRequest } from "./pilot
 
 export const pilotRouter = Router();
 
+// GET /api/health — lightweight health check & warmup ping endpoint
+pilotRouter.get("/health", (_req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 // POST /api/pilot-requests — submit a free pilot audit request.
 // No payment, no contract: this just queues a request for the founder
 // to run manually against a real training workload.
