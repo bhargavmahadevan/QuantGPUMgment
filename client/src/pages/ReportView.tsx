@@ -59,6 +59,18 @@ export default function ReportView() {
       try {
         const res = await fetch(apiUrl(`/api/pilot-requests/${params.id}`));
         if (res.status === 404) {
+          try {
+            const cached = localStorage.getItem(`pilot_request_${params.id}`);
+            if (cached) {
+              const parsed = JSON.parse(cached) as ReportData;
+              if (!cancelled) {
+                setData(parsed);
+                return;
+              }
+            }
+          } catch {
+            // ignore cache parse errors
+          }
           if (!cancelled) setError("No pilot request found for this link.");
           return;
         }

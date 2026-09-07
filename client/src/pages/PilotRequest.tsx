@@ -51,6 +51,23 @@ export default function PilotRequest() {
         throw new Error(body?.error === "invalid_request" ? "Check the form for errors." : "Something went wrong submitting this.");
       }
       const { id } = await res.json();
+      try {
+        localStorage.setItem(
+          `pilot_request_${id}`,
+          JSON.stringify({
+            id,
+            status: "received",
+            name: values.name,
+            org: values.org,
+            gpuSetup: values.gpuSetup,
+            workload: values.workload,
+            contactPreference: values.contactPreference,
+            submittedAt: new Date().toISOString(),
+          }),
+        );
+      } catch {
+        // localStorage not available or storage quota exceeded, proceed gracefully
+      }
       setLocation(`/pilot/sent?id=${id}`);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Something went wrong submitting this.");
