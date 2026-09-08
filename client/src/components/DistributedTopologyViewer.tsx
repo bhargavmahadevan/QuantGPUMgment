@@ -84,7 +84,7 @@ export function DistributedTopologyViewer() {
             <span>NCCL DISTRIBUTED TOPOLOGY & COLLECTIVE ANALYZER</span>
           </div>
           <span className="dist-stat">Cluster Scale: <strong>{clusterStats.nodes} Nodes / {clusterStats.totalGpus} GPUs</strong></span>
-          <span className="dist-stat">Comm/Compute Overlap: <strong className="text-white">{clusterStats.avgOverlap}%</strong></span>
+          <span className="dist-stat">Comm/Compute Overlap: <strong style={{ color: "#10b981", fontWeight: 600 }}>{clusterStats.avgOverlap}%</strong></span>
         </div>
 
         <div className="dist-header__right">
@@ -165,8 +165,8 @@ export function DistributedTopologyViewer() {
                               </div>
                               <div className="gpu-progress-track">
                                 <div 
-                                  className="gpu-progress-fill" 
-                                  style={{ width: `${gpu.computeUtilizationPct}%` }}
+                                   className="gpu-progress-fill" 
+                                   style={{ width: `${gpu.computeUtilizationPct}%` }}
                                 />
                               </div>
 
@@ -184,7 +184,7 @@ export function DistributedTopologyViewer() {
 
                             <div className="gpu-card__footer">
                               <span className="active-op-tag">
-                                <Activity size={10} className="animate-pulse text-zinc-300" />
+                                <Activity size={10} className="animate-pulse" style={{ color: "#10b981" }} />
                                 {gpu.activeOp}
                               </span>
                               <span className="bandwidth-tag">{gpu.bandwidthGbps} GB/s</span>
@@ -200,7 +200,7 @@ export function DistributedTopologyViewer() {
               {/* Inter-Node Interconnect Visual Banner */}
               <div className="interconnect-banner">
                 <ArrowRightLeft size={16} className="text-zinc-300" />
-                <span>CROSS-NODE INTERCONNECT: 8x NDR InfiniBand Links (3.2 Tbps Aggregate Fabric) · Zero Packet Drops</span>
+                <span>CROSS-NODE INTERCONNECT: 8x NDR InfiniBand Links (3.2 Tbps Aggregate Fabric) · <strong style={{ color: "#10b981" }}>Zero Packet Drops</strong></span>
               </div>
             </div>
           ) : (
@@ -224,12 +224,19 @@ export function DistributedTopologyViewer() {
                   <span className="op-size-cell">{op.sizeMb} MB</span>
                   <span className="op-latency-cell">{op.avgDurationMs} ms</span>
                   <div className="op-overlap-cell">
-                    <span>{op.overlapPct}%</span>
+                    <span style={{ color: "#10b981", fontWeight: 600 }}>{op.overlapPct}%</span>
                     <div className="overlap-bar">
-                      <div className="overlap-bar__fill" style={{ width: `${op.overlapPct}%` }} />
+                      <div className="overlap-bar__fill" style={{ width: `${op.overlapPct}%`, background: "#10b981" }} />
                     </div>
                   </div>
-                  <span className={`bottleneck-badge badge--${op.bottleneckScore.toLowerCase()}`}>
+                  <span 
+                    className="px-2.5 py-0.5 rounded-full text-[10px] font-mono inline-flex items-center"
+                    style={
+                      op.bottleneckScore === "LOW"
+                        ? { background: "rgba(16, 185, 129, 0.15)", color: "#10b981", border: "1px solid rgba(16, 185, 129, 0.4)" }
+                        : { background: "rgba(244, 63, 94, 0.15)", color: "#f43f5e", border: "1px solid rgba(244, 63, 94, 0.4)" }
+                    }
+                  >
                     {op.bottleneckScore}
                   </span>
                 </div>

@@ -7,6 +7,7 @@ import { apiUrl } from "@/lib/api";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Founder from "./pages/Founder";
 import PilotRequest, { PilotRequestSent } from "./pages/PilotRequest";
 import ReportView from "./pages/ReportView";
 
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/founder"} component={Founder} />
       <Route path={"/pilot"} component={PilotRequest} />
       <Route path={"/pilot/sent"} component={PilotRequestSent} />
       <Route path={"/report/:id"} component={ReportView} />

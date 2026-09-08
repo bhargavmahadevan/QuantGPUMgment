@@ -107,7 +107,7 @@ export function TelemetryMatrix() {
             <strong>4,270</strong>
             <small>tokens/s/GPU</small>
           </div>
-          <span className="kpi-delta text-zinc-300">+18.5% vs Baseline</span>
+          <span className="kpi-delta" style={{ color: "#10b981", fontWeight: 600 }}>+18.5% vs Baseline</span>
         </div>
 
         <div className="kpi-card">
@@ -116,7 +116,7 @@ export function TelemetryMatrix() {
             <strong>28.2</strong>
             <small>ms/step</small>
           </div>
-          <span className="kpi-delta text-zinc-300">-4.2 ms saved</span>
+          <span className="kpi-delta" style={{ color: "#10b981", fontWeight: 600 }}>-4.2 ms saved</span>
         </div>
 
         <div className="kpi-card">
@@ -125,7 +125,7 @@ export function TelemetryMatrix() {
             <strong>0.0012</strong>
             <small>ΔL</small>
           </div>
-          <span className="kpi-delta text-white">&lt; 0.10 Gate (Verified Safe)</span>
+          <span className="kpi-delta" style={{ color: "#10b981", fontWeight: 600 }}>&lt; 0.10 Gate (Verified Safe)</span>
         </div>
 
         <div className="kpi-card">
@@ -134,7 +134,7 @@ export function TelemetryMatrix() {
             <strong>6.8%</strong>
             <small>inactive</small>
           </div>
-          <span className="kpi-delta text-zinc-300">Zero OOM Risk</span>
+          <span className="kpi-delta" style={{ color: "#10b981", fontWeight: 600 }}>Zero OOM Risk</span>
         </div>
       </div>
 
@@ -145,9 +145,9 @@ export function TelemetryMatrix() {
             <div className="chart-title-bar">
               <span>LOSS CURVATURE & VERIFICATION BOUND (0.10 LOSS-SHIFT GATE)</span>
               <div className="chart-legend-custom">
-                <span className="legend-item"><i className="bg-white" /> GhostLayer Optimized</span>
+                <span className="legend-item"><i style={{ background: "#10b981", boxShadow: "0 0 6px rgba(16, 185, 129, 0.7)" }} /> GhostLayer Optimized</span>
                 <span className="legend-item"><i className="bg-zinc-500" /> Baseline Unoptimized</span>
-                <span className="legend-item"><i className="bg-zinc-700" /> 0.10 Safety Boundary</span>
+                <span className="legend-item"><i style={{ background: "#f43f5e", boxShadow: "0 0 6px rgba(244, 63, 94, 0.7)" }} /> 0.10 Safety Boundary</span>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={320}>
@@ -159,7 +159,8 @@ export function TelemetryMatrix() {
                   contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                   itemStyle={{ color: "#edf1ed" }}
                 />
-                <Line type="monotone" dataKey="loss" stroke="#FFFFFF" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+                <ReferenceLine y={2.65} label={{ value: "0.10 Safety Boundary (Gate Limit)", fill: "#f43f5e", fontSize: 10, position: "insideTopRight" }} stroke="#f43f5e" strokeDasharray="4 4" strokeWidth={1.5} />
+                <Line type="monotone" dataKey="loss" stroke="#10b981" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
                 <Line type="monotone" dataKey="baselineLoss" stroke="#737373" strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
               </LineChart>
             </ResponsiveContainer>
@@ -232,7 +233,7 @@ export function TelemetryMatrix() {
                 <Tooltip 
                   contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                 />
-                <ReferenceLine y={80} label="Hardware Limit (80GB)" stroke="#737373" strokeDasharray="3 3" />
+                <ReferenceLine y={80} label={{ value: "Hardware Limit (80GB)", fill: "#f43f5e", fontSize: 10 }} stroke="#f43f5e" strokeDasharray="3 3" />
                 <Area type="monotone" dataKey="vramReservedGb" stroke="#737373" fill="#404040" fillOpacity={0.2} />
                 <Area type="monotone" dataKey="vramAllocatedGb" stroke="#FFFFFF" fill="#A3A3A3" fillOpacity={0.4} />
               </AreaChart>

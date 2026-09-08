@@ -73,8 +73,8 @@ export function ContainmentLatticeViewer() {
             <ShieldAlert size={14} className="text-zinc-300" />
             <span>VARIANCE CONTAINMENT & ROLLBACK LATTICE</span>
           </div>
-          <span className="containment-stat">Leak Prevention: <strong className="text-white">${containmentSummary.containmentSavingsUsd} Saved</strong></span>
-          <span className="containment-stat">Wasted Compute Captured: <strong>{containmentSummary.totalWastedHours} GPU-hrs</strong></span>
+          <span className="containment-stat">Leak Prevention: <strong style={{ color: "#10b981", fontWeight: 600 }}>${containmentSummary.containmentSavingsUsd} Saved</strong></span>
+          <span className="containment-stat">Wasted Compute Captured: <strong style={{ color: "#f43f5e", fontWeight: 600 }}>{containmentSummary.totalWastedHours} GPU-hrs</strong></span>
         </div>
 
         <div className="containment-header__right">
@@ -98,7 +98,7 @@ export function ContainmentLatticeViewer() {
         <div className="lattice-flow-stage">
           <div className="lattice-timeline-header">
             <span>TRAINING STEP SEQUENCE & GRADIENT STABILITY LATTICE</span>
-            <small>Red: Divergence Trigger | Yellow: Variance Leak | Green: Stable Step</small>
+            <small><span style={{ color: "#f43f5e" }}>Red: Divergence Trigger</span> | <span style={{ color: "#fb7185" }}>Yellow/Orange: Variance Leak</span> | <span style={{ color: "#10b981" }}>Green: Stable Step</span></small>
           </div>
 
           <div className="step-cards-track">
@@ -123,7 +123,7 @@ export function ContainmentLatticeViewer() {
                     <small>LOSS VALUE</small>
                     <div className="loss-delta-row">
                       <strong>{step.lossValue.toFixed(3)}</strong>
-                      <span className={isRegressive ? "text-zinc-400" : "text-zinc-100"}>
+                      <span style={{ color: isRegressive ? "#f43f5e" : "#10b981", fontWeight: 600 }}>
                         {step.lossDelta > 0 ? `+${step.lossDelta.toFixed(4)}` : step.lossDelta.toFixed(4)}
                       </span>
                     </div>
@@ -168,40 +168,56 @@ export function ContainmentLatticeViewer() {
         <div className="containment-inspector">
           <div className="inspector-top">
             <span className="inspector-eyebrow">STEP {selectedStep.step} DIVERGENCE AUDIT</span>
-            <h3>{selectedStep.severity} VARIANCE EVENT</h3>
+            <h3 style={{ color: selectedStep.severity === "SEVERE" ? "#f43f5e" : selectedStep.severity === "MODERATE" ? "#fb7185" : "#10b981" }}>
+              {selectedStep.severity} VARIANCE EVENT
+            </h3>
             <p className="root-layer-text">Root Attribution: <strong>{selectedStep.rootLayer}</strong></p>
           </div>
 
           <div className="containment-metric-grid">
             <div className="c-metric-card">
               <span>Loss Delta (ΔL)</span>
-              <strong className={selectedStep.lossDelta > 0 ? "text-zinc-400" : "text-zinc-100"}>
+              <strong style={{ color: selectedStep.lossDelta > 0 ? "#f43f5e" : "#10b981", fontSize: "1.1rem" }}>
                 {selectedStep.lossDelta > 0 ? `+${selectedStep.lossDelta.toFixed(4)}` : selectedStep.lossDelta.toFixed(4)}
               </strong>
-              <small>{selectedStep.lossDelta > 0.10 ? "Exceeded 0.10 Gate" : "Within Policy Limit"}</small>
+              {selectedStep.lossDelta > 0.10 ? (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-rose-500/20 text-rose-400 border border-rose-500/40 inline-flex items-center gap-1 mt-1">
+                  Exceeded 0.10 Gate
+                </span>
+              ) : (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 inline-flex items-center gap-1 mt-1">
+                  Within Policy Limit
+                </span>
+              )}
             </div>
             <div className="c-metric-card">
               <span>Wasted GPU-Hours</span>
-              <strong>{selectedStep.wastedGpuHours} hrs</strong>
-              <small className="text-zinc-400">Burned Compute</small>
+              <strong style={{ color: selectedStep.wastedGpuHours > 0 ? "#f43f5e" : "#FFFFFF", fontSize: "1.1rem" }}>
+                {selectedStep.wastedGpuHours} hrs
+              </strong>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-rose-500/20 text-rose-400 border border-rose-500/40 inline-flex items-center gap-1 mt-1">
+                Burned Compute
+              </span>
             </div>
             <div className="c-metric-card">
               <span>Symplectic Drift (ΔH)</span>
-              <strong>{selectedStep.energyDrift.toFixed(3)}</strong>
+              <strong style={{ fontSize: "1.1rem" }}>{selectedStep.energyDrift.toFixed(3)}</strong>
               <small className="text-zinc-400">Hamiltonian Invariant</small>
             </div>
             <div className="c-metric-card">
               <span>Containment Action</span>
               <strong className="text-zinc-200">{selectedStep.actionTaken.replace(/_/g, " ")}</strong>
-              <small className="text-zinc-400">Zero Model Corruption</small>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 inline-flex items-center gap-1 mt-1">
+                Zero Model Corruption
+              </span>
             </div>
           </div>
 
           <div className="containment-resolution-box">
             <h4>Autonomous Containment Rationale</h4>
             {selectedStep.severity === "SEVERE" ? (
-              <div className="resolution-card border-rose-500/30 bg-rose-950/20">
-                <div className="res-title text-rose-300">
+              <div className="resolution-card border-rose-500/40 bg-rose-950/25" style={{ borderColor: "rgba(244, 63, 94, 0.4)", background: "rgba(244, 63, 94, 0.08)" }}>
+                <div className="res-title" style={{ color: "#f43f5e" }}>
                   <RotateCcw size={14} /> State Restored to Checkpoint at Step {selectedStep.step - 1}
                 </div>
                 <p>
@@ -219,8 +235,8 @@ export function ContainmentLatticeViewer() {
                 </p>
               </div>
             ) : (
-              <div className="resolution-card border-zinc-700 bg-zinc-900/40">
-                <div className="res-title text-zinc-200">
+              <div className="resolution-card border-emerald-500/30 bg-emerald-950/20" style={{ borderColor: "rgba(16, 185, 129, 0.4)", background: "rgba(16, 185, 129, 0.08)" }}>
+                <div className="res-title" style={{ color: "#10b981" }}>
                   <CheckCircle size={14} /> Healthy Gradient Descent Trajectory
                 </div>
                 <p>

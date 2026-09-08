@@ -323,16 +323,24 @@ export default function GpuProfitCalculator() {
           <div style={{ fontSize: "0.75rem", color: "#737373", marginTop: "4px" }}>${clusterHourlySpend.toFixed(2)}/hr across {numGpus} GPUs</div>
         </div>
 
-        <div style={{ background: "#111111", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "0", padding: "18px" }}>
-          <div style={{ fontSize: "0.75rem", color: "#A3A3A3", textTransform: "uppercase", fontWeight: 600 }}>Identified Monthly Waste</div>
-          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "#D4D4D4", marginTop: "6px" }}>${monthlyWastedSpend.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
-          <div style={{ fontSize: "0.75rem", color: "#737373", marginTop: "4px" }}>{totalWastePct}% total compute leakage</div>
+        <div style={{ background: "rgba(244, 63, 94, 0.05)", border: "1px solid rgba(244, 63, 94, 0.3)", borderRadius: "0", padding: "18px" }}>
+          <div style={{ fontSize: "0.75rem", color: "#fb7185", textTransform: "uppercase", fontWeight: 600 }}>Identified Monthly Waste</div>
+          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "#f43f5e", marginTop: "6px" }}>${monthlyWastedSpend.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+          <div>
+            <span style={{ display: "inline-flex", padding: "2px 8px", borderRadius: "9999px", background: "rgba(244, 63, 94, 0.15)", color: "#f43f5e", border: "1px solid rgba(244, 63, 94, 0.35)", fontSize: "0.68rem", fontWeight: 700, marginTop: "6px" }}>
+              {totalWastePct}% COMPUTE LEAKAGE
+            </span>
+          </div>
         </div>
 
-        <div style={{ background: "#111111", border: "1px solid rgba(255, 255, 255, 0.12)", borderRadius: "0", padding: "18px" }}>
-          <div style={{ fontSize: "0.75rem", color: "#D4D4D4", textTransform: "uppercase", fontWeight: 600 }}>Recoverable Annual Spend</div>
-          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "#FFFFFF", marginTop: "6px" }}>${annualRecoverableSavings.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
-          <div style={{ fontSize: "0.75rem", color: "#A3A3A3", marginTop: "4px" }}>+${monthlyRecoverableSavings.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo net runway</div>
+        <div style={{ background: "rgba(16, 185, 129, 0.05)", border: "1px solid rgba(16, 185, 129, 0.35)", borderRadius: "0", padding: "18px" }}>
+          <div style={{ fontSize: "0.75rem", color: "#34d399", textTransform: "uppercase", fontWeight: 600 }}>Recoverable Annual Spend</div>
+          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "#10b981", marginTop: "6px" }}>${annualRecoverableSavings.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+          <div>
+            <span style={{ display: "inline-flex", padding: "2px 8px", borderRadius: "9999px", background: "rgba(16, 185, 129, 0.15)", color: "#10b981", border: "1px solid rgba(16, 185, 129, 0.35)", fontSize: "0.68rem", fontWeight: 700, marginTop: "6px" }}>
+              +${monthlyRecoverableSavings.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo NET RUNWAY
+            </span>
+          </div>
         </div>
 
         <div style={{ background: "#111111", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "0", padding: "18px" }}>
@@ -370,10 +378,10 @@ export default function GpuProfitCalculator() {
               Under $3k corporate card limit • 48-Hour delivery • Recouped in ~{auditPaybackDays} days
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "0.8rem", color: "#D4D4D4" }}>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> 1x to 8x GPU Staging Run Validation</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> DataLoader I/O stall & VRAM headroom audit</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Executive C-level HTML & Markdown Report</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Zero fee if no actionable findings detected</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> 1x to 8x GPU Staging Run Validation</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> DataLoader I/O stall & VRAM headroom audit</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Executive C-level HTML & Markdown Report</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Zero fee if no actionable findings detected</li>
             </ul>
             <a
               href="mailto:solutions@ghostlayer.ai?subject=Book%20Pre-Flight%20Diagnostic%20Audit%20($2,500)"
@@ -408,10 +416,10 @@ export default function GpuProfitCalculator() {
               8 to 64 GPUs • Continuous fleet training oversight
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "0.8rem", color: "#D4D4D4" }}>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Real-time Slack & Discord stall alerts</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Prometheus FinOps dollar metrics exporter</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Post-mortem decision replay history</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Continuous batch sizing recommendations</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Real-time Slack & Discord stall alerts</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Prometheus FinOps dollar metrics exporter</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Post-mortem decision replay history</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Continuous batch sizing recommendations</li>
             </ul>
             <a
               href="mailto:solutions@ghostlayer.ai?subject=Inquire%20Team%20Platform%20SaaS"
@@ -447,10 +455,10 @@ export default function GpuProfitCalculator() {
               Air-Gapped VPC • Zero Data Exfiltration SLA
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "0.8rem", color: "#D4D4D4" }}>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> 100% offline air-gapped cryptographic tokens</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Dedicated custom optimization heuristics</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Cryptographic BaselineLock SLA assurance</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#FFFFFF" /> Dedicated ML Infrastructure Solutions Engineer</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> 100% offline air-gapped cryptographic tokens</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Dedicated custom optimization heuristics</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Cryptographic BaselineLock SLA assurance</li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}><Check size={14} color="#10b981" /> Dedicated ML Infrastructure Solutions Engineer</li>
             </ul>
             <a
               href="mailto:solutions@ghostlayer.ai?subject=Enterprise%20Compute%20Assurance%20Inquiry"

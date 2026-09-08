@@ -80,6 +80,7 @@ export default function LiveSystemPanel() {
             {metric.raw !== undefined ? (
               <strong
                 className="lsp-row__value"
+                style={metric.label === "Verified savings" ? { color: "#10b981", fontWeight: 600 } : undefined}
                 data-countup={metric.value === "$2.41M" ? "2.41" : metric.raw}
                 data-suffix={metric.value === "$2.41M" ? "M" : ""}
                 data-prefix={metric.value === "$2.41M" ? "$" : ""}
@@ -88,7 +89,10 @@ export default function LiveSystemPanel() {
                 0
               </strong>
             ) : (
-              <strong className="lsp-row__value lsp-row__value--text">
+              <strong 
+                className="lsp-row__value lsp-row__value--text"
+                style={metric.value === "NOMINAL" ? { color: "#10b981", fontWeight: 600 } : undefined}
+              >
                 {metric.value}
               </strong>
             )}

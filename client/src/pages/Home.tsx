@@ -32,6 +32,7 @@ import {
   Calculator,
   Cpu,
   ArrowRight,
+  Phone,
 } from "lucide-react";
 import GlobeNavigator, { DESTINATIONS, type DestinationId } from "@/components/GlobeNavigator";
 import ExecutionDAGViewer from "@/components/ExecutionDAGViewer";
@@ -220,6 +221,40 @@ export default function Home() {
         >
           <Calculator size={13} />
           <span>ROI Calculator</span>
+        </button>
+        <button
+          className="calculator-header-button"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            background: "transparent",
+            border: "1px solid rgba(255,255,255,0.18)",
+            color: "#D4D4D4",
+            borderRadius: "0",
+            padding: "6px 14px",
+            fontSize: "0.78rem",
+            fontFamily: "\"DM Mono\", monospace",
+            fontWeight: 500,
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "border-color 160ms, color 160ms",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(16,185,129,0.6)";
+            (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.18)";
+            (e.currentTarget as HTMLElement).style.color = "#D4D4D4";
+          }}
+          onClick={() => {
+            document.getElementById("founder")?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block", boxShadow: "0 0 6px rgba(16,185,129,0.8)" }} />
+          <span>Founder</span>
         </button>
       </header>
 
@@ -639,6 +674,79 @@ export default function Home() {
             <span className="ghost-stack ghost-stack--ink" />
           </div>
         </section>
+
+        {/* ── Founder Section ─────────────────────────────────────────────── */}
+        <section className="founder-section" id="founder">
+          <span className="section-trace" aria-hidden="true">
+            <i /><i /><i /><b className="ghost-stack" />
+          </span>
+          <figure className="founder-section__portrait">
+            <img src="/assets/ghostlayer-bhargav-founder.jpg" alt="Portrait of Bhargav Mahadevan" />
+            <figcaption>
+              <span>FOUNDER / BHARGAV MAHADEVAN</span>
+              <small>PORTRAIT SUPPLIED BY FOUNDER</small>
+            </figcaption>
+          </figure>
+          <div className="founder-section__copy">
+            <p className="orbit-eyebrow">
+              <span /> FOUNDER &amp; CONTACT
+            </p>
+            <h2>
+              Bhargav<br />
+              <em>Mahadevan.</em>
+            </h2>
+            <blockquote className="founder-section__headline-quote">
+              “Visualization is the first and most important step to boundless momentum.”
+            </blockquote>
+            <p>
+              GhostLayer started as an idea that turned into an obsession. The project is built around a simple premise: make LLM training cheaper, more effective, and more accessible to more people. I’m building to make AI better and more affordable for everybody, and I’m learning as I go. I’m always open to a real conversation.
+            </p>
+            <div className="founder-section__links">
+              <a href="mailto:bhargavmahadevan@gmail.com">
+                <Mail size={16} />
+                <span>
+                  <small>EMAIL</small>
+                  bhargavmahadevan@gmail.com
+                </span>
+                <ArrowUpRight size={16} />
+              </a>
+              <a href="tel:+18324023104">
+                <Phone size={16} />
+                <span>
+                  <small>PHONE</small>
+                  832-402-3104
+                </span>
+                <ArrowUpRight size={16} />
+              </a>
+              <Link href="/founder" style={{ border: "1px solid rgba(16, 185, 129, 0.4)", background: "rgba(16, 185, 129, 0.08)", color: "#10b981" }}>
+                <span>
+                  <small style={{ color: "#34d399" }}>FOUNDER DOSSIER</small>
+                  Read Full Founder Page &amp; Philosophy
+                </span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+          <aside className="founder-section__focus">
+            <span>FOUNDER PRINCIPLES</span>
+            <small>How I want to build—and lead—at GhostLayer.</small>
+            <div>
+              <b>01</b>
+              <p>
+                <strong>Build stronger leaders around you.</strong> Give people the context, responsibility, and confidence to lead without you.
+              </p>
+            </div>
+            <div>
+              <b>02</b>
+              <p>
+                <strong>Critique should create momentum.</strong> Be direct about what needs work, then make the next improvement clear.
+              </p>
+            </div>
+            <a href="mailto:bhargavmahadevan@gmail.com?subject=GhostLayer%20conversation">
+              START A CONVERSATION <ArrowUpRight size={13} />
+            </a>
+          </aside>
+        </section>
       </main>
 
       {/* ── Mobile Dock ─────────────────────────────────────────────────── */}
@@ -660,6 +768,12 @@ export default function Home() {
         <BrandLockup />
         <span>© 2026 GhostLayer</span>
         <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+          <Link
+            href="/founder"
+            style={{ color: "#10b981", display: "inline-flex", alignItems: "center", gap: "4px" }}
+          >
+            Founder <ArrowUpRight size={13} />
+          </Link>
           <Link
             href="/pilot"
             style={{ color: "var(--mist)", display: "inline-flex", alignItems: "center", gap: "4px" }}
