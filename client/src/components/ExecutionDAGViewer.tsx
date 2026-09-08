@@ -108,7 +108,7 @@ export function ExecutionDAGViewer() {
       <div className="dag-controls">
         <div className="dag-controls__left">
           <div className="dag-badge">
-            <Cpu size={14} className="text-teal-400" />
+            <Cpu size={14} className="text-zinc-300" />
             <span>PYTORCH EXECUTION DAG & KERNEL PROFILER</span>
           </div>
           <span className="dag-stat">Step Latency: <strong>{totalLatency.toFixed(1)} ms</strong></span>
@@ -225,24 +225,24 @@ export function ExecutionDAGViewer() {
               <div className="metric-box">
                 <span>Kernel Latency</span>
                 <strong>{selectedNode.latencyMs} ms</strong>
-                <small className="text-emerald-400">Baseline runtime</small>
+                <small className="text-zinc-400">Baseline runtime</small>
               </div>
               <div className="metric-box">
                 <span>Activation Memory</span>
                 <strong>{selectedNode.memoryMb} MB</strong>
-                <small className="text-cyan-400">Peak buffer</small>
+                <small className="text-zinc-400">Peak buffer</small>
               </div>
               <div className="metric-box">
                 <span>Fusibility Status</span>
                 <strong>{selectedNode.isFusible ? "Eligible" : "Isolated"}</strong>
-                <small className={selectedNode.isFusible ? "text-amber-400" : "text-gray-400"}>
+                <small className={selectedNode.isFusible ? "text-zinc-200" : "text-zinc-500"}>
                   {selectedNode.fusionGroup || "Stand-alone kernel"}
                 </small>
               </div>
               <div className="metric-box">
                 <span>Critical Path</span>
                 <strong>Forward Pass</strong>
-                <small className="text-emerald-400">Active gradient sync</small>
+                <small className="text-zinc-400">Active gradient sync</small>
               </div>
             </div>
 
@@ -265,7 +265,7 @@ export function ExecutionDAGViewer() {
                   </>
                 ) : (
                   <>
-                    <div className="recommendation-card__title text-teal-300">
+                    <div className="recommendation-card__title text-zinc-200">
                       <CheckCircle2 size={14} /> High-Throughput Dedicated Kernel
                     </div>
                     <p>

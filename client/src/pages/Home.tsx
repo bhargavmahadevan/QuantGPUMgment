@@ -123,71 +123,6 @@ function DestinationIcon({ id, size = 15 }: { id: DestinationId; size?: number }
   return <Icon size={size} strokeWidth={1.8} />;
 }
 
-/** Monochrome custom cursor — follows mouse, changes state on interactive elements */
-function MonochromeCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: -100, y: -100 });
-  const isOnGlobe = useRef(false);
-
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    const dot = dotRef.current;
-    if (!cursor || !dot) return;
-
-    let rafId: number;
-    let dotX = -100, dotY = -100;
-    let curX = -100, curY = -100;
-    const speed = 0.12;
-
-    function loop() {
-      curX += (pos.current.x - curX) * speed;
-      curY += (pos.current.y - curY) * speed;
-      dotX = pos.current.x;
-      dotY = pos.current.y;
-      cursor.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
-      dot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
-      rafId = requestAnimationFrame(loop);
-    }
-    rafId = requestAnimationFrame(loop);
-
-    function onMove(e: MouseEvent) {
-      pos.current = { x: e.clientX, y: e.clientY };
-    }
-    function onEnter(e: MouseEvent) {
-      const target = e.target as HTMLElement;
-      const isInteractive =
-        target.closest("button, a, [role=button], .route-stop, .lifecycle-node, .dag-node-card") !== null;
-      const onGlobe = target.closest(".globe-navigator") !== null;
-      isOnGlobe.current = onGlobe;
-      cursor.classList.toggle("is-hovering", isInteractive);
-      cursor.classList.toggle("on-globe", onGlobe);
-    }
-    function onDown() { cursor.classList.add("is-clicking"); }
-    function onUp() { cursor.classList.remove("is-clicking"); }
-
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseover", onEnter);
-    document.addEventListener("mousedown", onDown);
-    document.addEventListener("mouseup", onUp);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseover", onEnter);
-      document.removeEventListener("mousedown", onDown);
-      document.removeEventListener("mouseup", onUp);
-    };
-  }, []);
-
-  return (
-    <>
-      <div ref={cursorRef} className="gl-cursor" aria-hidden="true" />
-      <div ref={dotRef} className="gl-cursor-dot" aria-hidden="true" />
-    </>
-  );
-}
-
 export default function Home() {
   const [activeDestination, setActiveDestination] = useState<DestinationId | null>(null);
   const [activeTopologyTab, setActiveTopologyTab] = useState<
@@ -227,7 +162,6 @@ export default function Home() {
 
   return (
     <div className="orbital-site" id="top">
-      <MonochromeCursor />
 
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <header className="orbit-header">
@@ -268,7 +202,7 @@ export default function Home() {
             fontWeight: 500,
             letterSpacing: "0.04em",
             textTransform: "uppercase",
-            cursor: "none",
+            cursor: "pointer",
             transition: "border-color 160ms, color 160ms",
           }}
           onMouseEnter={(e) => {
@@ -333,7 +267,7 @@ export default function Home() {
                   border: "1px solid #FFFFFF", padding: "10px 20px",
                   fontFamily: "\"DM Mono\", monospace", fontSize: "0.72rem",
                   letterSpacing: "0.05em", textTransform: "uppercase", fontWeight: 600,
-                  cursor: "none", transition: "background 160ms, color 160ms",
+                  cursor: "pointer", transition: "background 160ms, color 160ms",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = "#D4D4D4";
@@ -354,7 +288,7 @@ export default function Home() {
                   border: "1px solid rgba(255,255,255,0.25)", padding: "10px 20px",
                   fontFamily: "\"DM Mono\", monospace", fontSize: "0.72rem",
                   letterSpacing: "0.05em", textTransform: "uppercase",
-                  cursor: "none", transition: "border-color 160ms",
+                  cursor: "pointer", transition: "border-color 160ms",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.7)";

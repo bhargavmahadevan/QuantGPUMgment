@@ -73,7 +73,7 @@ export function TelemetryMatrix() {
       {/* Header with KPI Cards */}
       <div className="telemetry-matrix-header">
         <div className="telemetry-badge">
-          <Activity size={14} className="text-teal-400" />
+          <Activity size={14} className="text-zinc-300" />
           <span>REAL-TIME MULTI-METRIC TRAINING TELEMETRY MATRIX</span>
         </div>
 
@@ -107,7 +107,7 @@ export function TelemetryMatrix() {
             <strong>4,270</strong>
             <small>tokens/s/GPU</small>
           </div>
-          <span className="kpi-delta text-emerald-400">+18.5% vs Baseline</span>
+          <span className="kpi-delta text-zinc-300">+18.5% vs Baseline</span>
         </div>
 
         <div className="kpi-card">
@@ -116,7 +116,7 @@ export function TelemetryMatrix() {
             <strong>28.2</strong>
             <small>ms/step</small>
           </div>
-          <span className="kpi-delta text-emerald-400">-4.2 ms saved</span>
+          <span className="kpi-delta text-zinc-300">-4.2 ms saved</span>
         </div>
 
         <div className="kpi-card">
@@ -125,7 +125,7 @@ export function TelemetryMatrix() {
             <strong>0.0012</strong>
             <small>ΔL</small>
           </div>
-          <span className="kpi-delta text-teal-400">&lt; 0.10 Gate (Verified Safe)</span>
+          <span className="kpi-delta text-white">&lt; 0.10 Gate (Verified Safe)</span>
         </div>
 
         <div className="kpi-card">
@@ -134,7 +134,7 @@ export function TelemetryMatrix() {
             <strong>6.8%</strong>
             <small>inactive</small>
           </div>
-          <span className="kpi-delta text-emerald-400">Zero OOM Risk</span>
+          <span className="kpi-delta text-zinc-300">Zero OOM Risk</span>
         </div>
       </div>
 
@@ -145,22 +145,22 @@ export function TelemetryMatrix() {
             <div className="chart-title-bar">
               <span>LOSS CURVATURE & VERIFICATION BOUND (0.10 LOSS-SHIFT GATE)</span>
               <div className="chart-legend-custom">
-                <span className="legend-item"><i className="bg-teal-400" /> GhostLayer Optimized</span>
-                <span className="legend-item"><i className="bg-slate-400" /> Baseline Unoptimized</span>
-                <span className="legend-item"><i className="bg-rose-500" /> 0.10 Safety Boundary</span>
+                <span className="legend-item"><i className="bg-white" /> GhostLayer Optimized</span>
+                <span className="legend-item"><i className="bg-zinc-500" /> Baseline Unoptimized</span>
+                <span className="legend-item"><i className="bg-zinc-700" /> 0.10 Safety Boundary</span>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={320}>
               <LineChart data={TELEMETRY_SERIES} margin={{ top: 10, right: 30, left: 10, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
                 <XAxis dataKey="step" stroke="#64748b" tick={{ fontSize: 11 }} />
-                <YAxis domain={['auto', 'auto']} stroke="#64748b" tick={{ fontSize: 11 }} />
+                <YAxis domain={[1.8, 3.2]} stroke="#64748b" tick={{ fontSize: 11 }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: "#0b1012", borderColor: "rgba(66,216,187,0.3)", borderRadius: "8px", fontSize: "12px" }}
+                  contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                   itemStyle={{ color: "#edf1ed" }}
                 />
-                <Line type="monotone" dataKey="loss" stroke="#42d8bb" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
-                <Line type="monotone" dataKey="baselineLoss" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
+                <Line type="monotone" dataKey="loss" stroke="#FFFFFF" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+                <Line type="monotone" dataKey="baselineLoss" stroke="#737373" strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -170,23 +170,23 @@ export function TelemetryMatrix() {
           <div className="chart-inner">
             <div className="chart-title-bar">
               <span>EFFECTIVE THROUGHPUT (TOKENS PER SECOND PER GPU)</span>
-              <span className="text-xs text-emerald-400">FlashAttention-2 + Operator Fusion Active</span>
+              <span className="text-xs text-zinc-400">FlashAttention-2 + Operator Fusion Active</span>
             </div>
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart data={TELEMETRY_SERIES} margin={{ top: 10, right: 30, left: 10, bottom: 5 }}>
                 <defs>
                   <linearGradient id="throughputGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#42d8bb" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#42d8bb" stopOpacity={0.0}/>
+                    <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.4}/>
+                    <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0.0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
                 <XAxis dataKey="step" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis domain={[3400, 4600]} stroke="#64748b" tick={{ fontSize: 11 }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: "#0b1012", borderColor: "rgba(66,216,187,0.3)", borderRadius: "8px", fontSize: "12px" }}
+                  contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                 />
-                <Area type="monotone" dataKey="throughputTokensPerSec" stroke="#42d8bb" strokeWidth={2} fillOpacity={1} fill="url(#throughputGrad)" />
+                <Area type="monotone" dataKey="throughputTokensPerSec" stroke="#FFFFFF" strokeWidth={2} fillOpacity={1} fill="url(#throughputGrad)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -197,9 +197,9 @@ export function TelemetryMatrix() {
             <div className="chart-title-bar">
               <span>STEP TIME BREAKDOWN (COMPUTE VS NCCL COMM VS DATA-LOADING)</span>
               <div className="chart-legend-custom">
-                <span className="legend-item"><i className="bg-teal-400" /> Compute (ms)</span>
-                <span className="legend-item"><i className="bg-cyan-500" /> NCCL Comm (ms)</span>
-                <span className="legend-item"><i className="bg-amber-400" /> DataLoader (ms)</span>
+                <span className="legend-item"><i className="bg-white" /> Compute (ms)</span>
+                <span className="legend-item"><i className="bg-zinc-400" /> NCCL Comm (ms)</span>
+                <span className="legend-item"><i className="bg-zinc-600" /> DataLoader (ms)</span>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={320}>
@@ -208,11 +208,11 @@ export function TelemetryMatrix() {
                 <XAxis dataKey="step" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: "#0b1012", borderColor: "rgba(66,216,187,0.3)", borderRadius: "8px", fontSize: "12px" }}
+                  contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                 />
-                <Bar dataKey="computeTimeMs" stackId="a" fill="#42d8bb" />
-                <Bar dataKey="commTimeMs" stackId="a" fill="#06b6d4" />
-                <Bar dataKey="dataLoadTimeMs" stackId="a" fill="#f59e0b" />
+                <Bar dataKey="computeTimeMs" stackId="a" fill="#FFFFFF" />
+                <Bar dataKey="commTimeMs" stackId="a" fill="#A3A3A3" />
+                <Bar dataKey="dataLoadTimeMs" stackId="a" fill="#525252" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -222,7 +222,7 @@ export function TelemetryMatrix() {
           <div className="chart-inner">
             <div className="chart-title-bar">
               <span>VRAM ALLOCATION DYNAMICS (ALLOCATED VS PEAK RESERVED)</span>
-              <span className="text-xs text-cyan-400">80 GB H100 Buffer Capacity</span>
+              <span className="text-xs text-zinc-400">80 GB H100 Buffer Capacity</span>
             </div>
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart data={TELEMETRY_SERIES} margin={{ top: 10, right: 30, left: 10, bottom: 5 }}>
@@ -230,11 +230,11 @@ export function TelemetryMatrix() {
                 <XAxis dataKey="step" stroke="#64748b" tick={{ fontSize: 11 }} />
                 <YAxis domain={[50, 85]} stroke="#64748b" tick={{ fontSize: 11 }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: "#0b1012", borderColor: "rgba(66,216,187,0.3)", borderRadius: "8px", fontSize: "12px" }}
+                  contentStyle={{ backgroundColor: "#0A0A0A", borderColor: "rgba(255,255,255,0.2)", borderRadius: "0", fontSize: "12px" }}
                 />
-                <ReferenceLine y={80} label="Hardware Limit (80GB)" stroke="#f43f5e" strokeDasharray="3 3" />
-                <Area type="monotone" dataKey="vramReservedGb" stroke="#64748b" fill="#334155" fillOpacity={0.2} />
-                <Area type="monotone" dataKey="vramAllocatedGb" stroke="#06b6d4" fill="#0891b2" fillOpacity={0.5} />
+                <ReferenceLine y={80} label="Hardware Limit (80GB)" stroke="#737373" strokeDasharray="3 3" />
+                <Area type="monotone" dataKey="vramReservedGb" stroke="#737373" fill="#404040" fillOpacity={0.2} />
+                <Area type="monotone" dataKey="vramAllocatedGb" stroke="#FFFFFF" fill="#A3A3A3" fillOpacity={0.4} />
               </AreaChart>
             </ResponsiveContainer>
           </div>

@@ -80,11 +80,11 @@ export function DistributedTopologyViewer() {
       <div className="dist-header">
         <div className="dist-header__left">
           <div className="dist-badge">
-            <Network size={14} className="text-cyan-400" />
+            <Network size={14} className="text-zinc-300" />
             <span>NCCL DISTRIBUTED TOPOLOGY & COLLECTIVE ANALYZER</span>
           </div>
           <span className="dist-stat">Cluster Scale: <strong>{clusterStats.nodes} Nodes / {clusterStats.totalGpus} GPUs</strong></span>
-          <span className="dist-stat">Comm/Compute Overlap: <strong className="text-emerald-400">{clusterStats.avgOverlap}%</strong></span>
+          <span className="dist-stat">Comm/Compute Overlap: <strong className="text-white">{clusterStats.avgOverlap}%</strong></span>
         </div>
 
         <div className="dist-header__right">
@@ -132,7 +132,7 @@ export function DistributedTopologyViewer() {
                   <div key={nodeId} className="node-enclosure">
                     <div className="node-enclosure__header">
                       <div className="node-title">
-                        <Server size={16} className="text-teal-400" />
+                        <Server size={16} className="text-zinc-300" />
                         <span>COMPUTE NODE {nodeId} (H100-NODE-{nodeId}.cluster.local)</span>
                       </div>
                       <span className="node-interconnect-tag">
@@ -184,7 +184,7 @@ export function DistributedTopologyViewer() {
 
                             <div className="gpu-card__footer">
                               <span className="active-op-tag">
-                                <Activity size={10} className="animate-pulse text-emerald-400" />
+                                <Activity size={10} className="animate-pulse text-zinc-300" />
                                 {gpu.activeOp}
                               </span>
                               <span className="bandwidth-tag">{gpu.bandwidthGbps} GB/s</span>
@@ -199,7 +199,7 @@ export function DistributedTopologyViewer() {
 
               {/* Inter-Node Interconnect Visual Banner */}
               <div className="interconnect-banner">
-                <ArrowRightLeft size={16} className="text-cyan-400" />
+                <ArrowRightLeft size={16} className="text-zinc-300" />
                 <span>CROSS-NODE INTERCONNECT: 8x NDR InfiniBand Links (3.2 Tbps Aggregate Fabric) · Zero Packet Drops</span>
               </div>
             </div>
@@ -217,7 +217,7 @@ export function DistributedTopologyViewer() {
               {COLLECTIVES_DATA.map((op, idx) => (
                 <div key={idx} className="nccl-data-row">
                   <div className="op-name-cell">
-                    <Radio size={13} className="text-teal-400" />
+                    <Radio size={13} className="text-zinc-300" />
                     <strong>{op.name}</strong>
                   </div>
                   <span className="op-type-badge">{op.type.toUpperCase()}</span>
@@ -250,22 +250,22 @@ export function DistributedTopologyViewer() {
             <div className="stat-card">
               <span>Tensor Parallel Group</span>
               <strong>Group {selectedRank.tpGroup} (Size=2)</strong>
-              <small className="text-emerald-400">Intra-Node NVLink</small>
+              <small className="text-zinc-400">Intra-Node NVLink</small>
             </div>
             <div className="stat-card">
               <span>Pipeline Stage</span>
               <strong>Stage {selectedRank.ppStage} of 2</strong>
-              <small className="text-cyan-400">1F1B Schedule</small>
+              <small className="text-zinc-400">1F1B Schedule</small>
             </div>
             <div className="stat-card">
               <span>Bus Bandwidth</span>
               <strong>{selectedRank.bandwidthGbps} GB/s</strong>
-              <small className="text-emerald-400">98.2% Line Rate</small>
+              <small className="text-zinc-400">98.2% Line Rate</small>
             </div>
             <div className="stat-card">
               <span>Pipeline Bubble</span>
               <strong>&lt; 3.8%</strong>
-              <small className="text-teal-400">Optimized overlap</small>
+              <small className="text-zinc-400">Optimized overlap</small>
             </div>
           </div>
 
@@ -273,7 +273,7 @@ export function DistributedTopologyViewer() {
             <h4>Distributed Communication Diagnosis</h4>
             <div className="dist-rec-box">
               <div className="rec-title">
-                <Zap size={14} className="text-teal-400" />
+                <Zap size={14} className="text-zinc-300" />
                 <span>NCCL FastSocket & Ring Partitioning Active</span>
               </div>
               <p>

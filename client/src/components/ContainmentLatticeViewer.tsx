@@ -70,10 +70,10 @@ export function ContainmentLatticeViewer() {
       <div className="containment-header">
         <div className="containment-header__left">
           <div className="containment-badge">
-            <ShieldAlert size={14} className="text-amber-400" />
+            <ShieldAlert size={14} className="text-zinc-300" />
             <span>VARIANCE CONTAINMENT & ROLLBACK LATTICE</span>
           </div>
-          <span className="containment-stat">Leak Prevention: <strong className="text-emerald-400">${containmentSummary.containmentSavingsUsd} Saved</strong></span>
+          <span className="containment-stat">Leak Prevention: <strong className="text-white">${containmentSummary.containmentSavingsUsd} Saved</strong></span>
           <span className="containment-stat">Wasted Compute Captured: <strong>{containmentSummary.totalWastedHours} GPU-hrs</strong></span>
         </div>
 
@@ -123,7 +123,7 @@ export function ContainmentLatticeViewer() {
                     <small>LOSS VALUE</small>
                     <div className="loss-delta-row">
                       <strong>{step.lossValue.toFixed(3)}</strong>
-                      <span className={isRegressive ? "text-rose-400" : "text-emerald-400"}>
+                      <span className={isRegressive ? "text-zinc-400" : "text-zinc-100"}>
                         {step.lossDelta > 0 ? `+${step.lossDelta.toFixed(4)}` : step.lossDelta.toFixed(4)}
                       </span>
                     </div>
@@ -147,7 +147,7 @@ export function ContainmentLatticeViewer() {
           {/* Loss Trajectory Visual Track */}
           <div className="loss-trajectory-bar">
             <div className="trajectory-title">
-              <Activity size={13} className="text-teal-400" />
+              <Activity size={13} className="text-zinc-300" />
               <span>LOSS CURVATURE & THRESHOLD BOUND (0.10 LOSS-SHIFT GATE)</span>
             </div>
             <div className="trajectory-sparkline">
@@ -175,7 +175,7 @@ export function ContainmentLatticeViewer() {
           <div className="containment-metric-grid">
             <div className="c-metric-card">
               <span>Loss Delta (ΔL)</span>
-              <strong className={selectedStep.lossDelta > 0 ? "text-rose-400" : "text-emerald-400"}>
+              <strong className={selectedStep.lossDelta > 0 ? "text-zinc-400" : "text-zinc-100"}>
                 {selectedStep.lossDelta > 0 ? `+${selectedStep.lossDelta.toFixed(4)}` : selectedStep.lossDelta.toFixed(4)}
               </strong>
               <small>{selectedStep.lossDelta > 0.10 ? "Exceeded 0.10 Gate" : "Within Policy Limit"}</small>
@@ -183,17 +183,17 @@ export function ContainmentLatticeViewer() {
             <div className="c-metric-card">
               <span>Wasted GPU-Hours</span>
               <strong>{selectedStep.wastedGpuHours} hrs</strong>
-              <small className="text-amber-400">Burned Compute</small>
+              <small className="text-zinc-400">Burned Compute</small>
             </div>
             <div className="c-metric-card">
               <span>Symplectic Drift (ΔH)</span>
               <strong>{selectedStep.energyDrift.toFixed(3)}</strong>
-              <small className="text-cyan-400">Hamiltonian Invariant</small>
+              <small className="text-zinc-400">Hamiltonian Invariant</small>
             </div>
             <div className="c-metric-card">
               <span>Containment Action</span>
-              <strong className="text-teal-300">{selectedStep.actionTaken.replace(/_/g, " ")}</strong>
-              <small className="text-emerald-400">Zero Model Corruption</small>
+              <strong className="text-zinc-200">{selectedStep.actionTaken.replace(/_/g, " ")}</strong>
+              <small className="text-zinc-400">Zero Model Corruption</small>
             </div>
           </div>
 
@@ -219,8 +219,8 @@ export function ContainmentLatticeViewer() {
                 </p>
               </div>
             ) : (
-              <div className="resolution-card border-emerald-500/30 bg-emerald-950/20">
-                <div className="res-title text-emerald-300">
+              <div className="resolution-card border-zinc-700 bg-zinc-900/40">
+                <div className="res-title text-zinc-200">
                   <CheckCircle size={14} /> Healthy Gradient Descent Trajectory
                 </div>
                 <p>

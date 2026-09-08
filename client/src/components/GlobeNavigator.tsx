@@ -208,16 +208,27 @@ function EtherealHalo() {
 function GlobeBody({ activeDestination, onSelect, sectionPhase }: { activeDestination: DestinationId | null; onSelect: (id: DestinationId) => void; sectionPhase?: string | null }) {
   const group = useRef<THREE.Group | null>(null);
   const surfaceTexture = useMemo(() => createGhostSurfaceTexture(), []);
-  const sparkPoints = useMemo(() => {
-    const points: { position: THREE.Vector3; color: string }[] = [];
+  const sparkData = useMemo(() => {
+    const positions = new Float32Array(88 * 3);
+    const colors = new Float32Array(88 * 3);
+    const colorWhite = new THREE.Color("#E0E0E0");
+    const colorDim = new THREE.Color("#383838");
+    const colorMid = new THREE.Color("#555555");
+
     for (let index = 0; index < 88; index += 1) {
       const latitude = ((index * 47) % 154) - 77;
       const longitude = ((index * 73) % 360) - 180;
-      const red = index % 17 === 0;
-      const green = index % 7 === 0;
-      points.push({ position: globePosition(latitude, longitude, 2.015), color: red ? "#555555" : green ? "#E0E0E0" : "#383838" });
+      const pos = globePosition(latitude, longitude, 2.015);
+      positions[index * 3] = pos.x;
+      positions[index * 3 + 1] = pos.y;
+      positions[index * 3 + 2] = pos.z;
+
+      const c = index % 17 === 0 ? colorMid : index % 7 === 0 ? colorWhite : colorDim;
+      colors[index * 3] = c.r;
+      colors[index * 3 + 1] = c.g;
+      colors[index * 3 + 2] = c.b;
     }
-    return points;
+    return { positions, colors };
   }, []);
 
   useFrame((state) => {
@@ -230,27 +241,28 @@ function GlobeBody({ activeDestination, onSelect, sectionPhase }: { activeDestin
   return (
     <group ref={group}>
       <mesh>
-        <sphereGeometry args={[2, 72, 72]} />
+        <sphereGeometry args={[2, 44, 44]} />
         <meshStandardMaterial map={surfaceTexture} color="#2A2A2A" metalness={0.55} roughness={0.65} emissive="#080808" emissiveIntensity={0.4} />
       </mesh>
       <mesh scale={1.014}>
-        <sphereGeometry args={[2, 72, 72]} />
+        <sphereGeometry args={[2, 44, 44]} />
         <meshBasicMaterial color="#C0C0C0" transparent opacity={0.04} depthWrite={false} />
       </mesh>
       <mesh scale={1.003}>
-        <sphereGeometry args={[2, 40, 40]} />
+        <sphereGeometry args={[2, 32, 32]} />
         <meshBasicMaterial color="#D0D0D0" wireframe transparent opacity={0.12} />
       </mesh>
       <mesh scale={1.034}>
-        <sphereGeometry args={[2, 36, 20]} />
+        <sphereGeometry args={[2, 28, 16]} />
         <meshBasicMaterial color="#888888" wireframe transparent opacity={0.05} />
       </mesh>
-      {sparkPoints.map((point, index) => (
-        <mesh key={index} position={point.position}>
-          <sphereGeometry args={[0.018, 8, 8]} />
-          <meshBasicMaterial color={point.color} transparent opacity={0.8} />
-        </mesh>
-      ))}
+      <points>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[sparkData.positions, 3]} />
+          <bufferAttribute attach="attributes-color" args={[sparkData.colors, 3]} />
+        </bufferGeometry>
+        <pointsMaterial vertexColors size={0.022} transparent opacity={0.8} sizeAttenuation depthWrite={false} />
+      </points>
       <NetworkLines activeDestination={activeDestination} />
       <DecisionTrace activeDestination={activeDestination} />
       <EtherealHalo />
@@ -286,21 +298,21 @@ function CameraDirector({ activeDestination, navigationStep }: { activeDestinati
 export default function GlobeNavigator({ activeDestination, navigationStep, onSelect, sectionPhase }: { activeDestination: DestinationId | null; navigationStep: number; onSelect: (id: DestinationId) => void; sectionPhase?: string | null }) {
   return (
     <div className="globe-navigator" aria-label="Interactive 3D site navigator">
-      <Canvas camera={{ position: [0, 0, 6.2], fov: 43 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 6.2], fov: 43 }} dpr={[1, 1.25]} gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 4, 6]} intensity={2.0} color="#FFFFFF" />
         <pointLight position={[-4, -1, 3]} intensity={2.6} color="#C0C8C8" distance={8} />
         <pointLight position={[2, -3, -4]} intensity={1.0} color="#888888" distance={7} />
-        <Stars radius={58} depth={45} count={1120} factor={3.1} saturation={0} fade speed={0.18} />
+        <Stars radius={58} depth={45} count={350} factor={2.5} saturation={0} fade speed={0.12} />
         <group rotation={[0.25, -0.22, 0]}>
           <GlobeBody activeDestination={activeDestination} onSelect={onSelect} sectionPhase={sectionPhase} />
         </group>
         <mesh rotation={[Math.PI / 2.45, 0.2, 0.55]}>
-          <torusGeometry args={[2.45, 0.009, 8, 180]} />
+          <torusGeometry args={[2.45, 0.009, 8, 120]} />
           <meshBasicMaterial color="#FFFFFF" transparent opacity={0.17} />
         </mesh>
         <mesh rotation={[Math.PI / 1.92, -0.68, -0.3]}>
-          <torusGeometry args={[2.78, 0.004, 8, 180]} />
+          <torusGeometry args={[2.78, 0.004, 8, 120]} />
           <meshBasicMaterial color="#D4D4D4" transparent opacity={0.2} />
         </mesh>
         <CameraDirector activeDestination={activeDestination} navigationStep={navigationStep} />
