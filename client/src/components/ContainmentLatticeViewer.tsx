@@ -245,6 +245,11 @@ export function ContainmentLatticeViewer() {
               </div>
             )}
           </div>
+
+          {/* Autonomous Containment Governance Notice */}
+          <div style={{ marginTop: "16px", padding: "10px 14px", background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.06)", fontSize: "0.65rem", color: "#737373", lineHeight: "1.5" }}>
+            <span style={{ color: "#A3A3A3", fontWeight: 600 }}>* CONTROL POLICY NOTICE:</span> Autonomous containment actions and checkpoint restorations require human-in-the-loop oversight. Rollback mechanisms rely on heuristic boundaries (&lt; 0.10 ΔL). Review our <a href="/legal" style={{ color: "#10b981", textDecoration: "underline" }}>Legal Disclaimers</a>.
+          </div>
         </div>
       </div>
     </div>

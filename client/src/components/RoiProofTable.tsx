@@ -185,8 +185,9 @@ export default function RoiProofTable() {
           </div>
           <p className="roi-proof__footnote">
             Source: Physical GPU Hardware Evidence Audit. RTX A2000, 52.2M parameter LLM.
-            Maximum recorded loss delta: 0.0012. These are project-specific measurements,
-            not fleet-wide guarantees.
+            Maximum recorded loss delta: 0.0012. These are isolated project-specific measurements,
+            not fleet-wide guarantees. "Verified Safe" reflects single-run loss proxy compliance (&lt;&nbsp;0.10) only.
+            Review our <a href="/legal" style={{ color: "#10b981", textDecoration: "underline" }}>Legal Disclaimers</a>.
           </p>
         </div>
       </div>

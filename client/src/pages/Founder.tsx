@@ -363,8 +363,11 @@ export default function Founder() {
         color: "#737373"
       }}>
         <span>© 2026 GhostLayer. Built by Bhargav Mahadevan.</span>
-        <div style={{ display: "flex", gap: "20px" }}>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
           <Link href="/" style={{ color: "#A3A3A3", textDecoration: "none" }}>Platform</Link>
+          <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
+          <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
+          <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Disclaimers</Link>
           <Link href="/pilot" style={{ color: "#10b981", textDecoration: "none" }}>Free Pilot Audit</Link>
           <a href="mailto:bhargavmahadevan@gmail.com" style={{ color: "#A3A3A3", textDecoration: "none" }}>Direct Contact</a>
         </div>

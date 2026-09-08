@@ -763,26 +763,137 @@ export default function Home() {
         ))}
       </nav>
 
-      {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="orbit-footer">
-        <BrandLockup />
-        <span>© 2026 GhostLayer</span>
-        <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-          <Link
-            href="/founder"
-            style={{ color: "#10b981", display: "inline-flex", alignItems: "center", gap: "4px" }}
-          >
-            Founder <ArrowUpRight size={13} />
-          </Link>
-          <Link
-            href="/pilot"
-            style={{ color: "var(--mist)", display: "inline-flex", alignItems: "center", gap: "4px" }}
-          >
-            Request Free Audit <ArrowUpRight size={13} />
-          </Link>
-          <a href="mailto:hello@ghostlayer.ai">
-            hello@ghostlayer.ai <ArrowUpRight size={13} />
-          </a>
+      {/* ── Enterprise Multi-Column Legal Footer ──────────────────────────── */}
+      <footer className="enterprise-footer" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", background: "#050505", color: "#737373", padding: "64px clamp(20px, 4vw, 64px) 36px", fontSize: "13px" }}>
+        <div style={{ maxWidth: "1220px", margin: "0 auto" }}>
+          
+          {/* Top Multi-Column Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "40px", marginBottom: "48px" }}>
+            
+            {/* Col 1: Brand & Charter */}
+            <div>
+              <BrandLockup />
+              <p style={{ marginTop: "16px", color: "#737373", fontSize: "12px", lineHeight: "1.7", maxWidth: "280px" }}>
+                GhostLayer is an infrastructure telemetry, profiling, and audit layer for PyTorch clusters. Built for ML Platform teams demanding deterministic verification over black-box guesses.
+              </p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(16, 185, 129, 0.08)", border: "1px solid rgba(16, 185, 129, 0.3)", borderRadius: "9999px", padding: "3px 10px", fontSize: "10px", color: "#10b981", fontFamily: '"DM Mono", monospace', letterSpacing: "0.05em", marginTop: "12px" }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", boxShadow: "0 0 8px #10b981" }} />
+                ALL TELEMETRY HOOKS NOMINAL
+              </div>
+            </div>
+
+            {/* Col 2: Interactive Lab & Architecture */}
+            <div>
+              <span style={{ fontSize: "11px", fontWeight: 600, color: "#FFFFFF", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "16px", fontFamily: '"DM Mono", monospace' }}>
+                Architecture &amp; Lab
+              </span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", fontSize: "12px" }}>
+                <li>
+                  <a href="#topology-suite" style={{ color: "#A3A3A3", textDecoration: "none", transition: "color 0.15s" }}>
+                    Cluster Graph Topology Lab
+                  </a>
+                </li>
+                <li>
+                  <a href="#topology-suite" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    FinOps Profit Calculator
+                  </a>
+                </li>
+                <li>
+                  <a href="#lifecycle" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    Lifecycle Observability Flow
+                  </a>
+                </li>
+                <li>
+                  <a href="#field-guide" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    Operating Model Field Guide
+                  </a>
+                </li>
+                <li>
+                  <Link href="/pilot" style={{ color: "#10b981", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Request Pre-Flight Audit <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Leadership & Direct Contact */}
+            <div>
+              <span style={{ fontSize: "11px", fontWeight: 600, color: "#FFFFFF", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "16px", fontFamily: '"DM Mono", monospace' }}>
+                Founder &amp; Leadership
+              </span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", fontSize: "12px" }}>
+                <li>
+                  <Link href="/founder" style={{ color: "#FFFFFF", textDecoration: "none", fontWeight: 500, display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Bhargav Mahadevan (Founder Dossier) <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:bhargavmahadevan@gmail.com" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    bhargavmahadevan@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+18324023104" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    Direct: 832-402-3104
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:solutions@ghostlayer.ai" style={{ color: "#A3A3A3", textDecoration: "none" }}>
+                    solutions@ghostlayer.ai
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 4: Enterprise Legal & Compliance */}
+            <div>
+              <span style={{ fontSize: "11px", fontWeight: 600, color: "#FFFFFF", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "16px", fontFamily: '"DM Mono", monospace' }}>
+                Legal &amp; Compliance
+              </span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", fontSize: "12px" }}>
+                <li>
+                  <Link href="/terms" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Terms of Service (AS-IS &amp; Liability Cap) <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Privacy &amp; Telemetry Data Policy <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Empirical Disclaimers &amp; Transparency <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <span style={{ color: "#525252", fontSize: "11px" }}>
+                    Binding Arbitration · Delaware / Texas
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Prominent Legal Disclaimer Shield Banner */}
+          <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", padding: "20px 0", marginBottom: "28px" }}>
+            <p style={{ margin: 0, fontSize: "11px", lineHeight: "1.7", color: "#525252", fontFamily: '"DM Mono", monospace' }}>
+              <strong style={{ color: "#A3A3A3" }}>LEGAL NOTICE &amp; LIMITATION OF LIABILITY:</strong> GhostLayer software, telemetry context hooks (`ghost_layer`), and heuristic optimization recommendations are provided strictly "AS IS", WITH ALL FAULTS, AND WITHOUT WARRANTY OF ANY KIND. Physical benchmark receipts reflect isolated historic executions on reference hardware (NVIDIA RTX A2000, 52.2M LLM) and do not constitute warranties or guarantees of fleet-wide speedup, training convergence, or cost reduction. Under no legal theory shall GhostLayer, its founder (Bhargav Mahadevan), or contributors be liable for training divergence, corrupted model weights, lost compute hours, hardware damage, or cloud billing anomalies. By using this platform, you agree to our <Link href="/terms" style={{ color: "#10b981", textDecoration: "underline" }}>Terms of Service</Link>, <Link href="/privacy" style={{ color: "#10b981", textDecoration: "underline" }}>Privacy Policy</Link>, and <Link href="/legal" style={{ color: "#10b981", textDecoration: "underline" }}>Empirical Disclaimers</Link>.
+            </p>
+          </div>
+
+          {/* Bottom Copyright Row */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", fontSize: "12px", color: "#525252" }}>
+            <span>© 2026 GhostLayer · Developed by Bhargav Mahadevan. All rights reserved.</span>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
+              <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
+              <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Disclaimers</Link>
+              <Link href="/founder" style={{ color: "#10b981", textDecoration: "none" }}>Founder</Link>
+            </div>
+          </div>
+
         </div>
       </footer>
     </div>
