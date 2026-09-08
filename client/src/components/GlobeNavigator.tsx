@@ -40,8 +40,8 @@ function globePosition(latitude: number, longitude: number, radius = 2.06) {
 
 function Marker({ destination, active, onSelect }: { destination: Destination; active: boolean; onSelect: (id: DestinationId) => void }) {
   const point = useMemo(() => globePosition(destination.latitude, destination.longitude), [destination]);
-  const tone = destination.tone === "risk" ? "#f16d52" : destination.tone === "signal" ? "#42d8bb" : "#edf1ed";
-  const halo = destination.tone === "risk" ? "#f16d52" : "#42d8bb";
+  const tone = destination.tone === "risk" ? "#737373" : destination.tone === "signal" ? "#E8E8E8" : "#D4D4D4";
+  const halo = destination.tone === "risk" ? "#888888" : "#FFFFFF";
 
   return (
     <group position={point}>
@@ -98,10 +98,10 @@ function NetworkLines({ activeDestination }: { activeDestination: DestinationId 
         <Line
           key={path.id}
           points={path.points}
-          color={path.includesActive ? "#42d8bb" : "#6c7778"}
-          lineWidth={path.includesActive ? 1.15 : 0.45}
+          color={path.includesActive ? "#FFFFFF" : "#404040"}
+          lineWidth={path.includesActive ? 1.2 : 0.5}
           transparent
-          opacity={path.includesActive ? 0.72 : 0.29}
+          opacity={path.includesActive ? 0.78 : 0.32}
         />
       ))}
     </group>
@@ -123,11 +123,11 @@ function DecisionTrace({ activeDestination }: { activeDestination: DestinationId
 
   return (
     <group>
-      <Line points={trace} color="#42d8bb" lineWidth={activeDestination ? 1.65 : 0.92} transparent opacity={activeDestination ? 0.95 : 0.61} />
+      <Line points={trace} color="#D4D4D4" lineWidth={activeDestination ? 1.7 : 0.95} transparent opacity={activeDestination ? 0.92 : 0.58} />
       {[byId.info, byId.control, byId.memory].map((destination, index) => (
         <mesh key={destination.id} position={globePosition(destination.latitude, destination.longitude, 2.12)}>
           <ringGeometry args={[0.075 + index * 0.008, 0.101 + index * 0.008, 24]} />
-          <meshBasicMaterial color="#42d8bb" transparent opacity={0.85} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#E8E8E8" transparent opacity={0.82} side={THREE.DoubleSide} />
         </mesh>
       ))}
     </group>
@@ -141,7 +141,7 @@ function createGhostSurfaceTexture() {
   const context = canvas.getContext("2d");
   if (!context) return new THREE.Texture();
 
-  context.fillStyle = "#0b1013";
+  context.fillStyle = "#080808";
   context.fillRect(0, 0, canvas.width, canvas.height);
   const seeded = (value: number) => {
     const sample = Math.sin(value * 12.9898) * 43758.5453;
@@ -154,9 +154,9 @@ function createGhostSurfaceTexture() {
     const radius = 10 + seeded(index + 15) * 90;
     const alpha = 0.015 + seeded(index + 23) * 0.075;
     const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
-    gradient.addColorStop(0, `rgba(194, 231, 220, ${alpha})`);
-    gradient.addColorStop(0.46, `rgba(61, 124, 113, ${alpha * 0.46})`);
-    gradient.addColorStop(1, "rgba(7, 11, 13, 0)");
+    gradient.addColorStop(0, `rgba(220, 220, 220, ${alpha})`);
+    gradient.addColorStop(0.46, `rgba(100, 100, 100, ${alpha * 0.46})`);
+    gradient.addColorStop(1, "rgba(5, 5, 5, 0)");
     context.fillStyle = gradient;
     context.fillRect(x - radius, y - radius, radius * 2, radius * 2);
   }
@@ -165,7 +165,7 @@ function createGhostSurfaceTexture() {
   for (let index = 0; index < 54; index += 1) {
     const x = seeded(index + 63) * canvas.width;
     const y = seeded(index + 91) * canvas.height;
-    context.fillStyle = `rgba(146, 186, 174, ${0.028 + seeded(index + 119) * 0.055})`;
+    context.fillStyle = `rgba(190, 190, 190, ${0.028 + seeded(index + 119) * 0.05})`;
     context.fillRect(x, y, 2 + seeded(index) * 14, 0.8 + seeded(index + 27) * 2.2);
   }
   const texture = new THREE.CanvasTexture(canvas);
@@ -193,19 +193,19 @@ function EtherealHalo() {
     <group>
       <mesh scale={1.11}>
         <sphereGeometry args={[2, 72, 72]} />
-        <meshBasicMaterial color="#79d2c1" transparent opacity={0.025} side={THREE.BackSide} depthWrite={false} />
+        <meshBasicMaterial color="#A0A0A0" transparent opacity={0.03} side={THREE.BackSide} depthWrite={false} />
       </mesh>
       <points>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[motes, 3]} />
         </bufferGeometry>
-        <pointsMaterial color="#c9f5eb" size={0.016} transparent opacity={0.48} sizeAttenuation depthWrite={false} />
+        <pointsMaterial color="#C8C8C8" size={0.014} transparent opacity={0.42} sizeAttenuation depthWrite={false} />
       </points>
     </group>
   );
 }
 
-function GlobeBody({ activeDestination, onSelect }: { activeDestination: DestinationId | null; onSelect: (id: DestinationId) => void }) {
+function GlobeBody({ activeDestination, onSelect, sectionPhase }: { activeDestination: DestinationId | null; onSelect: (id: DestinationId) => void; sectionPhase?: string | null }) {
   const group = useRef<THREE.Group | null>(null);
   const surfaceTexture = useMemo(() => createGhostSurfaceTexture(), []);
   const sparkPoints = useMemo(() => {
@@ -215,14 +215,14 @@ function GlobeBody({ activeDestination, onSelect }: { activeDestination: Destina
       const longitude = ((index * 73) % 360) - 180;
       const red = index % 17 === 0;
       const green = index % 7 === 0;
-      points.push({ position: globePosition(latitude, longitude, 2.015), color: red ? "#f16d52" : green ? "#42d8bb" : "#8a9495" });
+      points.push({ position: globePosition(latitude, longitude, 2.015), color: red ? "#555555" : green ? "#E0E0E0" : "#383838" });
     }
     return points;
   }, []);
 
   useFrame((state) => {
     if (!group.current) return;
-    const drift = activeDestination ? 0.0008 : 0.002;
+    const drift = activeDestination ? 0.0006 : sectionPhase ? 0.0015 : 0.002;
     group.current.rotation.y += drift;
     group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.sin(state.clock.elapsedTime * 0.17) * 0.025, 0.025);
   });
@@ -231,19 +231,19 @@ function GlobeBody({ activeDestination, onSelect }: { activeDestination: Destina
     <group ref={group}>
       <mesh>
         <sphereGeometry args={[2, 72, 72]} />
-        <meshStandardMaterial map={surfaceTexture} color="#536662" metalness={0.42} roughness={0.72} emissive="#081113" emissiveIntensity={0.45} />
+        <meshStandardMaterial map={surfaceTexture} color="#2A2A2A" metalness={0.55} roughness={0.65} emissive="#080808" emissiveIntensity={0.4} />
       </mesh>
       <mesh scale={1.014}>
         <sphereGeometry args={[2, 72, 72]} />
-        <meshBasicMaterial color="#7cccbf" transparent opacity={0.07} depthWrite={false} />
+        <meshBasicMaterial color="#C0C0C0" transparent opacity={0.04} depthWrite={false} />
       </mesh>
       <mesh scale={1.003}>
         <sphereGeometry args={[2, 40, 40]} />
-        <meshBasicMaterial color="#d9e3df" wireframe transparent opacity={0.17} />
+        <meshBasicMaterial color="#D0D0D0" wireframe transparent opacity={0.12} />
       </mesh>
       <mesh scale={1.034}>
         <sphereGeometry args={[2, 36, 20]} />
-        <meshBasicMaterial color="#67d6c4" wireframe transparent opacity={0.06} />
+        <meshBasicMaterial color="#888888" wireframe transparent opacity={0.05} />
       </mesh>
       {sparkPoints.map((point, index) => (
         <mesh key={index} position={point.position}>
@@ -283,25 +283,25 @@ function CameraDirector({ activeDestination, navigationStep }: { activeDestinati
   return <OrbitControls ref={controls} enablePan={false} minDistance={3.1} maxDistance={8.4} rotateSpeed={0.58} zoomSpeed={0.55} dampingFactor={0.07} enableDamping />;
 }
 
-export default function GlobeNavigator({ activeDestination, navigationStep, onSelect }: { activeDestination: DestinationId | null; navigationStep: number; onSelect: (id: DestinationId) => void }) {
+export default function GlobeNavigator({ activeDestination, navigationStep, onSelect, sectionPhase }: { activeDestination: DestinationId | null; navigationStep: number; onSelect: (id: DestinationId) => void; sectionPhase?: string | null }) {
   return (
     <div className="globe-navigator" aria-label="Interactive 3D site navigator">
       <Canvas camera={{ position: [0, 0, 6.2], fov: 43 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
-        <ambientLight intensity={0.52} />
-        <directionalLight position={[5, 4, 6]} intensity={2.2} color="#e8f1ec" />
-        <pointLight position={[-4, -1, 3]} intensity={3.4} color="#2bc9ad" distance={8} />
-        <pointLight position={[2, -3, -4]} intensity={1.4} color="#f16d52" distance={7} />
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[5, 4, 6]} intensity={2.0} color="#FFFFFF" />
+        <pointLight position={[-4, -1, 3]} intensity={2.6} color="#C0C8C8" distance={8} />
+        <pointLight position={[2, -3, -4]} intensity={1.0} color="#888888" distance={7} />
         <Stars radius={58} depth={45} count={1120} factor={3.1} saturation={0} fade speed={0.18} />
         <group rotation={[0.25, -0.22, 0]}>
-          <GlobeBody activeDestination={activeDestination} onSelect={onSelect} />
+          <GlobeBody activeDestination={activeDestination} onSelect={onSelect} sectionPhase={sectionPhase} />
         </group>
         <mesh rotation={[Math.PI / 2.45, 0.2, 0.55]}>
           <torusGeometry args={[2.45, 0.009, 8, 180]} />
-          <meshBasicMaterial color="#eaf0ec" transparent opacity={0.21} />
+          <meshBasicMaterial color="#FFFFFF" transparent opacity={0.17} />
         </mesh>
         <mesh rotation={[Math.PI / 1.92, -0.68, -0.3]}>
           <torusGeometry args={[2.78, 0.004, 8, 180]} />
-          <meshBasicMaterial color="#42d8bb" transparent opacity={0.24} />
+          <meshBasicMaterial color="#D4D4D4" transparent opacity={0.2} />
         </mesh>
         <CameraDirector activeDestination={activeDestination} navigationStep={navigationStep} />
       </Canvas>

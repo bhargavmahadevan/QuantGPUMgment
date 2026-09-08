@@ -14,16 +14,27 @@ async function startServer() {
   app.use(express.json());
 
   // CORS middleware for split deployment (e.g. Firebase Hosting frontend + Render API backend)
-  // Closed by default: if ALLOWED_ORIGIN is unset, no CORS headers are emitted (same-origin only).
+  // Permitted origins: explicitly specified ALLOWED_ORIGIN env, or standard production Firebase domains.
+  const DEFAULT_ALLOWED_ORIGINS = [
+    "https://ghostlayer-ai.web.app",
+    "https://ghostlayer-ai.firebaseapp.com",
+    "https://ghostlayer-siqm.onrender.com",
+    "http://localhost:3000",
+    "http://localhost:5173",
+  ];
+
   app.use((req, res, next) => {
     const origin = req.headers.origin;
     const allowed = process.env.ALLOWED_ORIGIN;
 
-    if (!allowed || !origin) {
+    if (!origin) {
       return next();
     }
 
-    const allowedList = allowed.split(",").map((o) => o.trim());
+    const allowedList = allowed
+      ? allowed.split(",").map((o) => o.trim())
+      : DEFAULT_ALLOWED_ORIGINS;
+
     const isAllowed = allowed === "*" || allowedList.includes(origin);
 
     if (isAllowed) {

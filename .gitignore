@@ -6,6 +6,7 @@
 dist/
 build/
 *.dist
+ghostlayer_website/
 
 # Environment variables
 .env
