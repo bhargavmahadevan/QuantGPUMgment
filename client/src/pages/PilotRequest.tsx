@@ -6,6 +6,7 @@ import { Link, useLocation } from "wouter";
 import "@/pilot-request.css";
 import { pilotRequestSchema, type PilotRequestInput } from "@shared/pilot-schema";
 import { apiUrl } from "@/lib/api";
+import WorkloadSimulator from "@/components/WorkloadSimulator";
 
 const scopeNotes = [
   {
@@ -39,6 +40,11 @@ export default function PilotRequest() {
       certifyCompliance: false,
     },
   });
+
+  function handleApplySpecs(gpuSetup: string, workload: string) {
+    form.setValue("gpuSetup", gpuSetup, { shouldValidate: true, shouldDirty: true });
+    form.setValue("workload", workload, { shouldValidate: true, shouldDirty: true });
+  }
 
   async function onSubmit(values: PilotRequestInput) {
     if (!values.agreeToTerms) {
@@ -90,12 +96,17 @@ export default function PilotRequest() {
         <Link href="/" className="pilot-back">
           <ArrowLeft size={14} /> Back
         </Link>
-        <span className="orbit-eyebrow"><span /> FREE PILOT REQUEST</span>
+        <span className="orbit-eyebrow"><span /> FREE PILOT AUDIT LAB</span>
       </header>
 
-      <main className="pilot-main">
-        <div className="pilot-intro">
-          <h1>Start with one real training run.</h1>
+      <div className="pilot-content-wrapper">
+        <section className="pilot-simulator-container" aria-label="Interactive Workload Simulator">
+          <WorkloadSimulator onApplySpecs={handleApplySpecs} />
+        </section>
+
+        <main className="pilot-main" style={{ width: "100%", margin: 0, padding: 0 }}>
+          <div className="pilot-intro">
+            <h1>Start with one real training run.</h1>
           <p>
             GhostLayer is in an early, unpaid pilot phase. Tell me about your setup and
             what you're training, and I'll run an audit against it directly and send you
@@ -211,6 +222,7 @@ export default function PilotRequest() {
           </button>
         </form>
       </main>
+      </div>
     </div>
   );
 }

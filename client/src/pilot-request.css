@@ -193,3 +193,42 @@
   .pilot-main { grid-template-columns: 1fr; }
   .pilot-intro h1, .pilot-intro > p { max-width: none; }
 }
+
+.pilot-content-wrapper {
+  width: min(1140px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 64px) 0 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.pilot-simulator-container {
+  width: 100%;
+}
+
+.workload-simulator input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  outline: none;
+}
+
+.workload-simulator input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  transition: transform 120ms ease;
+}
+
+.workload-simulator input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
