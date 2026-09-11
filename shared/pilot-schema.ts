@@ -20,6 +20,8 @@ export const pilotRequestSchema = z.object({
     .min(1, "Describe what you're training")
     .max(1000),
   contactPreference: z.enum(["email", "no-preference"]),
+  agreeToTerms: z.boolean(),
+  certifyCompliance: z.boolean(),
 });
 
 export type PilotRequestInput = z.infer<typeof pilotRequestSchema>;

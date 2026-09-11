@@ -82,7 +82,7 @@ export default function LifecycleFlow({ onPhaseChange }: LifecycleFlowProps) {
           const id = (entry.target as HTMLElement).dataset.nodeId;
           if (!id) return;
           if (entry.isIntersecting) {
-            setVisibleNodes((prev) => new Set([...prev, id]));
+            setVisibleNodes((prev) => new Set([...Array.from(prev), id]));
             setActivePhase(id as LifecyclePhase);
             onPhaseChange?.(id as LifecyclePhase);
 

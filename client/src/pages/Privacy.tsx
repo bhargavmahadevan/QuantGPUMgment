@@ -16,9 +16,12 @@ export default function Privacy() {
           <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "#A3A3A3", textDecoration: "none", fontSize: "13px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
             <ArrowLeft size={16} /> Return to Orbit
           </Link>
-          <div style={{ display: "flex", gap: "16px", fontSize: "12px" }}>
-            <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms of Service</Link>
-            <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Legal Disclaimers</Link>
+          <div style={{ display: "flex", gap: "16px", fontSize: "12px", flexWrap: "wrap" }}>
+            <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
+            <Link href="/compliance" style={{ color: "#737373", textDecoration: "none" }}>Compliance</Link>
+            <Link href="/security" style={{ color: "#737373", textDecoration: "none" }}>Security</Link>
+            <Link href="/dpa" style={{ color: "#737373", textDecoration: "none" }}>DPA</Link>
+            <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Disclaimers</Link>
             <Link href="/founder" style={{ color: "#10b981", textDecoration: "none" }}>Founder Dossier</Link>
           </div>
         </nav>
@@ -105,7 +108,7 @@ export default function Privacy() {
               4. Data Retention, Security &amp; Deletion
             </h2>
             <p>
-              All telemetry logs and pilot audit request submissions are transmitted over TLS 1.3 encrypted connections and stored on access-restricted infrastructure with AES-256 encryption at rest.
+              All telemetry logs and pilot audit request submissions are transmitted over TLS 1.3 encrypted connections and stored on access-restricted infrastructure with AES-256 encryption at rest. For enterprise procurement terms, technical security safeguards (TOMs), and our authorized vendor list, please review our <Link href="/dpa" style={{ color: "#10b981", textDecoration: "underline" }}>Data Processing Addendum (DPA) &amp; Subprocessors Registry</Link>.
             </p>
             <p>
               <strong>Data Deletion:</strong> Customers may request immediate and complete deletion of all associated telemetry logs, decision records, or contact submissions by emailing `bhargavmahadevan@gmail.com` with the subject "Telemetry Purge Request". Purge requests are executed within five (5) business days.
@@ -114,10 +117,22 @@ export default function Privacy() {
 
           <section style={{ marginBottom: "36px" }}>
             <h2 style={{ fontSize: "18px", color: "#FFFFFF", fontWeight: "600", marginBottom: "12px", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingBottom: "8px" }}>
-              5. CCPA &amp; GDPR Compliance Rights
+              5. CCPA &amp; GDPR Compliance Rights (Notice at Collection)
             </h2>
             <p>
-              Under California Consumer Privacy Act (CCPA), General Data Protection Regulation (GDPR), and applicable privacy frameworks, users have the right to access, rectify, or erase their personal contact details and request confirmation of telemetry isolation.
+              Under California Consumer Privacy Act (CCPA/CPRA), General Data Protection Regulation (GDPR), and applicable privacy frameworks:
+            </p>
+            <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "6px", padding: "16px", margin: "16px 0", fontSize: "12px" }}>
+              <strong style={{ color: "#FFFFFF", display: "block", marginBottom: "8px" }}>CCPA / CPRA Notice at Collection:</strong>
+              <ul style={{ paddingLeft: "18px", margin: 0, color: "#D4D4D4", lineHeight: "1.6" }}>
+                <li><strong>Categories Collected:</strong> Business contact identifiers (name, work email, organization) and computational operational metrics (GPU model, step latencies in ms, VRAM bytes).</li>
+                <li><strong>Categories NEVER Collected:</strong> Model weights, token embeddings, training prompts, biometric identifiers, sensitive personal information.</li>
+                <li><strong>Commercial Sale / Sharing:</strong> GhostLayer does NOT sell, rent, or share personal or telemetry data for cross-context behavioral advertising.</li>
+                <li><strong>Retention Period:</strong> Telemetry logs retained up to 90 days for audit validation; contact records retained for pilot correspondence until purged upon request.</li>
+              </ul>
+            </div>
+            <p>
+              Users have the right to request access, correction, or deletion of their personal information and to opt-out of optional diagnostics by opening our Telemetry &amp; Cookie Preferences.
             </p>
           </section>
 
@@ -136,13 +151,16 @@ export default function Privacy() {
         </article>
 
         {/* Footer Navigation */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "13px" }}>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "13px", flexWrap: "wrap", gap: "12px" }}>
           <Link href="/" style={{ color: "#737373", textDecoration: "none" }}>
             ← Back to GhostLayer Orbit
           </Link>
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
             <Link href="/terms" style={{ color: "#A3A3A3", textDecoration: "none" }}>Terms of Service →</Link>
-            <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none" }}>Legal &amp; Empirical Disclaimers →</Link>
+            <Link href="/compliance" style={{ color: "#A3A3A3", textDecoration: "none" }}>Compliance &amp; EAR →</Link>
+            <Link href="/security" style={{ color: "#A3A3A3", textDecoration: "none" }}>Security Whitepaper →</Link>
+            <Link href="/dpa" style={{ color: "#A3A3A3", textDecoration: "none" }}>DPA →</Link>
+            <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none" }}>Disclaimers →</Link>
           </div>
         </div>
 

@@ -16,9 +16,12 @@ export default function Terms() {
           <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: "#A3A3A3", textDecoration: "none", fontSize: "13px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
             <ArrowLeft size={16} /> Return to Orbit
           </Link>
-          <div style={{ display: "flex", gap: "16px", fontSize: "12px" }}>
-            <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy Policy</Link>
-            <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Legal Disclaimers</Link>
+          <div style={{ display: "flex", gap: "16px", fontSize: "12px", flexWrap: "wrap" }}>
+            <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
+            <Link href="/compliance" style={{ color: "#737373", textDecoration: "none" }}>Compliance</Link>
+            <Link href="/security" style={{ color: "#737373", textDecoration: "none" }}>Security</Link>
+            <Link href="/dpa" style={{ color: "#737373", textDecoration: "none" }}>DPA</Link>
+            <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Disclaimers</Link>
             <Link href="/founder" style={{ color: "#10b981", textDecoration: "none" }}>Founder Dossier</Link>
           </div>
         </nav>
@@ -152,7 +155,7 @@ export default function Terms() {
               <li>Maintain frequent, redundant, verified model checkpoints on secure persistent storage independent of any automated optimization hooks;</li>
               <li>Set strict hard spending caps and billing alarms on all third-party cloud GPU provider accounts;</li>
               <li>Verify all loss and validation curves against independent empirical baselines before committing automated changes to production runs; and</li>
-              <li>Retain ultimate responsibility for ensuring software execution complies with all applicable export controls, safety regulations, and internal AI governance rules.</li>
+              <li>Retain ultimate responsibility for ensuring software execution complies with all applicable export controls, safety regulations, internal AI governance rules, and GhostLayer's <Link href="/compliance" style={{ color: "#10b981", textDecoration: "underline" }}>Acceptable Use &amp; Export Policy</Link>.</li>
             </ul>
           </section>
 
@@ -175,20 +178,23 @@ export default function Terms() {
               8. Indemnification by Customer
             </h2>
             <p>
-              Customer agrees to defend, indemnify, and hold harmless GhostLayer, its founder (Bhargav Mahadevan), officers, contractors, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or in any way connected with: (a) Customer's use or misuse of the Services; (b) Customer's training datasets or model outputs; (c) any violation of these Terms; or (d) any dispute between Customer and its cloud infrastructure providers or downstream users.
+              Customer agrees to defend, indemnify, and hold harmless GhostLayer, its founder (Bhargav Mahadevan), officers, contractors, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or in any way connected with: (a) Customer's use or misuse of the Services; (b) Customer's training datasets or model outputs; (c) any violation of these Terms or the Acceptable Use Policy; or (d) any dispute between Customer and its cloud infrastructure providers or downstream users.
             </p>
           </section>
 
           {/* Section 9 */}
           <section style={{ marginBottom: "36px" }}>
             <h2 style={{ fontSize: "18px", color: "#FFFFFF", fontWeight: "600", marginBottom: "12px", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingBottom: "8px" }}>
-              9. Intellectual Property &amp; License Restrictions
+              9. Intellectual Property, Trademarks &amp; License Restrictions
             </h2>
             <p>
               GhostLayer grants Customer a revocable, non-exclusive, non-transferable, non-sublicensable evaluation license to access the web interface and pilot hooks in accordance with these Terms.
             </p>
             <p>
               Customer shall not: (a) reverse engineer, decompile, or disassemble any proprietary binary hooks or compiled kernels; (b) remove or alter any copyright or trademark notices; (c) use the Services to construct a competing GPU telemetry or optimization service; or (d) publish synthetic or misleading benchmarks purporting to reflect GhostLayer capabilities without prior written verification.
+            </p>
+            <p style={{ fontSize: "12px", color: "#737373", marginTop: "12px", borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "12px" }}>
+              <strong>Third-Party Trademarks:</strong> NVIDIA, CUDA, RTX, H100, and B200 are registered trademarks of NVIDIA Corporation. PyTorch is a registered trademark of The Linux Foundation. GhostLayer is an independent project and is not affiliated with or endorsed by NVIDIA Corporation or The Linux Foundation.
             </p>
           </section>
 
@@ -250,13 +256,16 @@ export default function Terms() {
         </article>
 
         {/* Footer Navigation */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "13px" }}>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "13px", flexWrap: "wrap", gap: "12px" }}>
           <Link href="/" style={{ color: "#737373", textDecoration: "none" }}>
             ← Back to GhostLayer Orbit
           </Link>
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
             <Link href="/privacy" style={{ color: "#A3A3A3", textDecoration: "none" }}>Privacy Policy →</Link>
-            <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none" }}>Legal &amp; Empirical Disclaimers →</Link>
+            <Link href="/compliance" style={{ color: "#A3A3A3", textDecoration: "none" }}>Compliance &amp; EAR →</Link>
+            <Link href="/security" style={{ color: "#A3A3A3", textDecoration: "none" }}>Security Whitepaper →</Link>
+            <Link href="/dpa" style={{ color: "#A3A3A3", textDecoration: "none" }}>DPA →</Link>
+            <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none" }}>Disclaimers →</Link>
           </div>
         </div>
 

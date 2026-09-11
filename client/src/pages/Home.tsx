@@ -858,18 +858,47 @@ export default function Home() {
                 </li>
                 <li>
                   <Link href="/privacy" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                    Privacy &amp; Telemetry Data Policy <ArrowUpRight size={12} />
+                    Privacy Policy (Notice at Collection) <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/compliance" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Acceptable Use &amp; Dual-Use EAR <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/security" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Security Whitepaper &amp; RFC 9116 VDP <ArrowUpRight size={12} />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dpa" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    Data Processing Addendum &amp; Vendors <ArrowUpRight size={12} />
                   </Link>
                 </li>
                 <li>
                   <Link href="/legal" style={{ color: "#A3A3A3", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                    Empirical Disclaimers &amp; Transparency <ArrowUpRight size={12} />
+                    Empirical Disclaimers &amp; Receipts <ArrowUpRight size={12} />
                   </Link>
                 </li>
                 <li>
-                  <span style={{ color: "#525252", fontSize: "11px" }}>
-                    Binding Arbitration · Delaware / Texas
-                  </span>
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-ghostlayer-consent-modal"))}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      color: "#10b981",
+                      cursor: "pointer",
+                      fontSize: "12px",
+                      textAlign: "left",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
+                    }}
+                  >
+                    ⚙ Cookie &amp; Telemetry Settings
+                  </button>
                 </li>
               </ul>
             </div>
@@ -878,17 +907,23 @@ export default function Home() {
 
           {/* Prominent Legal Disclaimer Shield Banner */}
           <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", padding: "20px 0", marginBottom: "28px" }}>
-            <p style={{ margin: 0, fontSize: "11px", lineHeight: "1.7", color: "#525252", fontFamily: '"DM Mono", monospace' }}>
-              <strong style={{ color: "#A3A3A3" }}>LEGAL NOTICE &amp; LIMITATION OF LIABILITY:</strong> GhostLayer software, telemetry context hooks (`ghost_layer`), and heuristic optimization recommendations are provided strictly "AS IS", WITH ALL FAULTS, AND WITHOUT WARRANTY OF ANY KIND. Physical benchmark receipts reflect isolated historic executions on reference hardware (NVIDIA RTX A2000, 52.2M LLM) and do not constitute warranties or guarantees of fleet-wide speedup, training convergence, or cost reduction. Under no legal theory shall GhostLayer, its founder (Bhargav Mahadevan), or contributors be liable for training divergence, corrupted model weights, lost compute hours, hardware damage, or cloud billing anomalies. By using this platform, you agree to our <Link href="/terms" style={{ color: "#10b981", textDecoration: "underline" }}>Terms of Service</Link>, <Link href="/privacy" style={{ color: "#10b981", textDecoration: "underline" }}>Privacy Policy</Link>, and <Link href="/legal" style={{ color: "#10b981", textDecoration: "underline" }}>Empirical Disclaimers</Link>.
+            <p style={{ margin: "0 0 10px 0", fontSize: "11px", lineHeight: "1.7", color: "#525252", fontFamily: '"DM Mono", monospace' }}>
+              <strong style={{ color: "#A3A3A3" }}>LEGAL NOTICE &amp; LIMITATION OF LIABILITY:</strong> GhostLayer software, telemetry context hooks (`ghost_layer`), and heuristic optimization recommendations are provided strictly "AS IS", WITH ALL FAULTS, AND WITHOUT WARRANTY OF ANY KIND. Physical benchmark receipts reflect isolated historic executions on reference hardware (NVIDIA RTX A2000, 52.2M LLM) and do not constitute warranties or guarantees of fleet-wide speedup, training convergence, or cost reduction. Under no legal theory shall GhostLayer, its founder (Bhargav Mahadevan), or contributors be liable for training divergence, corrupted model weights, lost compute hours, hardware damage, or cloud billing anomalies. By using this platform, you agree to our <Link href="/terms" style={{ color: "#10b981", textDecoration: "underline" }}>Terms of Service</Link>, <Link href="/privacy" style={{ color: "#10b981", textDecoration: "underline" }}>Privacy Policy</Link>, <Link href="/compliance" style={{ color: "#10b981", textDecoration: "underline" }}>Acceptable Use &amp; EAR Policy</Link>, and <Link href="/legal" style={{ color: "#10b981", textDecoration: "underline" }}>Empirical Disclaimers</Link>.
+            </p>
+            <p style={{ margin: 0, fontSize: "10px", lineHeight: "1.6", color: "#404040", fontFamily: '"DM Mono", monospace' }}>
+              <strong>THIRD-PARTY TRADEMARKS:</strong> NVIDIA, CUDA, RTX, H100, and B200 are registered trademarks of NVIDIA Corporation. PyTorch is a registered trademark of The Linux Foundation. Docker is a registered trademark of Docker, Inc. GhostLayer is an independent engineering project and is not affiliated with, sponsored by, or endorsed by NVIDIA Corporation, Meta Platforms, Inc., or The Linux Foundation.
             </p>
           </div>
 
           {/* Bottom Copyright Row */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", fontSize: "12px", color: "#525252" }}>
             <span>© 2026 GhostLayer · Developed by Bhargav Mahadevan. All rights reserved.</span>
-            <div style={{ display: "flex", gap: "20px" }}>
+            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
               <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
+              <Link href="/compliance" style={{ color: "#737373", textDecoration: "none" }}>Compliance</Link>
+              <Link href="/security" style={{ color: "#737373", textDecoration: "none" }}>Security</Link>
+              <Link href="/dpa" style={{ color: "#737373", textDecoration: "none" }}>DPA</Link>
               <Link href="/legal" style={{ color: "#737373", textDecoration: "none" }}>Disclaimers</Link>
               <Link href="/founder" style={{ color: "#10b981", textDecoration: "none" }}>Founder</Link>
             </div>

@@ -11,6 +11,9 @@ import Founder from "./pages/Founder";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Legal from "./pages/Legal";
+import Compliance from "./pages/Compliance";
+import Security from "./pages/Security";
+import Dpa from "./pages/Dpa";
 import PilotRequest, { PilotRequestSent } from "./pages/PilotRequest";
 import ReportView from "./pages/ReportView";
 import LegalConsentBanner from "./components/LegalConsentBanner";
@@ -23,6 +26,9 @@ function Router() {
       <Route path={"/terms"} component={Terms} />
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/legal"} component={Legal} />
+      <Route path={"/compliance"} component={Compliance} />
+      <Route path={"/security"} component={Security} />
+      <Route path={"/dpa"} component={Dpa} />
       <Route path={"/pilot"} component={PilotRequest} />
       <Route path={"/pilot/sent"} component={PilotRequestSent} />
       <Route path={"/report/:id"} component={ReportView} />

@@ -35,10 +35,20 @@ export default function PilotRequest() {
       gpuSetup: "",
       workload: "",
       contactPreference: "email",
+      agreeToTerms: false,
+      certifyCompliance: false,
     },
   });
 
   async function onSubmit(values: PilotRequestInput) {
+    if (!values.agreeToTerms) {
+      form.setError("agreeToTerms", { message: "You must accept the Terms and Privacy Policy to proceed." });
+      return;
+    }
+    if (!values.certifyCompliance) {
+      form.setError("certifyCompliance", { message: "You must certify regulatory and export compliance." });
+      return;
+    }
     setSubmitError(null);
     try {
       const res = await fetch(apiUrl("/api/pilot-requests"), {
@@ -153,9 +163,50 @@ export default function PilotRequest() {
             )}
           </div>
 
+          {/* Legal Compliance & Consent Checkboxes */}
+          <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "6px", padding: "16px", marginTop: "12px", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <div className="pilot-field pilot-field--legal" style={{ margin: 0 }}>
+              <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "12px", color: "#D4D4D4", cursor: "pointer", fontWeight: "normal", lineHeight: "1.5" }}>
+                <input
+                  type="checkbox"
+                  id="agreeToTerms"
+                  style={{ marginTop: "2px", accentColor: "#10b981", cursor: "pointer" }}
+                  {...form.register("agreeToTerms")}
+                />
+                <span>
+                  I accept the <Link href="/terms" target="_blank" style={{ color: "#10b981", textDecoration: "underline" }}>Terms of Service</Link> and <Link href="/privacy" target="_blank" style={{ color: "#10b981", textDecoration: "underline" }}>Privacy Policy</Link>, and acknowledge the <Link href="/legal" target="_blank" style={{ color: "#10b981", textDecoration: "underline" }}>AS-IS Empirical Disclaimers</Link> on behalf of my team.
+                </span>
+              </label>
+              {form.formState.errors.agreeToTerms && (
+                <span className="pilot-error" style={{ display: "block", marginTop: "4px" }}>{form.formState.errors.agreeToTerms.message}</span>
+              )}
+            </div>
+
+            <div className="pilot-field pilot-field--legal" style={{ margin: 0 }}>
+              <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "12px", color: "#D4D4D4", cursor: "pointer", fontWeight: "normal", lineHeight: "1.5" }}>
+                <input
+                  type="checkbox"
+                  id="certifyCompliance"
+                  style={{ marginTop: "2px", accentColor: "#10b981", cursor: "pointer" }}
+                  {...form.register("certifyCompliance")}
+                />
+                <span>
+                  I certify our workloads comply with the <Link href="/compliance" target="_blank" style={{ color: "#10b981", textDecoration: "underline" }}>Acceptable Use Policy</Link> and U.S. Export Administration Regulations (EAR) dual-use computing controls.
+                </span>
+              </label>
+              {form.formState.errors.certifyCompliance && (
+                <span className="pilot-error" style={{ display: "block", marginTop: "4px" }}>{form.formState.errors.certifyCompliance.message}</span>
+              )}
+            </div>
+
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "10px", fontSize: "11px", color: "#737373", lineHeight: "1.5" }}>
+              <strong style={{ color: "#A3A3A3" }}>Zero-Model-Weights Guarantee:</strong> GhostLayer hooks capture only numerical GPU step metrics. We do not access, serialize, or retain proprietary model weights, dataset tokens, or prompts. Submissions are encrypted via TLS 1.3.
+            </div>
+          </div>
+
           {submitError && <div className="pilot-error pilot-error--form">{submitError}</div>}
 
-          <button type="submit" className="panel-action panel-action--mail" disabled={form.formState.isSubmitting}>
+          <button type="submit" className="panel-action panel-action--mail" disabled={form.formState.isSubmitting} style={{ marginTop: "16px" }}>
             {form.formState.isSubmitting ? "Sending…" : "Request a free audit"} <ArrowUpRight size={15} />
           </button>
         </form>
