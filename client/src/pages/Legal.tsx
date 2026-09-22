@@ -120,7 +120,15 @@ export default function Legal() {
                   rel="noopener noreferrer"
                   style={{ color: "#10b981", textDecoration: "none", border: "1px solid rgba(16, 185, 129, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(16, 185, 129, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
                 >
-                  Inspect Pythia-70M Live Audit HTML (RTX A2000) ↗
+                  Inspect Pythia-70M FP32 Audit HTML (RTX A2000) ↗
+                </a>
+                <a
+                  href="/evidence/pythia-70m-bf16-audit.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#f59e0b", textDecoration: "none", border: "1px solid rgba(245, 158, 11, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(245, 158, 11, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  Inspect Pythia-70M BF16 Mixed Precision Audit HTML ↗
                 </a>
                 <a
                   href="/evidence/pythia-70m-evidence.json"
@@ -128,7 +136,15 @@ export default function Legal() {
                   rel="noopener noreferrer"
                   style={{ color: "#38bdf8", textDecoration: "none", border: "1px solid rgba(56, 189, 248, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(56, 189, 248, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
                 >
-                  Download SHA-256 Telemetry JSON ↗
+                  Download FP32 Telemetry JSON ↗
+                </a>
+                <a
+                  href="/evidence/pythia-70m-bf16-evidence.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#38bdf8", textDecoration: "none", border: "1px solid rgba(56, 189, 248, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(56, 189, 248, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  Download BF16 Telemetry JSON ↗
                 </a>
                 <a
                   href="/evidence/executive-audit.html"
