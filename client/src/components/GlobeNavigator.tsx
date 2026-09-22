@@ -8,7 +8,7 @@ import { Html, Line, OrbitControls, Stars } from "@react-three/drei";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export type DestinationId = "info" | "control" | "memory" | "contact";
+export type DestinationId = "info" | "control" | "memory" | "calculator" | "contact";
 
 export type Destination = {
   id: DestinationId;
@@ -23,6 +23,7 @@ export const DESTINATIONS: Destination[] = [
   { id: "info", label: "Info", shortLabel: "Information field", latitude: 26, longitude: -12, tone: "neutral" },
   { id: "control", label: "Decision Lab", shortLabel: "Control loop", latitude: -11, longitude: 67, tone: "signal" },
   { id: "memory", label: "Memory", shortLabel: "Infrastructure memory", latitude: 32, longitude: 137, tone: "signal" },
+  { id: "calculator", label: "FinOps Engine", shortLabel: "Profit & ROI calculator", latitude: 12, longitude: -145, tone: "signal" },
   { id: "contact", label: "Contact us", shortLabel: "Contact window", latitude: -27, longitude: -84, tone: "risk" },
 ];
 

@@ -49,6 +49,287 @@ a { color: inherit; text-decoration: none; cursor: pointer; } button { font: inh
 @media (max-width: 700px) { .orbit-header { height: 66px; padding: 0 17px; }.orbit-brand img { width: 29px; height: 29px; }.orbit-brand small { display: none; }.orbit-hotbar { display: none; }.return-button span { display: none; }.orbital-stage { min-height: calc(100vh - 66px); display: block; }.stage-copy { position: absolute; z-index: 4; top: 0; padding: 58px 22px; max-width: 330px; }.stage-copy h1 { font-size: clamp(3.8rem, 17vw, 5.3rem); }.stage-copy > div > p:not(.orbit-eyebrow) { margin-top: 24px; font-size: 0.72rem; line-height: 1.58; max-width: 275px; }.stage-copy__legend { display: none; }.globe-stage { position: absolute; inset: 0; min-height: auto; }.globe-navigator__hint { right: 17px; bottom: 104px; font-size: 0.48rem; }.stage-status { left: 22px; bottom: 104px; }.stage-status small { max-width: 180px; }.globe-marker-label { font-size: 0.44rem; padding: 5px; margin-top: -22px; }.destination-panel { width: calc(100% - 34px); min-height: auto; margin: 55px auto 85px; grid-template-columns: 46px 1fr; }.panel-rail { padding: 16px 10px; font-size: 0.43rem; }.panel-content { padding: 31px 26px 27px; gap: 29px; }.panel-icon { margin-bottom: 22px; width: 36px; height: 36px; }.destination-panel h2 { font-size: clamp(3rem, 14.3vw, 4.2rem); }.panel-lede { font-size: 0.76rem; line-height: 1.72; }.panel-metrics { grid-template-columns: 1fr; margin-top: 4px; }.panel-metrics > div, .panel-metrics > div + div { padding: 10px 0 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }.panel-metrics > div:last-child { border-bottom: 0; }.panel-close { width: 39px; height: 39px; }.policy-model { padding: 14px; }.field-guide { width: calc(100% - 34px); padding: 20px 0 88px; gap: 43px; }.guide-intro h2, .operating-note h2 { font-size: clamp(3rem, 14.3vw, 4.3rem); }.guide-intro > p:not(.orbit-eyebrow) { font-size: 0.75rem; }.route-stop { min-height: 78px; grid-template-columns: 27px 28px 1fr 17px; gap: 8px; }.operating-note { padding: 83px 17px 108px; gap: 48px; }.note-systems { grid-template-columns: 1fr; }.note-systems > div { min-height: 135px; padding: 20px 0; margin: 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }.note-systems svg { margin-bottom: 21px; }.mobile-orbit-dock { position: fixed; z-index: 16; left: 10px; right: 10px; bottom: 10px; min-height: 58px; padding: 4px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,0.14); background: rgba(0,0,0,0.93); backdrop-filter: blur(14px); box-shadow: 0 12px 26px rgba(0,0,0,0.5); }.mobile-orbit-dock button { color: #404040; background: transparent; display: grid; justify-items: center; align-content: center; gap: 3px; font-family: "DM Mono", monospace; font-size: 0.47rem; letter-spacing: 0.01em; }.mobile-orbit-dock button.is-active { color: var(--white); background: rgba(255,255,255,0.08); }.orbit-footer { padding: 22px 17px 90px; min-height: 140px; flex-wrap: wrap; gap: 12px 20px; }.orbit-footer > span { margin-left: 0; }.orbit-footer > a { margin-left: auto; } }
 
 /* ==========================================================================
+   Product Overview & Architecture Explanation (Replaces inline front-page calculator)
+   ========================================================================== */
+.product-overview-section {
+  width: min(1280px, calc(100% - 48px));
+  margin: 70px auto 40px;
+  position: relative;
+}
+
+.product-overview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.product-overview-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 36px;
+}
+
+.product-overview-header__copy {
+  max-width: 740px;
+}
+
+.product-overview-title {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin: 12px 0 16px;
+  color: #FFFFFF;
+}
+
+.product-overview-lede {
+  color: #A3A3A3;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 660px;
+}
+
+.product-overview-header__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.product-overview-calc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  padding: 12px 20px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.product-overview-calc-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.product-stages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.product-stage-card {
+  background: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.product-stage-card:hover,
+.product-stage-card.is-active {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: #0F0F0F;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.product-stage-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-stage-card__number {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: #525252;
+  letter-spacing: 0.08em;
+}
+
+.product-stage-card__badge {
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+  border-radius: 0;
+}
+
+.product-stage-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.product-stage-card__title {
+  margin: 0;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.product-stage-card__summary {
+  font-size: 0.82rem;
+  color: #D4D4D4;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.product-stage-card__detail {
+  font-size: 0.74rem;
+  color: #737373;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.product-stage-card__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+}
+
+.product-stage-card__tag {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.03em;
+  color: #888888;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 3px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.product-code-showcase {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #080808;
+  overflow: hidden;
+}
+
+.product-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 20px;
+  background: #0D0D0D;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-code-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: #D4D4D4;
+  text-transform: uppercase;
+}
+
+.product-code-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.product-code-tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #737373;
+  padding: 6px 12px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.product-code-tab:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.product-code-tab.is-active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+}
+
+.product-code-body {
+  padding: 24px;
+  overflow-x: auto;
+  background: #040404;
+}
+
+.product-code-block {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 0.76rem;
+  line-height: 1.65;
+  color: #D4D4D4;
+}
+
+.product-code-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0D0D0D;
+}
+
+.product-code-metric {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.product-code-metric:last-child {
+  border-right: none;
+}
+
+.code-metric-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+.code-metric-value {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .product-overview-header {
+    grid-template-columns: 1fr;
+  }
+  .product-overview-header__cta {
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================================================
    Topology & Telemetry Suite Styling (Dark Glassmorphism & High Contrast)
    ========================================================================== */
 

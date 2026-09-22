@@ -43,6 +43,7 @@ import GpuProfitCalculator from "@/components/GpuProfitCalculator";
 import LiveSystemPanel from "@/components/LiveSystemPanel";
 import LifecycleFlow, { type LifecyclePhase } from "@/components/LifecycleFlow";
 import RoiProofTable from "@/components/RoiProofTable";
+import ProductOverview from "@/components/ProductOverview";
 
 const BRAND_MARK = "/manus-storage/ghostlayer-mark_0c552889.png";
 
@@ -91,8 +92,21 @@ const destinationContent: Record<
       { label: "Economic view", value: "ROI receipt" },
     ],
   },
+  calculator: {
+    eyebrow: "Interactive FinOps Engine / 04",
+    title: "Quantify unoptimized GPU compute and model audit payback in seconds.",
+    body: "Unprofiled PyTorch pipelines leak 15% to 35% of GPU compute through DataLoader I/O stalls, uncoalesced memory transfers, and unoptimized kernels. Dial in your fleet size, GPU architecture, and compute cost to calculate your team's exact dollar recovery and ROI payback timeline.",
+    annotation:
+      "All ROI projections are calculated against empirical PyTorch audit baselines and conservative recovery bands.",
+    icon: Calculator,
+    metrics: [
+      { label: "Recovery Band", value: "15% – 35%" },
+      { label: "Payback Period", value: "< 14 Days" },
+      { label: "Audit Output", value: "Verified Receipts" },
+    ],
+  },
   contact: {
-    eyebrow: "Contact window / 04",
+    eyebrow: "Contact window / 05",
     title: "Start with one training run, one bottleneck, and a measurable baseline.",
     body: "GhostLayer is designed to run inside the client environment and focus on training efficiency rather than acting as a cloud provider. Begin with an actual PyTorch workload, observe without changing it, and define the policy boundary before considering automation or a performance-share conversation.",
     annotation:
@@ -119,7 +133,7 @@ function BrandLockup() {
 }
 
 function DestinationIcon({ id, size = 15 }: { id: DestinationId; size?: number }) {
-  const icons = { info: Info, control: Zap, memory: Database, contact: Mail };
+  const icons = { info: Info, control: Zap, memory: Database, calculator: Calculator, contact: Mail };
   const Icon = icons[id];
   return <Icon size={size} strokeWidth={1.8} />;
 }
@@ -127,8 +141,8 @@ function DestinationIcon({ id, size = 15 }: { id: DestinationId; size?: number }
 export default function Home() {
   const [activeDestination, setActiveDestination] = useState<DestinationId | null>(null);
   const [activeTopologyTab, setActiveTopologyTab] = useState<
-    "calculator" | "dag" | "dist" | "containment" | "telemetry"
-  >("calculator");
+    "dag" | "dist" | "containment" | "telemetry"
+  >("dag");
   const [navigationStep, setNavigationStep] = useState(0);
   const [decisionState, setDecisionState] = useState<DecisionState>("observing");
   const [isChecking, setIsChecking] = useState(false);
@@ -215,12 +229,12 @@ export default function Home() {
             (e.currentTarget as HTMLElement).style.color = "#D4D4D4";
           }}
           onClick={() => {
-            setActiveTopologyTab("calculator");
-            document.getElementById("topology-suite")?.scrollIntoView({ behavior: "smooth" });
+            focusDestination("calculator");
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
           <Calculator size={13} />
-          <span>ROI Calculator</span>
+          <span>FinOps Engine</span>
         </button>
         <button
           className="calculator-header-button"
@@ -387,7 +401,7 @@ export default function Home() {
               <small>
                 {activeDestination
                   ? "Camera aligned with destination marker"
-                  : "Four destinations are available"}
+                  : "Five destinations are available"}
               </small>
             </div>
           </div>
@@ -491,6 +505,11 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                {activeDestination === "calculator" && (
+                  <div style={{ gridColumn: "1 / -1", marginTop: "36px", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "28px" }}>
+                    <GpuProfitCalculator />
+                  </div>
+                )}
               </div>
               <button
                 className="panel-close"
@@ -523,6 +542,7 @@ export default function Home() {
                 info: ScanSearch,
                 control: ShieldCheck,
                 memory: Layers3,
+                calculator: Calculator,
                 contact: Mail,
               };
               const Icon = icons[destination.id];
@@ -555,6 +575,14 @@ export default function Home() {
         {/* ── ROI Proof Table ──────────────────────────────────────────────── */}
         <RoiProofTable />
 
+        {/* ── Product Architecture & Operational Explanation ────────────────── */}
+        <ProductOverview
+          onOpenCalculator={() => {
+            focusDestination("calculator");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+
         {/* ── Cluster Topology & Telemetry Suite ──────────────────────────── */}
         <section className="topology-suite-section" id="topology-suite" aria-label="Cluster & Graph Topology Lab">
           <div className="suite-nav-header">
@@ -564,7 +592,6 @@ export default function Home() {
             </div>
             <nav className="suite-tab-bar" aria-label="Topology Lab Views">
               {[
-                { id: "calculator", label: "FinOps Profit Calculator", icon: Calculator },
                 { id: "dag", label: "Computational DAG & Fusion", icon: Cpu },
                 { id: "dist", label: "Distributed NCCL Fabric", icon: Network },
                 { id: "containment", label: "Containment & Rollback", icon: ShieldCheck },
@@ -585,7 +612,6 @@ export default function Home() {
             </nav>
           </div>
           <div className="suite-view-content">
-            {activeTopologyTab === "calculator" && <GpuProfitCalculator />}
             {activeTopologyTab === "dag" && <ExecutionDAGViewer />}
             {activeTopologyTab === "dist" && <DistributedTopologyViewer />}
             {activeTopologyTab === "containment" && <ContainmentLatticeViewer />}
