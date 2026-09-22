@@ -10,7 +10,7 @@
     .card{background:#0D0E12;border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:40px;max-width:900px;margin:0 auto;box-shadow:0 20px 50px rgba(0,0,0,0.9)}
     .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.08)}
     h1{font-size:22px;font-weight:700;color:#FFFFFF}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:99px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);color:#F59E0B}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:99px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);color:#10B981}
     .meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
     .meta-item{background:#07080B;border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px}
     .meta-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B7280;letter-spacing:1px;margin-bottom:4px}
@@ -28,34 +28,27 @@
     <div class="header">
       <div>
         <h1>GhostLayer Hardware Audit Card</h1>
-        <div style="font-size:13px;color:#6B7280;margin-top:4px">LLAMA3-8B &mdash; 2026-09-06T22:16:20.914305+00:00</div>
+        <div style="font-size:13px;color:#6B7280;margin-top:4px">LLAMA3-8B &mdash; 2026-09-22T15:16:23.346921+00:00</div>
       </div>
-      <div class="badge">📋 PUBLISHED_REFERENCE_BASELINE</div>
+      <div class="badge">⚡ LIVE_MEASURED_RUN</div>
     </div>
     <div class="meta-grid">
-      <div class="meta-item"><div class="meta-label">EXPERIMENT ID</div><div class="meta-val">EXP-HW-1532AD26</div></div>
-      <div class="meta-item"><div class="meta-label">EXECUTION MODE</div><div class="meta-val" style="color:#F59E0B">PUBLISHED_REFERENCE_BASELINE</div></div>
+      <div class="meta-item"><div class="meta-label">EXPERIMENT ID</div><div class="meta-val">EXP-HW-088A9E8A</div></div>
+      <div class="meta-item"><div class="meta-label">EXECUTION MODE</div><div class="meta-val" style="color:#10B981">LIVE_MEASURED_RUN</div></div>
       <div class="meta-item" style="grid-column:span 2">
         <div class="meta-label">SHA-256 CRYPTOGRAPHIC AUDIT HASH</div>
-        <div class="meta-val hash-val">7132ae523fb28fec6e5d85c3acf90a65f7d5bdf380045e38874d6fcbd4a2c0c9</div>
+        <div class="meta-val hash-val">fd8e7003b751fa1424fc21efd8b439de6f90d0a7b3ab9954e67d97cd673c6492</div>
       </div>
     </div>
     <table>
       <thead><tr><th>MODE</th><th>GPU MODEL</th><th>BASELINE LATENCY</th><th>GHOSTLAYER LATENCY</th><th>SPEEDUP</th><th>STATUS</th></tr></thead>
       <tbody>
         <tr>
-          <td>PUBLISHED_REFERENCE_BASELINE</td><td>NVIDIA H100 80GB SXM5</td>
-          <td>14.2 ms</td>
-          <td style="color:#10B981;font-weight:700">10.4 ms</td>
-          <td style="color:#10B981;font-weight:700">+33.88%</td>
-          <td style="color:#F59E0B">PROJECTED_SIMULATION</td>
-        </tr>
-        <tr>
-          <td>PUBLISHED_REFERENCE_BASELINE</td><td>NVIDIA A100 80GB SXM4</td>
-          <td>28.5 ms</td>
-          <td style="color:#10B981;font-weight:700">20.8 ms</td>
-          <td style="color:#10B981;font-weight:700">+28.52%</td>
-          <td style="color:#F59E0B">PROJECTED_SIMULATION</td>
+          <td>LIVE_MEASURED_RUN</td><td>NVIDIA RTX A2000 8GB Laptop GPU</td>
+          <td>138.0 ms</td>
+          <td style="color:#10B981;font-weight:700">88.06 ms</td>
+          <td style="color:#10B981;font-weight:700">+36.2%</td>
+          <td style="color:#10B981">EMPIRICALLY_MEASURED_LIVE</td>
         </tr></tbody>
     </table>
     <div class="footer">
