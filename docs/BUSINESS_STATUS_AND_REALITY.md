@@ -40,6 +40,7 @@ To adhere strictly to the **Zero Fabrication & Absolute Empirical Realism** poli
 | :--- | :--- | :--- |
 | **Local PyTorch Hooks & Curvature** | **Verified Real** | NVIDIA RTX A2000 8GB Laptop GPU / CPU fallback |
 | **Physical Hardware Benchmarking** | **Verified Real** | Local hardware runs documented in `.ghostlayer/calibration.json` |
+| **Hugging Face Local Training Evidence** | **Verified Real (Physical GPU)** | Live measured training run on NVIDIA RTX A2000 (`EleutherAI/pythia-70m`, `.ghostlayer/training_evidence_EleutherAI_pythia-70m.json`) |
 | **Simulated 250 LLM GPU Runs** | **Explicit Simulation** | Synthetic telemetry sweep validating mathematical engine logic |
 | **Dimensional Lift 500 Sweeps** | **Verified Property Test** | Analytical and mathematical matrix assertions |
 | **Hugging Face Live Cloud Inference** | **Unexecuted (Pending `HF_TOKEN`)** | Runs in local simulation fallback mode until a valid token is set |

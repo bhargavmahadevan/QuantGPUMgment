@@ -134,7 +134,14 @@ def run_training_evidence(
     print(f"\n-> Stage 2: Loading dataset ({dataset_name}/{dataset_config})...")
     t0 = time.time()
     try:
-        raw_dataset = load_dataset(dataset_name, dataset_config, split="train")
+        try:
+            raw_dataset = load_dataset(dataset_name, dataset_config, split="train")
+        except Exception as load_err:
+            if dataset_name == "wikitext":
+                print(f"  [INFO] Canonical 'wikitext' redirected to 'Salesforce/wikitext'...")
+                raw_dataset = load_dataset("Salesforce/wikitext", dataset_config, split="train")
+            else:
+                raise load_err
         print(f"  [OK] Dataset loaded: {len(raw_dataset)} examples ({time.time() - t0:.1f}s)")
     except Exception as e:
         print(f"  [FATAL] Dataset load failed: {e}")
@@ -399,74 +406,74 @@ def _print_assessment(
     # 1. Execution mode
     mode = results["execution_mode"]
     if mode == "LIVE_MEASURED_RUN":
-        checks.append(("✅", "Execution Mode", f"{mode} on {hw_info['gpu_name']}"))
+        checks.append(("[OK]", "Execution Mode", f"{mode} on {hw_info['gpu_name']}"))
     else:
-        checks.append(("⚠️", "Execution Mode", f"{mode} — no GPU speedup data possible"))
+        checks.append(("[WARN]", "Execution Mode", f"{mode} — no GPU speedup data possible"))
 
     # 2. Steps captured
     captured = metrics["total_steps_captured"]
     expected = results["training_config"]["num_steps"]
     if captured >= expected:
-        checks.append(("✅", "Steps Captured", f"{captured}/{expected}"))
+        checks.append(("[OK]", "Steps Captured", f"{captured}/{expected}"))
     else:
-        checks.append(("❌", "Steps Captured", f"Only {captured}/{expected} — telemetry loss"))
+        checks.append(("[FAIL]", "Steps Captured", f"Only {captured}/{expected} — telemetry loss"))
 
     # 3. Loss trajectory
     trajectory = metrics.get("loss_trajectory", [])
     if len(trajectory) >= 2 and trajectory[-1] < trajectory[0]:
-        checks.append(("✅", "Loss Trajectory", f"Decreasing: {trajectory[0]:.4f} → {trajectory[-1]:.4f}"))
+        checks.append(("[OK]", "Loss Trajectory", f"Decreasing: {trajectory[0]:.4f} -> {trajectory[-1]:.4f}"))
     elif len(trajectory) >= 2:
-        checks.append(("⚠️", "Loss Trajectory", f"Not decreasing: {trajectory[0]:.4f} → {trajectory[-1]:.4f}"))
+        checks.append(("[WARN]", "Loss Trajectory", f"Not decreasing: {trajectory[0]:.4f} -> {trajectory[-1]:.4f}"))
     else:
-        checks.append(("❌", "Loss Trajectory", "Insufficient data"))
+        checks.append(("[FAIL]", "Loss Trajectory", "Insufficient data"))
 
     # 4. GPU utilization
     gpu_util = telemetry["gpu_utilization_avg_pct"]
     if hw_info["cuda_available"] and gpu_util > 0:
-        checks.append(("✅", "GPU Utilization", f"{gpu_util:.1f}% average"))
+        checks.append(("[OK]", "GPU Utilization", f"{gpu_util:.1f}% average"))
     elif hw_info["cuda_available"]:
-        checks.append(("⚠️", "GPU Utilization", "0% — probe may not be capturing (pynvml missing?)"))
+        checks.append(("[WARN]", "GPU Utilization", "0% — probe may not be capturing (pynvml missing?)"))
     else:
-        checks.append(("ℹ️", "GPU Utilization", "N/A (CPU mode)"))
+        checks.append(("[INFO]", "GPU Utilization", "N/A (CPU mode)"))
 
     # 5. VRAM usage
     vram_headroom = telemetry.get("vram_headroom_pct")
     if vram_headroom is not None and vram_headroom > 0:
-        checks.append(("✅", "VRAM Headroom", f"{vram_headroom:.1f}% free"))
+        checks.append(("[OK]", "VRAM Headroom", f"{vram_headroom:.1f}% free"))
     elif hw_info["cuda_available"]:
-        checks.append(("⚠️", "VRAM Usage", "Not captured"))
+        checks.append(("[WARN]", "VRAM Usage", "Not captured"))
     else:
-        checks.append(("ℹ️", "VRAM Usage", "N/A (CPU mode)"))
+        checks.append(("[INFO]", "VRAM Usage", "N/A (CPU mode)"))
 
     # 6. Recommendations
     if len(recommendations) > 0:
-        checks.append(("✅", "Recommendations", f"{len(recommendations)} generated"))
+        checks.append(("[OK]", "Recommendations", f"{len(recommendations)} generated"))
     else:
-        checks.append(("❌", "Recommendations", "None generated — decision engine issue?"))
+        checks.append(("[FAIL]", "Recommendations", "None generated — decision engine issue?"))
 
     # 7. SHA-256 hash
-    checks.append(("✅", "SHA-256 Hash", artifact["reproducibility"]["sha256_audit_hash"][:32] + "..."))
+    checks.append(("[OK]", "SHA-256 Hash", artifact["reproducibility"]["sha256_audit_hash"][:32] + "..."))
 
     # 8. Precision check
     precision = results["training_config"]["precision"]
     detected = telemetry["mixed_precision_detected"]
     if precision == detected:
-        checks.append(("✅", "Precision Match", f"Config={precision}, Detected={detected}"))
+        checks.append(("[OK]", "Precision Match", f"Config={precision}, Detected={detected}"))
     else:
-        checks.append(("⚠️", "Precision Mismatch", f"Config={precision}, Detected={detected}"))
+        checks.append(("[WARN]", "Precision Mismatch", f"Config={precision}, Detected={detected}"))
 
     # Print results
     for icon, label, detail in checks:
-        print(f"  {icon} {label:20s}: {detail}")
+        print(f"  {icon:6s} {label:20s}: {detail}")
 
     # Suggest next actions
-    issues = [c for c in checks if c[0] in ("❌", "⚠️")]
+    issues = [c for c in checks if c[0] in ("[FAIL]", "[WARN]")]
     if issues:
-        print(f"\n  ⚠️  {len(issues)} issue(s) found — fix before proceeding to next model.")
+        print(f"\n  [WARN] {len(issues)} issue(s) found — review before proceeding to next model.")
         for icon, label, detail in issues:
-            print(f"    → {label}: {detail}")
+            print(f"    -> {label}: {detail}")
     else:
-        print(f"\n  ✅ All checks passed — safe to proceed to next model.")
+        print(f"\n  [OK] All checks passed — safe to proceed to next model.")
 
     print("=" * 64 + "\n")
 
