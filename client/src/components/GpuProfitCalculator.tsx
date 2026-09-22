@@ -141,7 +141,7 @@ export default function GpuProfitCalculator() {
             <Calculator size={14} />
             <span>Interactive FinOps Engine</span>
           </div>
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 700, margin: "6px 0 0 0", color: "#FFFFFF", fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: "-0.03em" }}>
+          <h2 style={{ fontSize: "2rem", fontWeight: 400, margin: "6px 0 0 0", color: "#FFFFFF", fontFamily: '"Instrument Serif", Georgia, serif', letterSpacing: "-0.03em" }}>
             GPU Waste & Profit Realization Calculator
           </h2>
           <p style={{ color: "#737373", fontSize: "0.85rem", margin: "6px 0 0 0", maxWidth: "680px", lineHeight: 1.6 }}>
@@ -353,7 +353,7 @@ export default function GpuProfitCalculator() {
       {/* 3-Tier Commercial Conversion Matrix */}
       <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: "28px" }}>
         <div style={{ textAlign: "center", marginBottom: "24px" }}>
-          <h3 style={{ fontSize: "1.35rem", fontWeight: 700, margin: 0, fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: "-0.02em" }}>GhostLayer Commercial Offerings</h3>
+          <h3 style={{ fontSize: "1.6rem", fontWeight: 400, margin: 0, fontFamily: '"Instrument Serif", Georgia, serif', letterSpacing: "-0.02em" }}>GhostLayer Commercial Offerings</h3>
           <p style={{ color: "#737373", fontSize: "0.85rem", margin: "6px 0 0 0" }}>
             Transparent pricing designed for rapid engineering lead discretionary approval without procurement friction.
           </p>

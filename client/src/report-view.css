@@ -26,10 +26,10 @@
 
 .report-status h1 {
   margin: 0 0 8px;
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
-  letter-spacing: -0.03em;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.025em;
 }
 
 .report-status p {
@@ -73,10 +73,10 @@
 }
 
 .report-findings h2 {
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: -0.025em;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
   margin: 0 0 16px;
 }
 

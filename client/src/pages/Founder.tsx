@@ -182,11 +182,11 @@ export default function Founder() {
           {/* Copy and Vision */}
           <div>
             <h1 style={{
-              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: "clamp(2.8rem, 5vw, 4.8rem)",
-              fontWeight: 800,
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
+              fontFamily: '"Instrument Serif", Georgia, serif',
+              fontSize: "clamp(3.4rem, 6vw, 5.8rem)",
+              fontWeight: 400,
+              lineHeight: 0.88,
+              letterSpacing: "-0.05em",
               margin: "0 0 24px",
               color: "#FFFFFF"
             }}>
@@ -198,11 +198,10 @@ export default function Founder() {
               margin: "0 0 32px",
               padding: "0 0 0 18px",
               borderLeft: "2px solid #10b981",
-              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: "clamp(1.15rem, 1.6vw, 1.45rem)",
+              fontFamily: '"Instrument Serif", Georgia, serif',
+              fontSize: "clamp(1.4rem, 2vw, 1.85rem)",
               fontStyle: "italic",
-              fontWeight: 500,
-              lineHeight: 1.35,
+              lineHeight: 1.28,
               color: "#F0F4F0",
               letterSpacing: "-0.02em"
             }}>
@@ -277,11 +276,11 @@ export default function Founder() {
               FOUNDER PRINCIPLES
             </span>
             <h2 style={{
-              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: "clamp(2rem, 3vw, 2.8rem)",
-              fontWeight: 700,
+              fontFamily: '"Instrument Serif", Georgia, serif',
+              fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
+              fontWeight: 400,
               margin: "8px 0 0",
-              letterSpacing: "-0.035em"
+              letterSpacing: "-0.04em"
             }}>
               How I build—and lead—at GhostLayer.
             </h2>
