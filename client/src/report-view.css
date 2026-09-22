@@ -26,16 +26,16 @@
 
 .report-status h1 {
   margin: 0 0 8px;
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(1.9rem, 3.2vw, 2.4rem);
-  letter-spacing: -0.02em;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
 }
 
 .report-status p {
   margin: 0;
   color: var(--mist);
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.88rem;
   line-height: 1.7;
   max-width: 520px;
@@ -73,15 +73,16 @@
 }
 
 .report-findings h2 {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  font-size: 1.7rem;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
   margin: 0 0 16px;
 }
 
 .report-findings__summary {
   color: var(--white);
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.92rem;
   line-height: 1.75;
   margin: 0 0 28px;
@@ -111,9 +112,10 @@
 }
 
 .report-metric strong {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  font-size: 1.4rem;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
   color: var(--signal);
 }
 

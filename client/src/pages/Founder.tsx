@@ -182,11 +182,11 @@ export default function Founder() {
           {/* Copy and Vision */}
           <div>
             <h1 style={{
-              fontFamily: '"Instrument Serif", Georgia, serif',
-              fontSize: "clamp(3.4rem, 6vw, 5.8rem)",
-              fontWeight: 400,
-              lineHeight: 0.88,
-              letterSpacing: "-0.05em",
+              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: "clamp(2.8rem, 5vw, 4.8rem)",
+              fontWeight: 800,
+              lineHeight: 0.95,
+              letterSpacing: "-0.04em",
               margin: "0 0 24px",
               color: "#FFFFFF"
             }}>
@@ -198,10 +198,11 @@ export default function Founder() {
               margin: "0 0 32px",
               padding: "0 0 0 18px",
               borderLeft: "2px solid #10b981",
-              fontFamily: '"Instrument Serif", Georgia, serif',
-              fontSize: "clamp(1.4rem, 2vw, 1.85rem)",
+              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: "clamp(1.15rem, 1.6vw, 1.45rem)",
               fontStyle: "italic",
-              lineHeight: 1.28,
+              fontWeight: 500,
+              lineHeight: 1.35,
               color: "#F0F4F0",
               letterSpacing: "-0.02em"
             }}>
@@ -276,11 +277,11 @@ export default function Founder() {
               FOUNDER PRINCIPLES
             </span>
             <h2 style={{
-              fontFamily: '"Instrument Serif", Georgia, serif',
-              fontSize: "clamp(2.2rem, 3.5vw, 3.4rem)",
-              fontWeight: 400,
+              fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: "clamp(2rem, 3vw, 2.8rem)",
+              fontWeight: 700,
               margin: "8px 0 0",
-              letterSpacing: "-0.04em"
+              letterSpacing: "-0.035em"
             }}>
               How I build—and lead—at GhostLayer.
             </h2>
@@ -294,11 +295,12 @@ export default function Founder() {
             }}>
               <span style={{ color: "#10b981", fontSize: "0.75rem", fontWeight: 700 }}>01</span>
               <h3 style={{
-                fontFamily: '"Instrument Serif", Georgia, serif',
-                fontSize: "1.45rem",
-                fontWeight: 400,
+                fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: "1.2rem",
+                fontWeight: 700,
                 margin: "12px 0 8px",
-                color: "#FFFFFF"
+                color: "#FFFFFF",
+                letterSpacing: "-0.02em"
               }}>
                 Build stronger leaders around you.
               </h3>
@@ -314,11 +316,12 @@ export default function Founder() {
             }}>
               <span style={{ color: "#10b981", fontSize: "0.75rem", fontWeight: 700 }}>02</span>
               <h3 style={{
-                fontFamily: '"Instrument Serif", Georgia, serif',
-                fontSize: "1.45rem",
-                fontWeight: 400,
+                fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: "1.2rem",
+                fontWeight: 700,
                 margin: "12px 0 8px",
-                color: "#FFFFFF"
+                color: "#FFFFFF",
+                letterSpacing: "-0.02em"
               }}>
                 Critique should create momentum.
               </h3>
@@ -334,11 +337,12 @@ export default function Founder() {
             }}>
               <span style={{ color: "#10b981", fontSize: "0.75rem", fontWeight: 700 }}>03</span>
               <h3 style={{
-                fontFamily: '"Instrument Serif", Georgia, serif',
-                fontSize: "1.45rem",
-                fontWeight: 400,
+                fontFamily: '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: "1.2rem",
+                fontWeight: 700,
                 margin: "12px 0 8px",
-                color: "#FFFFFF"
+                color: "#FFFFFF",
+                letterSpacing: "-0.02em"
               }}>
                 Empirical realism above all.
               </h3>
