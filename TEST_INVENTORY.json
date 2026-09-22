@@ -1,15 +1,14 @@
 {
-  "total_active_tests": 346,
-  "total_test_files": 45,
-  "generated_at_utc": "2026-09-06T16:48:00.000000+00:00",
+  "total_active_tests": 361,
+  "generated_at_utc": "2026-09-22T14:10:37.799514+00:00",
+  "timestamp": 1790086237.7995536,
   "pytest_exit_code": 0,
-  "description": "100% genuine unit, integration, and algorithmic test suite. Zero synthetic range sweeps or mock dataset loops.",
   "category_breakdown": {
-    "algorithmic_and_optimization": 87,
-    "telemetry_and_auditing": 92,
-    "safety_and_verification": 78,
-    "closed_loop_and_actuation": 45,
-    "commercial_and_financial": 44
+    "unit_tests": 287,
+    "evidence_engine": 13,
+    "closed_loop_and_control": 22,
+    "benchmarking_and_calibration": 0,
+    "hardware_telemetry": 39
   },
   "file_breakdown": {
     "ceo_evidence_engine/test_evidence_suite.py": 13,
@@ -33,6 +32,7 @@
     "tests/test_failure_injection_and_rollback.py": 3,
     "tests/test_financial_attribution_hierarchy.py": 2,
     "tests/test_financial_impact_attribution.py": 4,
+    "tests/test_hf_training_evidence.py": 15,
     "tests/test_integrations_and_export.py": 15,
     "tests/test_kb_outcome_semantics.py": 3,
     "tests/test_lbfgs_curvature.py": 7,
