@@ -110,9 +110,35 @@ export default function Legal() {
             </p>
             <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)", padding: "16px", borderRadius: "4px", margin: "16px 0" }}>
               <strong style={{ color: "#FFFFFF", display: "block", marginBottom: "4px" }}>Notice on Benchmarks vs. Fleet-Wide Guarantees:</strong>
-              <p style={{ fontSize: "13px", color: "#D4D4D4", margin: 0 }}>
+              <p style={{ fontSize: "13px", color: "#D4D4D4", margin: "0 0 12px 0" }}>
                 These benchmark receipts represent historical, isolated physical executions on a single workstation. They are published for transparency and empirical reproducibility, NOT as warranties or guarantees of fleet-wide speedup across distinct GPU architectures (e.g. NVIDIA H100, B200, AMD MI300X), model architectures (e.g. MoE, diffusion, multi-modal), or arbitrary batch configurations.
               </p>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", fontSize: "12px" }}>
+                <a
+                  href="/evidence/pythia-70m-audit.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#10b981", textDecoration: "none", border: "1px solid rgba(16, 185, 129, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(16, 185, 129, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  Inspect Pythia-70M Live Audit HTML (RTX A2000) ↗
+                </a>
+                <a
+                  href="/evidence/pythia-70m-evidence.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#38bdf8", textDecoration: "none", border: "1px solid rgba(56, 189, 248, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(56, 189, 248, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  Download SHA-256 Telemetry JSON ↗
+                </a>
+                <a
+                  href="/evidence/executive-audit.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#a855f7", textDecoration: "none", border: "1px solid rgba(168, 85, 247, 0.3)", padding: "6px 10px", borderRadius: "4px", background: "rgba(168, 85, 247, 0.05)", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  Inspect Full Executive Diagnostic Receipt ↗
+                </a>
+              </div>
             </div>
           </section>
 

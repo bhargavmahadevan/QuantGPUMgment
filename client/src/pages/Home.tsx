@@ -809,6 +809,16 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href="/evidence/pythia-70m-audit.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#38bdf8", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                  >
+                    Verified GPU Audit Receipt (Live HTML) <ArrowUpRight size={12} />
+                  </a>
+                </li>
+                <li>
                   <Link href="/pilot" style={{ color: "#10b981", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}>
                     Request Pre-Flight Audit <ArrowUpRight size={12} />
                   </Link>
