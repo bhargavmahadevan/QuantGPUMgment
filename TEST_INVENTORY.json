@@ -1,10 +1,10 @@
 {
-  "total_active_tests": 361,
-  "generated_at_utc": "2026-09-22T14:10:37.799514+00:00",
-  "timestamp": 1790086237.7995536,
+  "total_active_tests": 370,
+  "generated_at_utc": "2026-09-22T14:59:51.813212+00:00",
+  "timestamp": 1790089191.8132458,
   "pytest_exit_code": 0,
   "category_breakdown": {
-    "unit_tests": 287,
+    "unit_tests": 296,
     "evidence_engine": 13,
     "closed_loop_and_control": 22,
     "benchmarking_and_calibration": 0,
@@ -15,6 +15,7 @@
     "tests/test_adaptive_threshold_calibration.py": 6,
     "tests/test_baseline_lock_and_verifiable_roi.py": 2,
     "tests/test_causal_bottleneck_engine.py": 7,
+    "tests/test_chunked_ce_scaling.py": 9,
     "tests/test_closed_loop_and_control.py": 16,
     "tests/test_closed_loop_state_machine.py": 6,
     "tests/test_commercial_tiering_and_licensing.py": 6,
