@@ -1,0 +1,91 @@
+{
+  "timestamp_utc": "2026-09-22T15:06:52Z",
+  "device": "cuda:0",
+  "device_name": "NVIDIA RTX A2000 8GB Laptop GPU",
+  "stream_scaling": [
+    {
+      "num_streams": 2,
+      "avg_step_ms": 26.94,
+      "peak_vram_mb": 22.28,
+      "birkhoff_drift": 1e-06,
+      "spectral_radius": 1.0
+    },
+    {
+      "num_streams": 4,
+      "avg_step_ms": 26.85,
+      "peak_vram_mb": 27.28,
+      "birkhoff_drift": 0.0,
+      "spectral_radius": 1.0
+    },
+    {
+      "num_streams": 8,
+      "avg_step_ms": 28.23,
+      "peak_vram_mb": 37.28,
+      "birkhoff_drift": 0.0,
+      "spectral_radius": 1.0
+    },
+    {
+      "num_streams": 16,
+      "avg_step_ms": 27.41,
+      "peak_vram_mb": 57.3,
+      "birkhoff_drift": 0.0,
+      "spectral_radius": 1.0
+    },
+    {
+      "num_streams": 32,
+      "avg_step_ms": 26.19,
+      "peak_vram_mb": 97.4,
+      "birkhoff_drift": 1e-06,
+      "spectral_radius": 1.0
+    },
+    {
+      "num_streams": 64,
+      "avg_step_ms": 26.84,
+      "peak_vram_mb": 177.81,
+      "birkhoff_drift": 1e-06,
+      "spectral_radius": 1.0
+    }
+  ],
+  "depth_scaling": [
+    {
+      "depth_layers": 4,
+      "avg_step_ms": 74.23,
+      "peak_vram_mb": 25.84,
+      "composite_spectral_radius": 1.0,
+      "composite_birkhoff_drift": 1e-06,
+      "final_grad_norm": 282.8931
+    },
+    {
+      "depth_layers": 8,
+      "avg_step_ms": 149.78,
+      "peak_vram_mb": 31.93,
+      "composite_spectral_radius": 1.0,
+      "composite_birkhoff_drift": 1e-06,
+      "final_grad_norm": 294.9353
+    },
+    {
+      "depth_layers": 16,
+      "avg_step_ms": 283.77,
+      "peak_vram_mb": 44.1,
+      "composite_spectral_radius": 1.0,
+      "composite_birkhoff_drift": 1e-06,
+      "final_grad_norm": 330.7497
+    },
+    {
+      "depth_layers": 32,
+      "avg_step_ms": 452.28,
+      "peak_vram_mb": 68.45,
+      "composite_spectral_radius": 1.0,
+      "composite_birkhoff_drift": 1e-06,
+      "final_grad_norm": 289.1133
+    },
+    {
+      "depth_layers": 64,
+      "avg_step_ms": 1019.07,
+      "peak_vram_mb": 117.16,
+      "composite_spectral_radius": 1.0,
+      "composite_birkhoff_drift": 2e-06,
+      "final_grad_norm": 291.0997
+    }
+  ]
+}

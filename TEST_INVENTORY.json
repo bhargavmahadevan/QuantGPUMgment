@@ -1,10 +1,10 @@
 {
-  "total_active_tests": 370,
-  "generated_at_utc": "2026-09-22T14:59:51.813212+00:00",
-  "timestamp": 1790089191.8132458,
+  "total_active_tests": 379,
+  "generated_at_utc": "2026-09-22T15:04:00.000000+00:00",
+  "timestamp": 1790089440.0,
   "pytest_exit_code": 0,
   "category_breakdown": {
-    "unit_tests": 296,
+    "unit_tests": 305,
     "evidence_engine": 13,
     "closed_loop_and_control": 22,
     "benchmarking_and_calibration": 0,
@@ -39,6 +39,7 @@
     "tests/test_lbfgs_curvature.py": 7,
     "tests/test_lifecycle_and_rule_tiers.py": 3,
     "tests/test_mathematical_audit_fixes.py": 6,
+    "tests/test_mhc_spectral_invariance.py": 9,
     "tests/test_optimizers_and_curvature.py": 23,
     "tests/test_pipeline_and_evidence.py": 71,
     "tests/test_policy_engine_and_safety_boundaries.py": 5,
