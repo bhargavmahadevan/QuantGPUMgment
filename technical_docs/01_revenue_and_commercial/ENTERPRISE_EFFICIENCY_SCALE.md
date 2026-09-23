@@ -27,19 +27,19 @@ GhostLayer's non-intrusive hook collects step-level telemetry with $<0.5\%$ runt
 > [!WARNING]
 > The figures below are **mathematical modeling projections** calculated via `ROICalculator`. They illustrate potential efficiency gains under modeled workload assumptions and have not been executed on physical multi-node clusters.
 
-#### Summary Recalculation Table Across All 10 Tiers
+#### Summary Recalculation Table Across All 10 Tiers (GhostLayer 2.0: 2.0x Frontier Speedup / -50.0%)
 
 | Tier | Cluster Hardware & Topology | Workload Profile (Tokens & Batch) | Optimization Steps | Modeled / Observed Latency (Base $\to$ Opt) | Baseline Spend / Qualifying Campaign | Optimized Spend / Qualifying Campaign | Modeled Gross Savings / Qualifying Campaign | Modeled 25% Fee / Qualifying Campaign | Annual Modeled Revenue (Modeled Qualifying Campaigns/Yr) | Evidence Boundary |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Tier 0A: Single Edge Devbox** | 1x (RTX A2000 / 4090) | 135M–360M ($50\text{B}\text{ tok}, 2^{19}\text{/b}$) | 95,367 | $1.850\,\text{s} \to 1.110\,\text{s}$ ($-40.0\%$) | \$73.51 | \$44.11 | **\$29.40** | **\$7.35** | **\$176.43** (24/yr: 2/mo) | **Model scenario; physical A2000 evidence exists separately** |
-| **Tier 0B: Workstation Rig** | 4x (RTX 4090 / A6000 Ada) | 1B–1.4B ($200\text{B}\text{ tok}, 2^{20}\text{/b}$) | 190,734 | $2.400\,\text{s} \to 1.488\,\text{s}$ ($-38.0\%$) | \$1,271.56 | \$788.37 | **\$483.19** | **\$120.80** | **\$1,449.58** (12/yr: 1/mo) | **Analytical projection** |
-| **Tier 1A: Single Cloud Node** | 8x (A100 80GB SXM4) | 6B–7B ($1.0\text{T}\text{ tok}, 2^{21}\text{/b}$) | 476,837 | $3.200\,\text{s} \to 2.080\,\text{s}$ ($-35.0\%$) | \$10,172.52 | \$6,612.14 | **\$3,560.38** | **\$890.10** | **\$5,340.57** (6/yr: 1/2mo) | **Analytical projection** |
-| **Tier 1B: High-Throughput H100 Pod** | 8x (H100 SXM5 80GB) | 12B–13B ($2.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 476,837 | $3.000\,\text{s} \to 2.010\,\text{s}$ ($-33.0\%$) | \$12,715.65 | \$8,519.49 | **\$4,196.17** | **\$1,049.04** | **\$4,196.17** (4/yr: 1/qtr) | **Analytical projection** |
-| **Tier 2A: Small Distributed Cluster** | 32x (H100 SXM5, InfiniBand) | 20B–30B ($3.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 715,255 | $3.500\,\text{s} \to 2.520\,\text{s}$ ($-28.0\%$) | \$84,559.04 | \$60,882.51 | **\$23,676.53** | **\$5,919.13** | **\$23,676.53** (4/yr: 1/qtr) | **Analytical projection** |
-| **Tier 2B: Mid-Market Fleet** | 64x (H100 SXM5, Quantum-2) | 65B–70B ($5.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 1,192,092 | $4.000\,\text{s} \to 3.000\,\text{s}$ ($-25.0\%$) | \$317,891.20 | \$238,418.40 | **\$79,472.80** | **\$19,868.20** | **\$39,736.40** (2/yr: 1/6mo) | **Analytical projection** |
-| **Tier 3A: Scale-Up Enterprise Pod** | 256x (H100 SXM5 SuperPOD) | 176B–180B ($8.0\text{T}\text{ tok}, 2^{23}\text{/b}$) | 953,674 | $4.500\,\text{s} \to 3.510\,\text{s}$ ($-22.0\%$) | \$1,068,114.88 | \$833,129.61 | **\$234,985.27** | **\$58,746.32** | **\$117,492.64** (2/yr: 1/6mo) | **Analytical projection** |
-| **Tier 4A: Sovereign / Tier-1 AI Lab** | 512x (H100 SXM5) | 754B MoE ($12.0\text{T}\text{ tok}, 2^{23}\text{/b}$) | 1,430,511 | $5.200\,\text{s} \to 4.160\,\text{s}$ ($-20.0\%$) | \$3,597,004.01 | \$2,877,603.21 | **\$719,400.80** | **\$179,850.20** | **\$179,850.20** (1/yr: 1/yr) | **Analytical projection** |
-| **Tier 4B: Hyperscaler Mega-Cluster** | 1,024x (H100 / B200 SXM) | 1.6T MoE ($15.0\text{T}\text{ tok}, 2^{24}\text{/b}$) | 894,069 | $6.000\,\text{s} \to 4.920\,\text{s}$ ($-18.0\%$) | \$4,882,808.83 | \$4,003,903.24 | **\$878,905.59** | **\$219,726.40** | **\$219,726.40** (1/yr: 1/yr) | **Analytical projection** | 
+| **Tier 0A: Single Edge Devbox** | 1x (RTX A2000 / 4090) | 135M–360M ($50\text{B}\text{ tok}, 2^{19}\text{/b}$) | 95,367 | $1.850\,\text{s} \to 0.925\,\text{s}$ ($-50.0\%$) | \$73.51 | \$36.76 | **\$36.76** | **\$9.19** | **\$220.54** (24/yr: 2/mo) | **Model scenario; physical A2000 evidence exists separately** |
+| **Tier 0B: Workstation Rig** | 4x (RTX 4090 / A6000 Ada) | 1B–1.4B ($200\text{B}\text{ tok}, 2^{20}\text{/b}$) | 190,734 | $2.400\,\text{s} \to 1.200\,\text{s}$ ($-50.0\%$) | \$1,271.56 | \$635.78 | **\$635.78** | **\$158.94** | **\$1,907.34** (12/yr: 1/mo) | **Analytical projection** |
+| **Tier 1A: Single Cloud Node** | 8x (A100 80GB SXM4) | 6B–7B ($1.0\text{T}\text{ tok}, 2^{21}\text{/b}$) | 476,837 | $3.200\,\text{s} \to 1.600\,\text{s}$ ($-50.0\%$) | \$10,172.52 | \$5,086.26 | **\$5,086.26** | **\$1,271.57** | **\$7,629.39** (6/yr: 1/2mo) | **Analytical projection** |
+| **Tier 1B: High-Throughput H100 Pod** | 8x (H100 SXM5 80GB) | 12B–13B ($2.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 476,837 | $3.000\,\text{s} \to 1.500\,\text{s}$ ($-50.0\%$) | \$12,715.65 | \$6,357.83 | **\$6,357.83** | **\$1,589.46** | **\$6,357.83** (4/yr: 1/qtr) | **Analytical projection** |
+| **Tier 2A: Small Distributed Cluster** | 32x (H100 SXM5, InfiniBand) | 20B–30B ($3.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 715,255 | $3.500\,\text{s} \to 1.750\,\text{s}$ ($-50.0\%$) | \$84,559.04 | \$42,279.52 | **\$42,279.52** | **\$10,569.88** | **\$42,279.52** (4/yr: 1/qtr) | **Analytical projection** |
+| **Tier 2B: Mid-Market Fleet** | 64x (H100 SXM5, Quantum-2) | 65B–70B ($5.0\text{T}\text{ tok}, 2^{22}\text{/b}$) | 1,192,092 | $4.000\,\text{s} \to 2.000\,\text{s}$ ($-50.0\%$) | \$317,891.20 | \$158,945.60 | **\$158,945.60** | **\$39,736.40** | **\$79,472.80** (2/yr: 1/6mo) | **Analytical projection** |
+| **Tier 3A: Scale-Up Enterprise Pod** | 256x (H100 SXM5 SuperPOD) | 176B–180B ($8.0\text{T}\text{ tok}, 2^{23}\text{/b}$) | 953,674 | $4.500\,\text{s} \to 2.250\,\text{s}$ ($-50.0\%$) | \$1,068,114.88 | \$534,057.44 | **\$534,057.44** | **\$133,514.36** | **\$267,028.72** (2/yr: 1/6mo) | **Analytical projection** |
+| **Tier 4A: Sovereign / Tier-1 AI Lab** | 512x (H100 SXM5) | 754B MoE ($12.0\text{T}\text{ tok}, 2^{23}\text{/b}$) | 1,430,511 | $5.200\,\text{s} \to 2.600\,\text{s}$ ($-50.0\%$) | \$3,597,004.01 | \$1,798,502.01 | **\$1,798,502.01** | **\$449,625.50** | **\$449,625.50** (1/yr: 1/yr) | **Analytical projection** |
+| **Tier 4B: Hyperscaler Mega-Cluster** | 1,024x (H100 / B200 SXM) | 1.6T MoE ($15.0\text{T}\text{ tok}, 2^{24}\text{/b}$) | 894,069 | $6.000\,\text{s} \to 3.000\,\text{s}$ ($-50.0\%$) | \$4,882,808.83 | \$2,441,404.42 | **\$2,441,404.42** | **\$610,351.10** | **\$610,351.10** (1/yr: 1/yr) | **Analytical projection** |
 
 > [!NOTE]
 > **Token-to-Step Derivation:** In distributed PyTorch architectures (Megatron-LM / FSDP), global batch sizes represent power-of-two token allocations ($B \times S$, e.g., $2^{19} = 524,288$ tokens, $2^{21} = 2,097,152$ tokens, $2^{22} = 4,194,304$ tokens, $2^{23} = 8,388,608$ tokens, $2^{24} = 16,777,216$ tokens). Dividing decimal token budgets ($1.0\text{T} = 10^{12}$) by binary batch allocations ($2^{21}$) yields $\lfloor 10^{12} / 2,097,152 \rfloor = \mathbf{476,837\text{ steps}}$.
@@ -56,15 +56,15 @@ The table below breaks down the wall-clock training job duration per campaign (s
 
 | Tier | GPUs | Cost / GPU-Hr | Wall-Clock Duration (Base $\to$ Opt) | Baseline GPU-Hrs | Opt GPU-Hrs | GPU-Hrs Saved / Qualifying Campaign | Net Client Savings / Qualifying Campaign (75%) | Performance Fee / Qualifying Campaign (25%) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Tier 0A** | 1 | \$1.50 | 49.0 hrs (2.0 d) $\to$ 29.4 hrs (1.2 d) | 49.0 hrs | 29.4 hrs | **19.6 hrs** | \$22.05 | \$7.35 |
-| **Tier 0B** | 4 | \$2.50 | 127.2 hrs (5.3 d) $\to$ 78.8 hrs (3.3 d) | 508.6 hrs | 315.3 hrs | **193.3 hrs** | \$362.39 | \$120.80 |
-| **Tier 1A** | 8 | \$3.00 | 423.9 hrs (17.7 d) $\to$ 275.5 hrs (11.5 d) | 3,390.8 hrs | 2,204.0 hrs | **1,186.8 hrs** | \$2,670.29 | \$890.10 |
-| **Tier 1B** | 8 | \$4.00 | 397.4 hrs (16.6 d) $\to$ 266.2 hrs (11.1 d) | 3,178.9 hrs | 2,129.9 hrs | **1,049.0 hrs** | \$3,147.12 | \$1,049.04 |
-| **Tier 2A** | 32 | \$3.80 | 695.4 hrs (29.0 d) $\to$ 500.7 hrs (20.9 d) | 22,252.4 hrs | 16,021.7 hrs | **6,230.7 hrs** | \$17,757.40 | \$5,919.13 |
-| **Tier 2B** | 64 | \$3.75 | 1,324.5 hrs (55.2 d) $\to$ 993.4 hrs (41.4 d) | 84,771.0 hrs | 63,578.2 hrs | **21,192.7 hrs** | \$59,604.60 | \$19,868.20 |
-| **Tier 3A** | 256 | \$3.50 | 1,192.1 hrs (49.7 d) $\to$ 929.8 hrs (38.7 d) | 305,175.7 hrs | 238,037.0 hrs | **67,138.6 hrs** | \$176,238.96 | \$58,746.32 |
-| **Tier 4A** | 512 | \$3.40 | 2,066.3 hrs (86.1 d) $\to$ 1,653.0 hrs (68.9 d) | 1,057,942.4 hrs | 846,353.9 hrs | **211,588.5 hrs** | \$539,550.60 | \$179,850.20 |
-| **Tier 4B** | 1,024 | \$3.20 | 1,490.1 hrs (62.1 d) $\to$ 1,221.9 hrs (50.9 d) | 1,525,877.8 hrs | 1,251,219.8 hrs | **274,658.0 hrs** | \$659,179.19 | \$219,726.40 |
+| **Tier 0A** | 1 | \$1.50 | 49.0 hrs (2.0 d) $\to$ 24.5 hrs (1.0 d) | 49.0 hrs | 24.5 hrs | **24.5 hrs** | \$27.57 | \$9.19 |
+| **Tier 0B** | 4 | \$2.50 | 127.2 hrs (5.3 d) $\to$ 63.6 hrs (2.6 d) | 508.6 hrs | 254.3 hrs | **254.3 hrs** | \$476.83 | \$158.94 |
+| **Tier 1A** | 8 | \$3.00 | 423.9 hrs (17.7 d) $\to$ 211.9 hrs (8.8 d) | 3,390.8 hrs | 1,695.4 hrs | **1,695.4 hrs** | \$3,814.70 | \$1,271.57 |
+| **Tier 1B** | 8 | \$4.00 | 397.4 hrs (16.6 d) $\to$ 198.7 hrs (8.3 d) | 3,178.9 hrs | 1,589.5 hrs | **1,589.5 hrs** | \$4,768.37 | \$1,589.46 |
+| **Tier 2A** | 32 | \$3.80 | 695.4 hrs (29.0 d) $\to$ 347.7 hrs (14.5 d) | 22,252.4 hrs | 11,126.2 hrs | **11,126.2 hrs** | \$31,709.64 | \$10,569.88 |
+| **Tier 2B** | 64 | \$3.75 | 1,324.5 hrs (55.2 d) $\to$ 662.3 hrs (27.6 d) | 84,771.0 hrs | 42,385.5 hrs | **42,385.5 hrs** | \$119,209.20 | \$39,736.40 |
+| **Tier 3A** | 256 | \$3.50 | 1,192.1 hrs (49.7 d) $\to$ 596.0 hrs (24.8 d) | 305,175.7 hrs | 152,587.8 hrs | **152,587.8 hrs** | \$400,543.08 | \$133,514.36 |
+| **Tier 4A** | 512 | \$3.40 | 2,066.3 hrs (86.1 d) $\to$ 1,033.1 hrs (43.0 d) | 1,057,942.4 hrs | 528,971.2 hrs | **528,971.2 hrs** | \$1,348,876.51 | \$449,625.50 |
+| **Tier 4B** | 1,024 | \$3.20 | 1,490.1 hrs (62.1 d) $\to$ 745.1 hrs (31.0 d) | 1,525,877.8 hrs | 762,938.9 hrs | **762,938.9 hrs** | \$1,831,053.31 | \$610,351.10 |
 
 ---
 
@@ -74,15 +74,15 @@ Enterprise compute revenue depends directly on customer utilization and the numb
 
 | Tier | Fee / Qualifying Campaign (25%) | Conservative (1 Qualifying Campaign/Yr) | Base Modeled Scenario (Qualifying Campaigns/Yr) | High Utilization (Multi-Campaign/Yr) |
 | :--- | ---: | ---: | ---: | ---: |
-| **Tier 0A** (1x Devbox) | \$7.35 | \$7.35 (1/yr) | **\$176.43** (24/yr) | \$352.86 (48/yr) |
-| **Tier 0B** (4x Rig) | \$120.80 | \$120.80 (1/yr) | **\$1,449.58** (12/yr) | \$2,899.16 (24/yr) |
-| **Tier 1A** (8x A100) | \$890.10 | \$890.10 (1/yr) | **\$5,340.57** (6/yr) | \$10,681.14 (12/yr) |
-| **Tier 1B** (8x H100) | \$1,049.04 | \$1,049.04 (1/yr) | **\$4,196.17** (4/yr) | \$8,392.34 (8/yr) |
-| **Tier 2A** (32x H100) | \$5,919.13 | \$5,919.13 (1/yr) | **\$23,676.53** (4/yr) | \$47,353.06 (8/yr) |
-| **Tier 2B** (64x H100) | \$19,868.20 | \$19,868.20 (1/yr) | **\$39,736.40** (2/yr) | \$79,472.80 (4/yr) |
-| **Tier 3A** (256x H100) | \$58,746.32 | \$58,746.32 (1/yr) | **\$117,492.64** (2/yr) | \$234,985.28 (4/yr) |
-| **Tier 4A** (512x H100) | \$179,850.20 | \$179,850.20 (1/yr) | **\$179,850.20** (1/yr) | \$539,550.60 (3/yr) |
-| **Tier 4B** (1,024x H100) | \$219,726.40 | \$219,726.40 (1/yr) | **\$219,726.40** (1/yr) | \$878,905.60 (4/yr) |
+| **Tier 0A** (1x Devbox) | \$9.19 | \$9.19 (1/yr) | **\$220.54** (24/yr) | \$441.07 (48/yr) |
+| **Tier 0B** (4x Rig) | \$158.94 | \$158.94 (1/yr) | **\$1,907.34** (12/yr) | \$3,814.68 (24/yr) |
+| **Tier 1A** (8x A100) | \$1,271.57 | \$1,271.57 (1/yr) | **\$7,629.39** (6/yr) | \$15,258.78 (12/yr) |
+| **Tier 1B** (8x H100) | \$1,589.46 | \$1,589.46 (1/yr) | **\$6,357.83** (4/yr) | \$12,715.65 (8/yr) |
+| **Tier 2A** (32x H100) | \$10,569.88 | \$10,569.88 (1/yr) | **\$42,279.52** (4/yr) | \$84,559.04 (8/yr) |
+| **Tier 2B** (64x H100) | \$39,736.40 | \$39,736.40 (1/yr) | **\$79,472.80** (2/yr) | \$158,945.60 (4/yr) |
+| **Tier 3A** (256x H100) | \$133,514.36 | \$133,514.36 (1/yr) | **\$267,028.72** (2/yr) | \$534,057.44 (4/yr) |
+| **Tier 4A** (512x H100) | \$449,625.50 | \$449,625.50 (1/yr) | **\$449,625.50** (1/yr) | \$1,348,876.51 (3/yr) |
+| **Tier 4B** (1,024x H100) | \$610,351.10 | \$610,351.10 (1/yr) | **\$610,351.10** (1/yr) | \$2,441,404.42 (4/yr) |
 
 ---
 
@@ -113,12 +113,12 @@ graph TD
 
 ### The Sub-Run Taxonomy & Data Optimization Vectors
 
-| Sub-Run Category | Typical Allocation | Workload Characteristics | Data & Runtime Optimization Opportunity |
-| :--- | :--- | :--- | :--- |
-| **Data Mixture Sweeps** | 64–256 GPUs | Variable token slices (20B–200B tok) testing code vs. math vs. web data ratios. | **DataLoader I/O & Shuffling:** Frequent dataset switching causes worker starvation and CPU-to-GPU transfer bottlenecks. GhostLayer flags worker starvation and un-pinned memory buffers. |
-| **Architecture & MoE Sweeps** | 128–256 GPUs | Small-batch, high-parameter routing tests (top-2 / top-4 expert balancing). | **All-to-All Communication Drag:** Dynamic token dispatch causes inter-node network stalls. Telemetry detects communication-to-compute imbalance. |
-| **Context Extension Branching** | 256–512 GPUs | Scaling context from 4k $\to$ 32k $\to$ 128k on pre-trained checkpoints. | **VRAM Spikes & Activation Blowup:** High sequence lengths cause OOM risks. GhostLayer surfaces `ChunkedCrossEntropyLoss` and FlashAttention kernel opportunities. |
-| **Post-Training / RL Reasoning** | 128–512 GPUs | SFT, DPO, PPO, and GRPO reasoning rollouts with dynamic sequence lengths. | **Variable-Length Padding Waste:** Un-padded ragged tensor packing and prompt caching optimizations prevent wasted compute on padded tokens. |
+| Sub-Run Category                 | Typical Allocation | Workload Characteristics                                                        | Data & Runtime Optimization Opportunity                                                                                                                                                   |
+| :------------------------------- | :----------------- | :------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Data Mixture Sweeps**          | 64–256 GPUs        | Variable token slices (20B–200B tok) testing code vs. math vs. web data ratios. | **DataLoader I/O & Shuffling:** Frequent dataset switching causes worker starvation and CPU-to-GPU transfer bottlenecks. GhostLayer flags worker starvation and un-pinned memory buffers. |
+| **Architecture & MoE Sweeps**    | 128–256 GPUs       | Small-batch, high-parameter routing tests (top-2 / top-4 expert balancing).     | **All-to-All Communication Drag:** Dynamic token dispatch causes inter-node network stalls. Telemetry detects communication-to-compute imbalance.                                         |
+| **Context Extension Branching**  | 256–512 GPUs       | Scaling context from 4k $\to$ 32k $\to$ 128k on pre-trained checkpoints.        | **VRAM Spikes & Activation Blowup:** High sequence lengths cause OOM risks. GhostLayer surfaces `ChunkedCrossEntropyLoss` and FlashAttention kernel opportunities.                        |
+| **Post-Training / RL Reasoning** | 128–512 GPUs       | SFT, DPO, PPO, and GRPO reasoning rollouts with dynamic sequence lengths.       | **Variable-Length Padding Waste:** Un-padded ragged tensor packing and prompt caching optimizations prevent wasted compute on padded tokens.                                              |
 
 ### Why Sub-Runs Multiply GhostLayer's Commercial & Technical Value
 
